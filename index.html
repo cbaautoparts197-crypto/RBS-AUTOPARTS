@@ -329,23 +329,27 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- Dashboard -->
 <div class="page active" id="page-dashboard">
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">📝</div><div class="stat-value">156</div><div class="stat-label">本月发布内容</div></div>
-<div class="stat-card"><div class="stat-icon green">👁️</div><div class="stat-value">28.5K</div><div class="stat-label">总曝光量</div></div>
-<div class="stat-card"><div class="stat-icon purple">💬</div><div class="stat-value">1,247</div><div class="stat-label">互动次数</div></div>
-<div class="stat-card"><div class="stat-icon orange">📈</div><div class="stat-value">+18%</div><div class="stat-label">转化增长</div></div>
+<div class="stat-card"><div class="stat-icon blue">📝</div><div class="stat-value">0</div><div class="stat-label">本月发布内容</div></div>
+<div class="stat-card"><div class="stat-icon green">👁️</div><div class="stat-value">0</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon purple">💬</div><div class="stat-value">0</div><div class="stat-label">互动次数</div></div>
+<div class="stat-card"><div class="stat-icon orange">📈</div><div class="stat-value">0%</div><div class="stat-label">转化增长</div></div>
 </div>
 <div class="grid-3">
 <div class="card"><div class="card-header">最近发布</div><div class="card-body">
-<div class="post-item"><div class="post-platform platform-icon facebook">f</div><div class="post-content"><div class="post-title">Engine Mount 客户成功案例</div><div class="post-meta">Facebook · 2小时前</div></div><span class="post-status published">已发布</span></div>
+<div style="text-align:center;padding:40px;color:var(--text-m)">
+<div style="font-size:48px;margin-bottom:16px">📝</div>
+<div style="font-size:16px;margin-bottom:8px">暂无发布内容</div>
+<div style="font-size:12px">点击"+ 新建内容"开始创建</div>
+</div>
+</div></div><span class="post-status published">已发布</span></div>
 <div class="post-item"><div class="post-platform platform-icon instagram">📷</div><div class="post-content"><div class="post-title">Bushing 产品对比信息图</div><div class="post-meta">Instagram · 5小时前</div></div><span class="post-status published">已发布</span></div>
 <div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"><div class="post-title">汽配行业供应链趋势分析</div><div class="post-meta">LinkedIn · 明天 09:00</div></div><span class="post-status scheduled">待发布</span></div>
 <div class="post-item"><div class="post-platform platform-icon youtube">▶</div><div class="post-content"><div class="post-title">产品安装教程视频脚本</div><div class="post-meta">YouTube · 草稿</div></div><span class="post-status draft">草稿</span></div>
 </div></div>
 <div class="card"><div class="card-header">平台表现</div><div class="card-body">
-<div class="metric-row"><span class="metric-label">Facebook</span><span class="metric-value">12.3K 曝光<span class="metric-change up">↑12%</span></span></div>
-<div class="metric-row"><span class="metric-label">Instagram</span><span class="metric-value">8.7K 曝光<span class="metric-change up">↑8%</span></span></div>
-<div class="metric-row"><span class="metric-label">LinkedIn</span><span class="metric-value">5.2K 曝光<span class="metric-change up">↑15%</span></span></div>
-<div class="metric-row"><span class="metric-label">YouTube</span><span class="metric-value">2.3K 曝光<span class="metric-change down">↓3%</span></span></div>
+<div style="text-align:center;padding:40px;color:var(--text-m)">
+<div style="font-size:14px">连接账号后可查看平台数据</div>
+</div>
 </div></div>
 </div>
 </div>
@@ -548,12 +552,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <table class="task-table">
 <thead><tr><th>任务名称</th><th>类型</th><th>执行时间</th><th>目标平台</th><th>状态</th><th>操作</th></tr></thead>
 <tbody>
-<tr><td><div style="font-weight:600">Engine Mount 促销发布</div><div style="font-size:11px;color:var(--text-m)">产品推广内容</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-08</div><div style="font-size:11px;color:var(--text-m)">15:00 GMT+1</div></td><td><span class="chip">📘 FB</span> <span class="chip">💼 LI</span></td><td><span class="task-status pending">待执行</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(1)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="cancelTask(1)">取消</button></td></tr>
-<tr><td><div style="font-weight:600">每日产品动态</div><div style="font-size:11px;color:var(--text-m)">自动生成产品内容</div></td><td><span class="task-type daily">每日</span></td><td><div>每天 09:00</div><div style="font-size:11px;color:var(--text-m)">下次: 明天</div></td><td><span class="chip">📷 IG</span> <span class="chip">♪ TT</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(2)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(2)">暂停</button></td></tr>
-<tr><td><div style="font-weight:600">周报数据汇总</div><div style="font-size:11px;color:var(--text-m)">每周一发送报告</div></td><td><span class="task-type weekly">每周</span></td><td><div>每周一 08:00</div><div style="font-size:11px;color:var(--text-m)">下次: 4月14日</div></td><td><span class="chip">📧 邮件</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(3)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(3)">暂停</button></td></tr>
-<tr><td><div style="font-weight:600">Bushing 视频发布</div><div style="font-size:11px;color:var(--text-m)">产品演示视频</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-07</div><div style="font-size:11px;color:var(--text-m)">14:30 GMT+1</div></td><td><span class="chip">▶️ YT</span></td><td><span class="task-status completed">已完成</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="viewTaskLog(4)">日志</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="rerunTask(4)">重跑</button></td></tr>
-<tr><td><div style="font-weight:600">月度行业报告</div><div style="font-size:11px;color:var(--text-m)">行业趋势分析</div></td><td><span class="task-type monthly">每月</span></td><td><div>每月1日 10:00</div><div style="font-size:11px;color:var(--text-m)">下次: 5月1日</div></td><td><span class="chip">💼 LI</span> <span class="chip">📘 FB</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(5)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(5)">暂停</button></td></tr>
-<tr><td><div style="font-weight:600">失败任务示例</div><div style="font-size:11px;color:var(--text-m)">API连接失败</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-06</div><div style="font-size:11px;color:var(--text-m)">12:00 GMT+1</div></td><td><span class="chip">📷 IG</span></td><td><span class="task-status failed">失败</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="viewTaskLog(6)">日志</button> <button class="btn btn-primary" style="padding:2px 8px;font-size:10px" onclick="retryTask(6)">重试</button></td></tr>
+<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-m)">暂无定时任务</td></tr>
 </tbody>
 </table>
 </div>
@@ -563,10 +562,10 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- Analytics Page -->
 <div class="page" id="page-analytics">
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">📊</div><div class="stat-value">28.5K</div><div class="stat-label">总曝光量</div></div>
-<div class="stat-card"><div class="stat-icon green">💬</div><div class="stat-value">1,247</div><div class="stat-label">总互动量</div></div>
-<div class="stat-card"><div class="stat-icon purple">👆</div><div class="stat-value">4.3%</div><div class="stat-label">互动率</div></div>
-<div class="stat-card"><div class="stat-icon orange">🎯</div><div class="stat-value">186</div><div class="stat-label">询盘转化</div></div>
+<div class="stat-card"><div class="stat-icon blue">📊</div><div class="stat-value">0</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon green">💬</div><div class="stat-value">0</div><div class="stat-label">总互动量</div></div>
+<div class="stat-card"><div class="stat-icon purple">👆</div><div class="stat-value">0%</div><div class="stat-label">互动率</div></div>
+<div class="stat-card"><div class="stat-icon orange">🎯</div><div class="stat-value">0</div><div class="stat-label">询盘转化</div></div>
 </div>
 <!-- 数据导出和AI推荐 -->
 <div class="grid-2" style="margin-top:16px">
@@ -611,206 +610,14 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- Team Page -->
 <div class="page" id="page-team">
 <div class="grid-2">
-<div class="card"><div class="card-header">👥 团队成员 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="showModal('addMember')">+ 添加成员</button></div><div class="card-body">
-<div class="team-list">
-<div class="team-item" onclick="showMemberDetail('zhang')">
-<div class="team-avatar-sm" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">张</div>
-<div style="flex:1"><div style="font-weight:600">张经理</div><div style="font-size:11px;color:var(--text-m)">zhang@autoparts.com</div></div>
-<span class="role-badge admin">管理员</span>
-<span style="font-size:11px;color:var(--green)">● 在线</span>
+<div class="card"><div class="card-header">👥 团队成员 <button class="btn btn-primary" style="padding:4px 12px;font-size:11px" onclick="showModal('addMember')">+ 添加成员</button></div>
+<div class="card-body">
+<div style="text-align:center;padding:40px;color:var(--text-m)">
+<div style="font-size:48px;margin-bottom:16px">👥</div>
+<div style="font-size:16px;margin-bottom:8px">暂无团队成员</div>
+<div style="font-size:12px">添加成员开始协作</div>
 </div>
-<div class="team-item" onclick="showMemberDetail('li')">
-<div class="team-avatar-sm" style="background:linear-gradient(135deg,#10b981,#06b6d4)">李</div>
-<div style="flex:1"><div style="font-weight:600">李编辑</div><div style="font-size:11px;color:var(--text-m)">li@autoparts.com</div></div>
-<span class="role-badge editor">编辑</span>
-<span style="font-size:11px;color:var(--green)">● 在线</span>
-</div>
-<div class="team-item" onclick="showMemberDetail('wang')">
-<div class="team-avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">王</div>
-<div style="flex:1"><div style="font-weight:600">王设计</div><div style="font-size:11px;color:var(--text-m)">wang@autoparts.com</div></div>
-<span class="role-badge designer">设计</span>
-<span style="font-size:11px;color:var(--text-m)">● 离线</span>
-</div>
-<div class="team-item" onclick="showMemberDetail('zhao')">
-<div class="team-avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">赵</div>
-<div style="flex:1"><div style="font-weight:600">赵审核</div><div style="font-size:11px;color:var(--text-m)">zhao@autoparts.com</div></div>
-<span class="role-badge reviewer">审核</span>
-<span style="font-size:11px;color:var(--text-m)">● 离线</span>
-</div>
-<div class="team-item" onclick="showMemberDetail('chen')">
-<div class="team-avatar-sm" style="background:linear-gradient(135deg,#64748b,#475569)">陈</div>
-<div style="flex:1"><div style="font-weight:600">陈实习生</div><div style="font-size:11px;color:var(--text-m)">chen@autoparts.com</div></div>
-<span class="role-badge viewer">查看</span>
-<span style="font-size:11px;color:var(--text-m)">● 离线</span>
-</div>
-</div>
-</div></div>
-
-<div class="card"><div class="card-header">🔐 角色权限矩阵 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showModal('editRole')">编辑角色</button></div><div class="card-body">
-<div style="overflow-x:auto">
-<table class="permission-table">
-<thead><tr><th>权限</th><th>管理员</th><th>编辑</th><th>审核</th><th>设计</th><th>查看</th></tr></thead>
-<tbody>
-<tr><td>查看内容</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
-<tr><td>创建内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td></tr>
-<tr><td>编辑内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td></tr>
-<tr><td>删除内容</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>发布内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>审核通过</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>管理账号</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>管理团队</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>导出数据</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td></tr>
-<tr><td>系统设置</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
-</tbody>
-</table>
-</div>
-</div></div>
-</div>
-
-<div class="card"><div class="card-header">📋 操作日志 <input class="form-input" style="width:150px;font-size:11px;padding:4px 8px" placeholder="搜索日志..."></div><div class="card-body">
-<div class="log-list">
-<div class="log-item"><span class="log-time">15:42:18</span><span class="log-user">张经理</span><span class="log-action create">创建</span><span class="log-desc">创建了新内容 "Engine Mount 促销活动"</span></div>
-<div class="log-item"><span class="log-time">15:38:05</span><span class="log-user">李编辑</span><span class="log-action edit">编辑</span><span class="log-desc">修改了 "Strut Mount 产品介绍" 的内容</span></div>
-<div class="log-item"><span class="log-time">15:32:41</span><span class="log-user">赵审核</span><span class="log-action approve">通过</span><span class="log-desc">审核通过了 "Bushing 对比图文"</span></div>
-<div class="log-item"><span class="log-time">15:28:19</span><span class="log-user">王设计</span><span class="log-action upload">上传</span><span class="log-desc">上传了 5 个产品图片素材</span></div>
-<div class="log-item"><span class="log-time">15:15:33</span><span class="log-user">张经理</span><span class="log-action publish">发布</span><span class="log-desc">发布内容到 Facebook 和 LinkedIn</span></div>
-<div class="log-item"><span class="log-time">14:58:22</span><span class="log-user">李编辑</span><span class="log-action delete">删除</span><span class="log-desc">删除了草稿 "测试内容"</span></div>
-<div class="log-item"><span class="log-time">14:45:10</span><span class="log-user">张经理</span><span class="log-action setting">设置</span><span class="log-desc">更新了团队权限配置</span></div>
-<div class="log-item"><span class="log-time">14:30:00</span><span class="log-user">系统</span><span class="log-action system">系统</span><span class="log-desc">自动同步云端素材库完成</span></div>
-</div>
-<div style="text-align:center;margin-top:12px"><button class="btn btn-secondary" style="font-size:11px" onclick="loadMoreLogs()">加载更多...</button></div>
-</div></div>
-</div>
-
-<!-- Products Page -->
-<div class="page" id="page-products">
-<div class="card" style="margin-bottom:24px"><div class="card-header">🚗 产品管理 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="showModal('addProduct')">+ 添加产品</button></div></div>
-<div class="grid-3">
-<div class="card" onclick="showProductDetail('engine-mount')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:24px">🔧</div>
-<div><div style="font-weight:600">Engine Mount</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 156 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">8.2K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">42</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$15-85</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">28篇</div></div>
-</div>
-</div></div>
-<div class="card" onclick="showProductDetail('strut-mount')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:24px">🔩</div>
-<div><div style="font-weight:600">Strut Mount</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 98 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">6.5K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">35</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$25-120</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">22篇</div></div>
-</div>
-</div></div>
-<div class="card" onclick="showProductDetail('bushing')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;font-size:24px">⭕</div>
-<div><div style="font-weight:600">Bushing</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 245 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">5.8K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">28</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$5-35</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">18篇</div></div>
-</div>
-</div></div>
-<div class="card" onclick="showProductDetail('control-arm')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ec4899,#f43f5e);display:flex;align-items:center;justify-content:center;font-size:24px">🦴</div>
-<div><div style="font-weight:600">Control Arm</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 87 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">4.2K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">21</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$45-180</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">15篇</div></div>
-</div>
-</div></div>
-<div class="card" onclick="showProductDetail('ball-joint')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#a855f7);display:flex;align-items:center;justify-content:center;font-size:24px">⚪</div>
-<div><div style="font-weight:600">Ball Joint</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 112 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">3.5K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">18</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$18-65</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">12篇</div></div>
-</div>
-</div></div>
-<div class="card" onclick="showProductDetail('center-bearing')"><div class="card-body" style="cursor:pointer">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
-<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:24px">⚙️</div>
-<div><div style="font-weight:600">Center Bearing</div><div style="font-size:12px;color:var(--text-m)">传动系统 · 45 SKUs</div></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">2.8K</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">14</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$20-75</div></div>
-<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">10篇</div></div>
-</div>
-</div></div>
-</div>
-</div>
-
-<!-- Assets Page -->
-<div class="page" id="page-assets">
-<div class="grid-2">
-<div class="card"><div class="card-header">📁 素材路径配置 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showModal('addPath')">+ 添加路径</button></div><div class="card-body">
-<div class="path-config">
-<div class="path-item"><div class="path-icon">📂</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">本地素材根目录</div><input class="path-input" id="pathRoot" value="D:\AutoParts\assets\" placeholder="本地素材文件夹路径"></div><span class="path-status valid">有效</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('root')">浏览</button></div>
-<div class="path-item"><div class="path-icon">🖼️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">产品图片目录</div><input class="path-input" id="pathProducts" value="D:\AutoParts\assets\products\" placeholder="产品图片路径"></div><span class="path-status valid">156 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('products')">浏览</button></div>
-<div class="path-item"><div class="path-icon">🎬</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">视频素材目录</div><input class="path-input" id="pathVideos" value="D:\AutoParts\assets\videos\" placeholder="视频素材路径"></div><span class="path-status valid">24 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('videos')">浏览</button></div>
-<div class="path-item"><div class="path-icon">🏷️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">品牌素材目录</div><input class="path-input" id="pathBrand" value="D:\AutoParts\assets\brand\" placeholder="Logo、品牌色等"></div><span class="path-status valid">12 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('brand')">浏览</button></div>
-<div class="path-item"><div class="path-icon">💬</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">客户见证目录</div><input class="path-input" id="pathTestimonials" value="D:\AutoParts\assets\testimonials\" placeholder="客户评价、案例图片"></div><span class="path-status valid">38 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('testimonials')">浏览</button></div>
-<div class="path-item"><div class="path-icon">📄</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">技术文档目录</div><input class="path-input" id="pathDocs" value="D:\AutoParts\assets\docs\" placeholder="安装手册、规格表"></div><span class="path-status valid">45 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('docs')">浏览</button></div>
-<div class="path-item"><div class="path-icon">📐</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">社媒模板目录</div><input class="path-input" id="pathTemplates" value="D:\AutoParts\assets\templates\" placeholder="FB/IG/LI模板"></div><span class="path-status valid">18 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('templates')">浏览</button></div>
-<div class="path-item"><div class="path-icon">☁️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">云端素材库</div><input class="path-input" id="pathCloud" value="https://assets.autoparts.com/b2b/" placeholder="云端素材库URL"></div><span class="path-status valid">已连接</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="syncCloud()">同步</button></div>
-</div>
-<div class="btn-group"><button class="btn btn-primary" onclick="refreshAssets()">🔄 扫描素材库</button><button class="btn btn-secondary" onclick="importAssets()">📥 批量导入</button><button class="btn btn-secondary" onclick="showModal('addAsset')">+ 添加素材</button></div>
-</div></div>
-
-<div class="card"><div class="card-header">📊 素材统计</div><div class="card-body">
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--blue)">293</div><div style="font-size:11px;color:var(--text-m)">总素材数</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--green)">156</div><div style="font-size:11px;color:var(--text-m)">产品图片</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--purple)">24</div><div style="font-size:11px;color:var(--text-m)">视频素材</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--orange)">1.2 GB</div><div style="font-size:11px;color:var(--text-m)">总大小</div></div>
-</div>
-<div style="margin-top:16px">
-<div style="font-size:12px;font-weight:600;margin-bottom:8px">素材使用率</div>
-<div style="background:var(--elevated);border-radius:6px;padding:12px">
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px">产品图</span><span style="font-size:11px;color:var(--green)">已用 89%</span></div>
-<div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden"><div style="width:89%;height:100%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:3px"></div></div>
-</div>
-<div style="background:var(--elevated);border-radius:6px;padding:12px;margin-top:8px">
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px">视频素材</span><span style="font-size:11px;color:var(--blue)">已用 67%</span></div>
-<div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden"><div style="width:67%;height:100%;background:linear-gradient(90deg,#10b981,#06b6d4);border-radius:3px"></div></div>
-</div>
-</div>
-</div></div>
-</div>
-
-<div class="card"><div class="card-header"><span>素材库 (共 293 个素材)</span><input class="form-input" style="width:200px" placeholder="搜索素材..." id="assetSearch" oninput="searchAssets(this.value)"></div><div class="card-body">
-<div class="asset-toolbar">
-<button class="tool-btn active" onclick="filterAssets('all',event)">全部</button>
-<button class="tool-btn" onclick="filterAssets('product',event)">🔧 产品图</button>
-<button class="tool-btn" onclick="filterAssets('video',event)">🎬 视频</button>
-<button class="tool-btn" onclick="filterAssets('banner',event)">📊 Banner</button>
-<button class="tool-btn" onclick="filterAssets('testimonial',event)">💬 见证</button>
-<button class="tool-btn" onclick="filterAssets('doc',event)">📄 文档</button>
-<button class="tool-btn" onclick="filterAssets('template',event)">📐 模板</button>
-</div>
-<div class="asset-grid">
-<div class="asset-card" onclick="previewAsset('engine-mount-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">🔧</div><div class="asset-info"><div class="asset-name">Engine Mount 主图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>2.4 MB</span></div></div></div>
+</div>>
 <div class="asset-card" onclick="previewAsset('strut-mount-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#10b981,#06b6d4)">🔩</div><div class="asset-info"><div class="asset-name">Strut Mount 细节图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>1.8 MB</span></div></div></div>
 <div class="asset-card" onclick="previewAsset('bushing-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">⭕</div><div class="asset-info"><div class="asset-name">Bushing 对比图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>3.1 MB</span></div></div></div>
 <div class="asset-card" onclick="previewAsset('control-arm-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">🦴</div><div class="asset-info"><div class="asset-name">Control Arm 安装图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>2.7 MB</span></div></div></div>
@@ -828,27 +635,22 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- API Management Page -->
 <div class="page" id="page-api">
 <div class="grid-2">
-<div class="card"><div class="card-header">🔌 API 发布日志</div><div class="card-body">
+<div class="card"><div class="card-header">🔌 API 发布日志 <button class="btn btn-secondary" style="padding:4px 12px;font-size:11px;float:right" onclick="clearLogs()">清空日志</button></div>
+<div class="card-body">
 <div class="api-log">
-<div class="log-entry"><span class="log-time">15:34:12</span><span class="log-status success">成功</span><span class="log-text">Facebook: 发布成功 ID: FB_28471 | Engine Mount 客户案例</span></div>
-<div class="log-entry"><span class="log-time">15:32:08</span><span class="log-status success">成功</span><span class="log-text">Instagram: 发布成功 ID: IG_9823 | Strut Mount 产品展示</span></div>
-<div class="log-entry"><span class="log-time">15:28:45</span><span class="log-status success">成功</span><span class="log-text">LinkedIn: 发布成功 ID: LI_4521 | 行业趋势分析</span></div>
-<div class="log-entry"><span class="log-time">15:25:22</span><span class="log-status error">失败</span><span class="log-text">TikTok: API限流 (429) | 等待 180 秒后重试</span></div>
-<div class="log-entry"><span class="log-time">15:18:18</span><span class="log-status success">成功</span><span class="log-text">YouTube: 视频上传成功 ID: YT_1204 | 安装教程</span></div>
-<div class="log-entry"><span class="log-time">15:12:33</span><span class="log-status pending">处理中</span><span class="log-text">Pinterest: 图片上传中... (45%)</span></div>
-<div class="log-entry"><span class="log-time">15:08:55</span><span class="log-status success">成功</span><span class="log-text">Twitter: 发布成功 ID: TW_7821 | Bushing 对比信息图</span></div>
-<div class="log-entry"><span class="log-time">15:02:41</span><span class="log-status error">失败</span><span class="log-text">WhatsApp: 模板未审核 | 请先提交模板审核</span></div>
+<div style="text-align:center;padding:40px;color:var(--text-m)">
+<div style="font-size:14px">暂无发布记录</div>
 </div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="clearLogs()">清空日志</button><button class="btn btn-secondary" onclick="exportLogs()">导出日志</button></div>
-</div></div>
+</div>
+</div>
 
 <div class="card"><div class="card-header">⚡ API 速率限制</div><div class="card-body">
-<div class="rate-limit"><div class="platform-icon facebook" style="width:32px;height:32px;font-size:14px">f</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Facebook Graph API</div><div style="font-size:11px;color:var(--text-m)">180/200 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:90%;background:var(--orange)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon instagram" style="width:32px;height:32px;font-size:14px">📷</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Instagram Graph API</div><div style="font-size:11px;color:var(--text-m)">95/100 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:95%;background:var(--red)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon linkedin" style="width:32px;height:32px;font-size:14px">in</div><div style="flex:1"><div style="font-size:13px;font-weight:500">LinkedIn API</div><div style="font-size:11px;color:var(--text-m)">45/100 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:45%;background:var(--green)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon youtube" style="width:32px;height:32px;font-size:14px">▶</div><div style="flex:1"><div style="font-size:13px;font-weight:500">YouTube Data API</div><div style="font-size:11px;color:var(--text-m)">850/10000 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:8.5%;background:var(--green)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon facebook" style="width:32px;height:32px;font-size:14px">f</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Facebook Graph API</div><div style="font-size:11px;color:var(--text-m)">0/200 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:90%;background:var(--orange)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon instagram" style="width:32px;height:32px;font-size:14px">📷</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Instagram Graph API</div><div style="font-size:11px;color:var(--text-m)">0/100 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:95%;background:var(--red)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon linkedin" style="width:32px;height:32px;font-size:14px">in</div><div style="flex:1"><div style="font-size:13px;font-weight:500">LinkedIn API</div><div style="font-size:11px;color:var(--text-m)">0/100 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:45%;background:var(--green)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon youtube" style="width:32px;height:32px;font-size:14px">▶</div><div style="flex:1"><div style="font-size:13px;font-weight:500">YouTube Data API</div><div style="font-size:11px;color:var(--text-m)">0/10000 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:8.5%;background:var(--green)"></div></div></div>
 <div class="rate-limit"><div class="platform-icon tiktok" style="width:32px;height:32px;font-size:14px">♪</div><div style="flex:1"><div style="font-size:13px;font-weight:500">TikTok Business API</div><div style="font-size:11px;color:var(--text-m)">0/100 次/天 (冷却中)</div></div><div class="rate-bar"><div class="rate-fill" style="width:0%;background:var(--text-m)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon twitter" style="width:32px;height:32px;font-size:14px">𝕏</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Twitter API v2</div><div style="font-size:11px;color:var(--text-m)">25/450 次/15分钟</div></div><div class="rate-bar"><div class="rate-fill" style="width:5.5%;background:var(--green)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon twitter" style="width:32px;height:32px;font-size:14px">𝕏</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Twitter API v2</div><div style="font-size:11px;color:var(--text-m)">0/450 次/15分钟</div></div><div class="rate-bar"><div class="rate-fill" style="width:5.5%;background:var(--green)"></div></div></div>
 </div></div>
 
 <div class="card"><div class="card-header">⚙️ API 配置</div><div class="card-body">
@@ -1330,10 +1132,10 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- 询盘管理页面 -->
 <div class="page" id="page-inquiries">
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">📩</div><div class="stat-value">47</div><div class="stat-label">本月询盘</div></div>
-<div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-value">28</div><div class="stat-label">已跟进</div></div>
-<div class="stat-card"><div class="stat-icon orange">⏳</div><div class="stat-value">12</div><div class="stat-label">待处理</div></div>
-<div class="stat-card"><div class="stat-icon purple">💰</div><div class="stat-value">$86K</div><div class="stat-label">预估金额</div></div>
+<div class="stat-card"><div class="stat-icon blue">📩</div><div class="stat-value">0</div><div class="stat-label">本月询盘</div></div>
+<div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-value">0</div><div class="stat-label">已跟进</div></div>
+<div class="stat-card"><div class="stat-icon orange">⏳</div><div class="stat-value">0</div><div class="stat-label">待处理</div></div>
+<div class="stat-card"><div class="stat-icon purple">💰</div><div class="stat-value">$0</div><div class="stat-label">预估金额</div></div>
 </div>
 <div class="card" style="margin-top:24px">
 <div class="card-header">📩 询盘列表 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('addInquiry')">+ 新建询盘</button></div>
@@ -1344,11 +1146,9 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部来源</option><option>Facebook</option><option>LinkedIn</option><option>官网</option><option>邮件</option></select>
 </div>
 <table class="task-table">
-<thead><tr><th>客户信息</th><th>产品需求</th><th>来源</th><th>金额</th><th>状态</th><th>操作</th></tr></thead>
+<thead><tr><th>任务名称</th><th>类型</th><th>执行时间</th><th>目标平台</th><th>状态</th><th>操作</th></tr></thead>
 <tbody>
-<tr><td><div style="font-weight:600">AutoParts GmbH</div><div style="font-size:11px;color:var(--text-m)">德国·慕尼黑</div></td><td>Engine Mount × 500</td><td><span class="chip">LinkedIn</span></td><td style="font-weight:600">$12,500</td><td><span class="task-status pending">待处理</span></td><td><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">跟进</button></td></tr>
-<tr><td><div style="font-weight:600">UK Suspension Ltd</div><div style="font-size:11px;color:var(--text-m)">英国·伦敦</div></td><td>Strut Mount × 1000</td><td><span class="chip">Facebook</span></td><td style="font-weight:600">$28,000</td><td><span class="task-status active">跟进中</span></td><td><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">跟进</button></td></tr>
-<tr><td><div style="font-weight:600">Middle East Trading</div><div style="font-size:11px;color:var(--text-m)">阿联酋·迪拜</div></td><td>Center Bearing × 300</td><td><span class="chip">邮件</span></td><td style="font-weight:600">$8,200</td><td><span class="task-status completed">已报价</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">查看</button></td></tr>
+<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-m)">暂无定时任务</td></tr>
 </tbody>
 </table>
 </div>
@@ -1359,7 +1159,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <div class="page" id="page-messages">
 <div class="grid-2" style="gap:16px;height:calc(100vh - 180px)">
 <div class="card" style="display:flex;flex-direction:column">
-<div class="card-header">💬 消息列表 <span style="font-size:11px;color:var(--text-m);margin-left:8px">128 未读</span></div>
+<div class="card-header">💬 消息列表 <span style="font-size:11px;color:var(--text-m);margin-left:8px">0 未读</span></div>
 <div class="card-body" style="flex:1;overflow-y:auto;padding:8px">
 <div class="message-item unread" onclick="selectMessage(1)">
 <div class="msg-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">M</div>
