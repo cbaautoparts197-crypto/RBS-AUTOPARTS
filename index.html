@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AutoParts B2B 绀惧獟钀ラ攢绠＄悊绯荤粺 v2.0</title>
+<title>AutoParts B2B 社媒营销管理系统 v2.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0c0c12;--surface:#13131c;--elevated:#1a1a26;--hover:#22222f;--border:rgba(255,255,255,0.08);--text:#fff;--text-s:#b0b0c0;--text-m:#606075;--blue:#3b82f6;--blue-g:rgba(59,130,246,0.2);--green:#10b981;--green-g:rgba(16,185,129,0.2);--red:#ef4444;--purple:#8b5cf6;--orange:#f59e0b;}
@@ -194,7 +194,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 .loading{display:flex;align-items:center;gap:8px;color:var(--text-m);}
 .spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin 0.8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-/* 绱犳潗搴撴牱寮?*/
+/* 素材库样式 */
 .asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .asset-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
 .asset-card:hover{transform:translateY(-4px);border-color:var(--blue);}
@@ -216,7 +216,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 .path-status{padding:4px 10px;border-radius:12px;font-size:11px;}
 .path-status.valid{background:var(--green-g);color:var(--green);}
 .path-status.invalid{background:rgba(239,68,68,0.2);color:var(--red);}
-/* API鏃ュ織鏍峰紡 */
+/* API日志样式 */
 .api-log{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;font-family:'Courier New',monospace;font-size:12px;max-height:300px;overflow-y:auto;}
 .log-entry{padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
 .log-time{color:var(--text-m);white-space:nowrap;}
@@ -228,7 +228,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 .rate-limit{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
 .rate-bar{flex:1;height:8px;background:var(--hover);border-radius:4px;overflow:hidden;}
 .rate-fill{height:100%;border-radius:4px;transition:width 0.3s;}
-/* 娑堟伅涓績鏍峰紡 */
+/* 消息中心样式 */
 .message-item{display:flex;gap:12px;padding:12px;cursor:pointer;transition:background 0.2s;border-bottom:1px solid var(--border);}
 .message-item:hover{background:var(--hover);}
 .message-item.unread{background:rgba(59,130,246,0.05);}
@@ -246,24 +246,24 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 .chat-msg.sent .chat-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px;}
 .chat-msg.received .chat-bubble{background:var(--elevated);border-bottom-left-radius:4px;}
 .chat-time{font-size:10px;color:var(--text-m);margin-top:4px;text-align:right;}
-/* 绔炲搧鐩戞帶鏍峰紡 */
+/* 竞品监控样式 */
 .competitor-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;}
 .competitor-item:hover{background:var(--hover);transform:translateX(4px);}
 .comp-logo{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;}
 .activity-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
 .act-icon{font-size:16px;}
-/* 宸ヤ綔娴佹牱寮?*/
+/* 工作流样式 */
 .workflow-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
 .wf-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
 .approval-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
-/* 鏁版嵁瀵煎嚭鏍峰紡 */
+/* 数据导出样式 */
 .export-option{display:flex;align-items:center;gap:12px;padding:16px;background:var(--elevated);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;border:2px solid transparent;}
 .export-option:hover{background:var(--hover);border-color:var(--blue);}
 .export-option.selected{border-color:var(--blue);background:rgba(59,130,246,0.1);}
 .export-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--hover);}
-/* AI鎺ㄨ崘鏍峰紡 */
+/* AI推荐样式 */
 .ai-card{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:16px;margin-bottom:12px;}
-/* 鐢ㄦ埛鍒囨崲鏍峰紡 */
+/* 用户切换样式 */
 .user-switch{display:flex;align-items:center;cursor:pointer;padding:4px 12px;border-radius:20px;background:var(--elevated);transition:all 0.2s;}
 .user-switch:hover{background:var(--hover);}
 .user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:12px;}
@@ -271,7 +271,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 .user-list-item:hover{background:var(--hover);}
 .user-list-item.active{background:var(--blue-g);border:1px solid var(--blue);}
 .user-list-item .user-avatar{width:36px;height:36px;font-size:14px;}
-/* 澶氳瑷€缈昏瘧鏍峰紡 */
+/* 多语言翻译样式 */
 .translation-item{background:var(--elevated);border-radius:8px;padding:12px;margin-bottom:8px;}
 .translation-item .lang-label{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:8px;}
 .translation-item .lang-content{font-size:13px;color:var(--text-s);line-height:1.5;}
@@ -283,125 +283,123 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 </head>
 <body>
 <nav class="sidebar">
-<div class="logo"><div class="logo-icon">馃殫</div><div><div style="font-weight:700;font-size:14px">AutoParts</div><div style="font-size:10px;color:var(--text-m)">绀惧獟钀ラ攢绯荤粺 v2.0</div></div></div>
-<div class="nav-item active" onclick="showPage('dashboard',event)"><span style="font-size:18px;width:20px;text-align:center">馃搳</span><span>浠〃鐩?/span></div>
-<div class="nav-item" onclick="showPage('accounts',event)"><span style="font-size:18px;width:20px;text-align:center">馃敆</span><span>璐﹀彿绠＄悊</span></div>
-<div class="nav-item" onclick="showPage('creator',event)"><span style="font-size:18px;width:20px;text-align:center">鉁嶏笍</span><span>鍐呭鍒涗綔</span></div>
-<div class="nav-item" onclick="showPage('calendar',event)"><span style="font-size:18px;width:20px;text-align:center">馃搮</span><span>鍙戝竷鏃ュ巻</span></div>
-<div class="nav-item" onclick="showPage('analytics',event)"><span style="font-size:18px;width:20px;text-align:center">馃搱</span><span>鏁版嵁鍒嗘瀽</span></div>
-<div class="nav-item" onclick="showPage('team',event)"><span style="font-size:18px;width:20px;text-align:center">馃懃</span><span>鍥㈤槦鍗忎綔</span></div>
-<div class="nav-item" onclick="showPage('assets',event)"><span style="font-size:18px;width:20px;text-align:center">馃搧</span><span>绱犳潗搴?/span></div>
-<div class="nav-item" onclick="showPage('products',event)"><span style="font-size:18px;width:20px;text-align:center">馃殫</span><span>浜у搧绠＄悊</span></div>
-<div class="nav-item" onclick="showPage('api',event)"><span style="font-size:18px;width:20px;text-align:center">馃攲</span><span>API绠＄悊</span></div>
-<div class="nav-item" onclick="showPage('inquiries',event)"><span style="font-size:18px;width:20px;text-align:center">馃摡</span><span>璇㈢洏绠＄悊</span></div>
-<div class="nav-item" onclick="showPage('messages',event)"><span style="font-size:18px;width:20px;text-align:center">馃挰</span><span>娑堟伅涓績</span></div>
-<div class="nav-item" onclick="showPage('competitors',event)"><span style="font-size:18px;width:20px;text-align:center">馃攳</span><span>绔炲搧鐩戞帶</span></div>
-<div class="nav-item" onclick="showPage('workflow',event)"><span style="font-size:18px;width:20px;text-align:center">鈿欙笍</span><span>宸ヤ綔娴?/span></div>
+<div class="logo"><div class="logo-icon">🚗</div><div><div style="font-weight:700;font-size:14px">AutoParts</div><div style="font-size:10px;color:var(--text-m)">社媒营销系统 v2.0</div></div></div>
+<div class="nav-item active" onclick="showPage('dashboard',event)"><span style="font-size:18px;width:20px;text-align:center">📊</span><span>仪表盘</span></div>
+<div class="nav-item" onclick="showPage('accounts',event)"><span style="font-size:18px;width:20px;text-align:center">🔗</span><span>账号管理</span></div>
+<div class="nav-item" onclick="showPage('creator',event)"><span style="font-size:18px;width:20px;text-align:center">✍️</span><span>内容创作</span></div>
+<div class="nav-item" onclick="showPage('calendar',event)"><span style="font-size:18px;width:20px;text-align:center">📅</span><span>发布日历</span></div>
+<div class="nav-item" onclick="showPage('analytics',event)"><span style="font-size:18px;width:20px;text-align:center">📈</span><span>数据分析</span></div>
+<div class="nav-item" onclick="showPage('team',event)"><span style="font-size:18px;width:20px;text-align:center">👥</span><span>团队协作</span></div>
+<div class="nav-item" onclick="showPage('assets',event)"><span style="font-size:18px;width:20px;text-align:center">📁</span><span>素材库</span></div>
+<div class="nav-item" onclick="showPage('products',event)"><span style="font-size:18px;width:20px;text-align:center">🚗</span><span>产品管理</span></div>
+<div class="nav-item" onclick="showPage('api',event)"><span style="font-size:18px;width:20px;text-align:center">🔌</span><span>API管理</span></div>
+<div class="nav-item" onclick="showPage('inquiries',event)"><span style="font-size:18px;width:20px;text-align:center">📩</span><span>询盘管理</span></div>
+<div class="nav-item" onclick="showPage('messages',event)"><span style="font-size:18px;width:20px;text-align:center">💬</span><span>消息中心</span></div>
+<div class="nav-item" onclick="showPage('competitors',event)"><span style="font-size:18px;width:20px;text-align:center">🔍</span><span>竞品监控</span></div>
+<div class="nav-item" onclick="showPage('workflow',event)"><span style="font-size:18px;width:20px;text-align:center">⚙️</span><span>工作流</span></div>
 <div style="margin-top:24px;padding:12px;border-top:1px solid var(--border);">
 <div style="display:flex;align-items:center;gap:10px;">
-<div style="width:32px;height:32px;background:linear-gradient(135deg,var(--green),var(--blue));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;">绠?/div>
-<div><div style="font-size:13px;font-weight:600">绠＄悊鍛?/div><div style="font-size:11px;color:var(--text-m)">涓昏处鍙?/div></div>
+<div style="width:32px;height:32px;background:linear-gradient(135deg,var(--green),var(--blue));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;">管</div>
+<div><div style="font-size:13px;font-weight:600">管理员</div><div style="font-size:11px;color:var(--text-m)">主账号</div></div>
 </div>
 </div>
 </nav>
 <div class="main">
 <header class="header">
-<div id="headerTitle" style="font-size:18px;font-weight:700">浠〃鐩?/div>
+<div id="headerTitle" style="font-size:18px;font-weight:700">仪表盘</div>
 <div style="display:flex;gap:12px;align-items:center">
 <div class="user-switch" onclick="showModal('userSwitch')">
-<div class="user-avatar" id="currentUserAvatar">寮?/div>
-<span id="currentUserName" style="font-size:13px;margin-left:8px">寮犵粡鐞?/span>
+<div class="user-avatar" id="currentUserAvatar">张</div>
+<span id="currentUserName" style="font-size:13px;margin-left:8px">张经理</span>
 </div>
 <select class="form-input" style="width:110px;font-size:12px;padding:6px 10px" id="langSelect" onchange="changeLang(this.value)">
-<option value="zh">馃嚚馃嚦 涓枃</option>
-<option value="en">馃嚭馃嚫 English</option>
-<option value="de">馃嚛馃嚜 Deutsch</option>
-<option value="es">馃嚜馃嚫 Espa帽ol</option>
-<option value="pt">馃嚙馃嚪 Portugu锚s</option>
-<option value="ru">馃嚪馃嚭 袪褍褋褋泻懈泄</option>
-<option value="ar">馃嚫馃嚘 丕賱毓乇亘賷丞</option>
+<option value="zh">🇨🇳 中文</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="es">🇪🇸 Español</option>
+<option value="pt">🇧🇷 Português</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="ar">🇸🇦 العربية</option>
 </select>
-<button class="btn btn-secondary" onclick="showModal('help')">鉂?甯姪</button>
-<button class="btn btn-primary" onclick="showModal('newContent')">+ 鏂板缓鍐呭</button>
+<button class="btn btn-secondary" onclick="showModal('help')">❓ 帮助</button>
+<button class="btn btn-primary" onclick="showModal('newContent')">+ 新建内容</button>
 </div>
 </header>
 <div class="content">
 <!-- Dashboard -->
 <div class="page active" id="page-dashboard">
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">馃摑</div><div class="stat-value">0</div><div class="stat-label">鏈湀鍙戝竷鍐呭</div></div>
-<div class="stat-card"><div class="stat-icon green">馃憗锔?/div><div class="stat-value">0</div><div class="stat-label">鎬绘洕鍏夐噺</div></div>
-<div class="stat-card"><div class="stat-icon purple">馃挰</div><div class="stat-value">0</div><div class="stat-label">浜掑姩娆℃暟</div></div>
-<div class="stat-card"><div class="stat-icon orange">馃搱</div><div class="stat-value">0%</div><div class="stat-label">杞寲澧為暱</div></div>
+<div class="stat-card"><div class="stat-icon blue">📝</div><div class="stat-value">0</div><div class="stat-label">本月发布内容</div></div>
+<div class="stat-card"><div class="stat-icon green">👁️</div><div class="stat-value">0</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon purple">💬</div><div class="stat-value">0</div><div class="stat-label">互动次数</div></div>
+<div class="stat-card"><div class="stat-icon orange">📈</div><div class="stat-value">0%</div><div class="stat-label">转化增长</div></div>
 </div>
 <div class="grid-3">
-<div class="card"><div class="card-header">鏈€杩戝彂甯?/div><div class="card-body">
+<div class="card"><div class="card-header">最近发布</div><div class="card-body">
 <div style="text-align:center;padding:40px;color:var(--text-m)">
-<div style="font-size:48px;margin-bottom:16px">馃摑</div>
-<div style="font-size:16px;margin-bottom:8px">鏆傛棤鍙戝竷鍐呭</div>
-<div style="font-size:12px">鐐瑰嚮"+ 鏂板缓鍐呭"寮€濮嬪垱寤?/div>
-</div>
-</div></div><span class="post-status published">宸插彂甯?/span></div>
-<div class="post-item"><div class="post-platform platform-icon instagram">馃摲</div><div class="post-content"><div class="post-title">Bushing 浜у搧瀵规瘮淇℃伅鍥?/div><div class="post-meta">Instagram 路 5灏忔椂鍓?/div></div><span class="post-status published">宸插彂甯?/span></div>
-<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"><div class="post-title">姹介厤琛屼笟渚涘簲閾捐秼鍔垮垎鏋?/div><div class="post-meta">LinkedIn 路 鏄庡ぉ 09:00</div></div><span class="post-status scheduled">寰呭彂甯?/span></div>
-<div class="post-item"><div class="post-platform platform-icon youtube">鈻?/div><div class="post-content"><div class="post-title">浜у搧瀹夎鏁欑▼瑙嗛鑴氭湰</div><div class="post-meta">YouTube 路 鑽夌</div></div><span class="post-status draft">鑽夌</span></div>
+<div style="font-size:48px;margin-bottom:16px">&#x1F4DD;</div>
+<div style="font-size:16px;margin-bottom:8px">暂无发布内容</div>
+<div style="font-size:12px">点击"+ 新建内容"开始创建</div>
+</div></div></div><span class="post-status published">已发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon instagram">📷</div><div class="post-content"></div><span class="post-status published">已发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"></div><span class="post-status scheduled">待发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon youtube">▶</div><div class="post-content"><div class="post-meta">YouTube · 草稿</div></div><span class="post-status draft">草稿</span></div>
 </div></div>
-<div class="card"><div class="card-header">骞冲彴琛ㄧ幇</div><div class="card-body">
+<div class="card"><div class="card-header">平台表现</div><div class="card-body">
 <div style="text-align:center;padding:40px;color:var(--text-m)">
-<div style="font-size:14px">杩炴帴璐﹀彿鍚庡彲鏌ョ湅骞冲彴鏁版嵁</div>
-</div>
-</div></div>
+<div style="font-size:14px">连接账号后可查看平台数据</div>
+</div></div></div></div>
 </div>
 </div>
 
 <!-- Accounts Page -->
 <div class="page" id="page-accounts">
 <div class="grid-2">
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon facebook">f</div><div><div style="font-weight:600">Facebook</div><div style="font-size:12px;color:var(--text-m)">Business Page</div></div></div><span class="status-badge disconnected" id="fb-status">鏈繛鎺?/span></div>
-<div class="form-group"><label class="form-label">Page ID</label><input class="form-input" id="fb-pageId" placeholder="渚嬪: 123456789012345"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="fb-appId" placeholder="Facebook App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="fb-appSecret" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
-<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="fb-token" type="password" placeholder="闀挎湡璁块棶浠ょ墝"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('facebook',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('facebook')">娴嬭瘯杩炴帴</button></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon facebook">f</div><div><div style="font-weight:600">Facebook</div><div style="font-size:12px;color:var(--text-m)">Business Page</div></div></div><span class="status-badge disconnected" id="fb-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Page ID</label><input class="form-input" id="fb-pageId" placeholder="例如: 123456789012345"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="fb-appId" placeholder="Facebook App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="fb-appSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="fb-token" type="password" placeholder="长期访问令牌"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('facebook',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('facebook')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon instagram">馃摲</div><div><div style="font-weight:600">Instagram</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="ig-status">鏈繛鎺?/span></div>
-<div class="form-group"><label class="form-label">Instagram Account ID</label><input class="form-input" id="ig-accountId" placeholder="渚嬪: 17841400000000000"></div>
-<div class="form-group"><label class="form-label">Facebook Page ID</label><input class="form-input" id="ig-fbPageId" placeholder="鍏宠仈鐨?Facebook Page ID"></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon instagram">📷</div><div><div style="font-weight:600">Instagram</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="ig-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Instagram Account ID</label><input class="form-input" id="ig-accountId" placeholder="例如: 17841400000000000"></div>
+<div class="form-group"><label class="form-label">Facebook Page ID</label><input class="form-input" id="ig-fbPageId" placeholder="关联的 Facebook Page ID"></div>
 <div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="ig-token" type="password" placeholder="Instagram Graph API Token"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('instagram',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('instagram')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('instagram',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('instagram')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon linkedin">in</div><div><div style="font-weight:600">LinkedIn</div><div style="font-size:12px;color:var(--text-m)">Company Page</div></div></div><span class="status-badge disconnected" id="li-status">鏈繛鎺?/span></div>
-<div class="form-group"><label class="form-label">Company Page ID</label><input class="form-input" id="li-companyId" placeholder="渚嬪: urn:li:company:12345678"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="li-clientId" placeholder="LinkedIn App Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="li-clientSecret" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon linkedin">in</div><div><div style="font-weight:600">LinkedIn</div><div style="font-size:12px;color:var(--text-m)">Company Page</div></div></div><span class="status-badge disconnected" id="li-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Company Page ID</label><input class="form-input" id="li-companyId" placeholder="例如: urn:li:company:12345678"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="li-clientId" placeholder="LinkedIn App Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="li-clientSecret" type="password" placeholder="••••••••"></div></div>
 <div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="li-token" type="password" placeholder="OAuth 2.0 Access Token"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('linkedin',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('linkedin')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('linkedin',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('linkedin')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon youtube">鈻?/div><div><div style="font-weight:600">YouTube</div><div style="font-size:12px;color:var(--text-m)">Channel</div></div></div><span class="status-badge disconnected" id="yt-status">鏈繛鎺?/span></div>
-<div class="form-group"><label class="form-label">Channel ID</label><input class="form-input" id="yt-channelId" placeholder="渚嬪: UCxxxxxxxxxxxxxxxxx"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="yt-clientId" placeholder="Google OAuth Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="yt-clientSecret" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon youtube">▶</div><div><div style="font-weight:600">YouTube</div><div style="font-size:12px;color:var(--text-m)">Channel</div></div></div><span class="status-badge disconnected" id="yt-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Channel ID</label><input class="form-input" id="yt-channelId" placeholder="例如: UCxxxxxxxxxxxxxxxxx"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="yt-clientId" placeholder="Google OAuth Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="yt-clientSecret" type="password" placeholder="••••••••"></div></div>
 <div class="form-group"><label class="form-label">Refresh Token</label><input class="form-input" id="yt-refreshToken" type="password" placeholder="OAuth Refresh Token"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('youtube',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('youtube')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('youtube',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('youtube')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon tiktok">鈾?/div><div><div style="font-weight:600">TikTok</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tt-status">鏈繛鎺?/span></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon tiktok">♪</div><div><div style="font-weight:600">TikTok</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tt-status">未连接</span></div>
 <div class="form-group"><label class="form-label">Advertiser ID</label><input class="form-input" id="tt-advertiserId" placeholder="TikTok Advertiser ID"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="tt-appId" placeholder="TikTok App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="tt-appSecret" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="tt-appId" placeholder="TikTok App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="tt-appSecret" type="password" placeholder="••••••••"></div></div>
 <div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="tt-token" type="password" placeholder="Access Token"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('tiktok',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('tiktok')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('tiktok',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('tiktok')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon twitter">饾晱</div><div><div style="font-weight:600">Twitter/X</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tw-status">鏈繛鎺?/span></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon twitter">𝕏</div><div><div style="font-weight:600">Twitter/X</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tw-status">未连接</span></div>
 <div class="form-group"><label class="form-label">Bearer Token</label><input class="form-input" id="tw-bearerToken" type="password" placeholder="API Bearer Token"></div>
 <div class="form-row"><div class="form-group"><label class="form-label">API Key</label><input class="form-input" id="tw-apiKey" placeholder="Consumer Key"></div><div class="form-group"><label class="form-label">API Secret</label><input class="form-input" id="tw-apiSecret" type="password" placeholder="Consumer Secret"></div></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('twitter',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('twitter')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('twitter',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('twitter')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon pinterest">P</div><div><div style="font-weight:600">Pinterest</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="pt-status">鏈繛鎺?/span></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon pinterest">P</div><div><div style="font-weight:600">Pinterest</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="pt-status">未连接</span></div>
 <div class="form-group"><label class="form-label">Board ID</label><input class="form-input" id="pt-boardId" placeholder="Pinterest Board ID"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="pt-appId" placeholder="Pinterest App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="pt-appSecret" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="pt-appId" placeholder="Pinterest App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="pt-appSecret" type="password" placeholder="••••••••"></div></div>
 <div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="pt-token" type="password" placeholder="OAuth Token"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('pinterest',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('pinterest')">娴嬭瘯杩炴帴</button></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('pinterest',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('pinterest')">测试连接</button></div>
 </div>
-<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon whatsapp">馃挰</div><div><div style="font-weight:600">WhatsApp Business</div><div style="font-size:12px;color:var(--text-m)">Business API</div></div></div><span class="status-badge disconnected" id="wa-status">鏈繛鎺?/span></div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon whatsapp">💬</div><div><div style="font-weight:600">WhatsApp Business</div><div style="font-size:12px;color:var(--text-m)">Business API</div></div></div><span class="status-badge disconnected" id="wa-status">未连接</span></div>
 <div class="form-group"><label class="form-label">Phone Number ID</label><input class="form-input" id="wa-phoneId" placeholder="Business Phone Number ID"></div>
-<div class="form-row"><div class="form-group"><label class="form-label">Business Account ID</label><input class="form-input" id="wa-businessId" placeholder="WABA ID"></div><div class="form-group"><label class="form-label">Permanent Token</label><input class="form-input" id="wa-token" type="password" placeholder="鈥⑩€⑩€⑩€⑩€⑩€⑩€⑩€?></div></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('whatsapp',event)">杩炴帴璐﹀彿</button><button class="btn btn-secondary" onclick="testAccount('whatsapp')">娴嬭瘯杩炴帴</button></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Business Account ID</label><input class="form-input" id="wa-businessId" placeholder="WABA ID"></div><div class="form-group"><label class="form-label">Permanent Token</label><input class="form-input" id="wa-token" type="password" placeholder="••••••••"></div></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('whatsapp',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('whatsapp')">测试连接</button></div>
 </div>
 </div>
 </div>
@@ -411,98 +409,98 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <div class="creator-grid">
 <div class="editor-area">
 <div class="editor-toolbar">
-<button class="tool-btn active" onclick="setContentType('post',event)">馃摑 甯栧瓙</button>
-<button class="tool-btn" onclick="setContentType('article',event)">馃搫 鏂囩珷</button>
-<button class="tool-btn" onclick="setContentType('video',event)">馃幀 瑙嗛鑴氭湰</button>
-<button class="tool-btn" onclick="setContentType('infographic',event)">馃搳 淇℃伅鍥?/button>
-<button class="tool-btn" onclick="setContentType('story',event)">馃┓ Story</button>
-<button class="tool-btn" onclick="setContentType('reel',event)">馃帪锔?Reels</button>
-<button class="tool-btn" onclick="showModal('templates')" style="background:var(--orange);color:#fff;border-color:var(--orange)">馃搵 妯℃澘</button>
-<button class="tool-btn" onclick="showModal('preview')" style="background:var(--green);color:#fff;border-color:var(--green)">馃憗锔?棰勮</button>
-<button class="tool-btn" onclick="aiGenerate()" style="background:var(--purple);color:#fff;border-color:var(--purple)">鉁?AI鐢熸垚</button>
+<button class="tool-btn active" onclick="setContentType('post',event)">📝 帖子</button>
+<button class="tool-btn" onclick="setContentType('article',event)">📄 文章</button>
+<button class="tool-btn" onclick="setContentType('video',event)">🎬 视频脚本</button>
+<button class="tool-btn" onclick="setContentType('infographic',event)">📊 信息图</button>
+<button class="tool-btn" onclick="setContentType('story',event)">🩷 Story</button>
+<button class="tool-btn" onclick="setContentType('reel',event)">🎞️ Reels</button>
+<button class="tool-btn" onclick="showModal('templates')" style="background:var(--orange);color:#fff;border-color:var(--orange)">📋 模板</button>
+<button class="tool-btn" onclick="showModal('preview')" style="background:var(--green);color:#fff;border-color:var(--green)">👁️ 预览</button>
+<button class="tool-btn" onclick="aiGenerate()" style="background:var(--purple);color:#fff;border-color:var(--purple)">✨ AI生成</button>
 </div>
 <div class="editor-content">
-<input class="editor-title" id="contentTitle" placeholder="杈撳叆鏍囬...">
-<textarea class="editor-body" id="contentBody" placeholder="杈撳叆鍐呭鎴栦娇鐢?AI 鐢熸垚..."></textarea>
+<input class="editor-title" id="contentTitle" placeholder="输入标题...">
+<textarea class="editor-body" id="contentBody" placeholder="输入内容或使用 AI 生成..."></textarea>
 <div id="aiOutput" class="ai-output" style="display:none"></div>
 </div>
 </div>
 <div>
 <div class="settings-card">
-<div class="settings-title">馃搷 鍙戝竷骞冲彴 (8涓?</div>
+<div class="settings-title">📍 发布平台 (8个)</div>
 <div class="chip-group">
-<span class="chip" onclick="toggleChip(this)" data-platform="facebook">馃摌 Facebook</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="instagram">馃摲 Instagram</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="linkedin">馃捈 LinkedIn</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="youtube">鈻讹笍 YouTube</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="tiktok">鈾?TikTok</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="twitter">饾晱 Twitter/X</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="pinterest">馃搶 Pinterest</span>
-<span class="chip" onclick="toggleChip(this)" data-platform="whatsapp">馃挰 WhatsApp</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="facebook">📘 Facebook</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="instagram">📷 Instagram</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="linkedin">💼 LinkedIn</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="youtube">▶️ YouTube</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="tiktok">♪ TikTok</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="twitter">𝕏 Twitter/X</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="pinterest">📌 Pinterest</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="whatsapp">💬 WhatsApp</span>
 </div>
 </div>
 <div class="settings-card">
-<div class="settings-title">馃殫 浜у搧閫夋嫨 (12绉?</div>
+<div class="settings-title">🚗 产品选择 (12种)</div>
 <div class="chip-group">
-<span class="chip" onclick="toggleChip(this)" data-product="engine-mount">馃敡 Engine Mount</span>
-<span class="chip" onclick="toggleChip(this)" data-product="strut-mount">馃敥 Strut Mount</span>
-<span class="chip" onclick="toggleChip(this)" data-product="bushing">猸?Bushing</span>
-<span class="chip" onclick="toggleChip(this)" data-product="control-arm">馃Υ Control Arm</span>
-<span class="chip" onclick="toggleChip(this)" data-product="ball-joint">鈿?Ball Joint</span>
-<span class="chip" onclick="toggleChip(this)" data-product="shock-absorber">馃搳 Shock Absorber</span>
-<span class="chip" onclick="toggleChip(this)" data-product="tie-rod-end">馃敆 Tie Rod End</span>
-<span class="chip" onclick="toggleChip(this)" data-product="stabilizer-link">鉀擄笍 Stabilizer Link</span>
-<span class="chip" onclick="toggleChip(this)" data-product="center-bearing">鈿欙笍 Center Bearing</span>
-<span class="chip" onclick="toggleChip(this)" data-product="coil-spring">馃寑 Coil Spring</span>
-<span class="chip" onclick="toggleChip(this)" data-product="sway-bar">馃搹 Sway Bar</span>
-<span class="chip" onclick="toggleChip(this)" data-product="wheel-hub">猸?Wheel Hub</span>
+<span class="chip" onclick="toggleChip(this)" data-product="engine-mount">🔧 Engine Mount</span>
+<span class="chip" onclick="toggleChip(this)" data-product="strut-mount">🔩 Strut Mount</span>
+<span class="chip" onclick="toggleChip(this)" data-product="bushing">⭕ Bushing</span>
+<span class="chip" onclick="toggleChip(this)" data-product="control-arm">🦴 Control Arm</span>
+<span class="chip" onclick="toggleChip(this)" data-product="ball-joint">⚪ Ball Joint</span>
+<span class="chip" onclick="toggleChip(this)" data-product="shock-absorber">📊 Shock Absorber</span>
+<span class="chip" onclick="toggleChip(this)" data-product="tie-rod-end">🔗 Tie Rod End</span>
+<span class="chip" onclick="toggleChip(this)" data-product="stabilizer-link">⛓️ Stabilizer Link</span>
+<span class="chip" onclick="toggleChip(this)" data-product="center-bearing">⚙️ Center Bearing</span>
+<span class="chip" onclick="toggleChip(this)" data-product="coil-spring">🌀 Coil Spring</span>
+<span class="chip" onclick="toggleChip(this)" data-product="sway-bar">📏 Sway Bar</span>
+<span class="chip" onclick="toggleChip(this)" data-product="wheel-hub">⭕ Wheel Hub</span>
 </div>
 </div>
 <div class="settings-card">
-<div class="settings-title">馃幆 鍐呭绫诲瀷</div>
+<div class="settings-title">🎯 内容类型</div>
 <div class="chip-group">
-<span class="chip" onclick="toggleChip(this)" data-type="product">浜у搧灞曠ず</span>
-<span class="chip" onclick="toggleChip(this)" data-type="testimonial">瀹㈡埛瑙佽瘉</span>
-<span class="chip" onclick="toggleChip(this)" data-type="tech">鎶€鏈创澹?/span>
-<span class="chip" onclick="toggleChip(this)" data-type="industry">琛屼笟娲炲療</span>
-<span class="chip" onclick="toggleChip(this)" data-type="install">瀹夎鏁欑▼</span>
-<span class="chip" onclick="toggleChip(this)" data-type="compare">浜у搧瀵规瘮</span>
+<span class="chip" onclick="toggleChip(this)" data-type="product">产品展示</span>
+<span class="chip" onclick="toggleChip(this)" data-type="testimonial">客户见证</span>
+<span class="chip" onclick="toggleChip(this)" data-type="tech">技术贴士</span>
+<span class="chip" onclick="toggleChip(this)" data-type="industry">行业洞察</span>
+<span class="chip" onclick="toggleChip(this)" data-type="install">安装教程</span>
+<span class="chip" onclick="toggleChip(this)" data-type="compare">产品对比</span>
 </div>
 </div>
 <div class="settings-card">
-<div class="settings-title">馃實 鐩爣甯傚満</div>
+<div class="settings-title">🌍 目标市场</div>
 <div class="chip-group">
-<span class="chip" onclick="toggleChip(this)" data-market="europe">馃嚜馃嚭 娆ф床</span>
-<span class="chip" onclick="toggleChip(this)" data-market="north-america">馃嚭馃嚫 鍖楃編</span>
-<span class="chip" onclick="toggleChip(this)" data-market="middle-east">馃嚫馃嚘 涓笢</span>
-<span class="chip" onclick="toggleChip(this)" data-market="asia-pacific">馃審 浜氬お</span>
+<span class="chip" onclick="toggleChip(this)" data-market="europe">🇪🇺 欧洲</span>
+<span class="chip" onclick="toggleChip(this)" data-market="north-america">🇺🇸 北美</span>
+<span class="chip" onclick="toggleChip(this)" data-market="middle-east">🇸🇦 中东</span>
+<span class="chip" onclick="toggleChip(this)" data-market="asia-pacific">🌏 亚太</span>
 </div>
 </div>
 <div class="settings-card">
-<div class="settings-title">馃寪 澶氳瑷€鍙戝竷 <button class="btn btn-secondary" style="padding:2px 6px;font-size:10px;float:right" onclick="showModal('translate')">鉁?AI缈昏瘧</button></div>
+<div class="settings-title">🌐 多语言发布 <button class="btn btn-secondary" style="padding:2px 6px;font-size:10px;float:right" onclick="showModal('translate')">✨ AI翻译</button></div>
 <div class="chip-group">
-<span class="chip selected" onclick="toggleChip(this)" data-lang="zh">馃嚚馃嚦 涓枃</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="en">馃嚞馃嚙 English</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="de">馃嚛馃嚜 Deutsch</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="es">馃嚜馃嚫 Espa帽ol</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="pt">馃嚙馃嚪 Portugu锚s</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="ru">馃嚪馃嚭 袪褍褋褋泻懈泄</span>
-<span class="chip" onclick="toggleChip(this)" data-lang="ar">馃嚫馃嚘 丕賱毓乇亘賷丞</span>
+<span class="chip selected" onclick="toggleChip(this)" data-lang="zh">🇨🇳 中文</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="en">🇬🇧 English</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="de">🇩🇪 Deutsch</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="es">🇪🇸 Español</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="pt">🇧🇷 Português</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="ru">🇷🇺 Русский</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="ar">🇸🇦 العربية</span>
 </div>
 <div id="translatedContent" style="margin-top:12px;display:none">
-<div style="font-size:11px;color:var(--text-m);margin-bottom:8px">宸茬炕璇戠増鏈細</div>
+<div style="font-size:11px;color:var(--text-m);margin-bottom:8px">已翻译版本：</div>
 <div id="translationList" style="max-height:200px;overflow-y:auto"></div>
 </div>
 </div>
 <div class="settings-card">
-<div class="settings-title">馃搮 鍙戝竷鏃堕棿</div>
-<div class="form-group"><label class="form-label">鏃ユ湡</label><input class="form-input" type="date" id="scheduleDate"></div>
-<div class="form-group"><label class="form-label">鏃堕棿</label><input class="form-input" type="time" id="scheduleTime" value="09:00"></div>
+<div class="settings-title">📅 发布时间</div>
+<div class="form-group"><label class="form-label">日期</label><input class="form-input" type="date" id="scheduleDate"></div>
+<div class="form-group"><label class="form-label">时间</label><input class="form-input" type="time" id="scheduleTime" value="09:00"></div>
 </div>
 <div class="btn-group" style="flex-direction:column">
-<button class="btn btn-primary" onclick="saveContent()">馃捑 淇濆瓨鑽夌</button>
-<button class="btn btn-secondary" onclick="scheduleContent()">馃搮 瀹氭椂鍙戝竷</button>
-<button class="btn btn-secondary" onclick="publishNow()">馃殌 绔嬪嵆鍙戝竷</button>
+<button class="btn btn-primary" onclick="saveContent()">💾 保存草稿</button>
+<button class="btn btn-secondary" onclick="scheduleContent()">📅 定时发布</button>
+<button class="btn btn-secondary" onclick="publishNow()">🚀 立即发布</button>
 </div>
 </div>
 </div>
@@ -513,47 +511,45 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <div class="grid-3">
 <div class="card" style="grid-column:span 2">
 <div class="card-header">
-<span>鍙戝竷鏃ュ巻 - 2026骞?鏈?/span>
+<span>发布日历 - 2026年4月</span>
 <div class="calendar-nav">
-<button onclick="changeMonth(-1)">鈼€</button>
-<span id="calendarMonth">2026骞?鏈?/span>
-<button onclick="changeMonth(1)">鈻?/button>
+<button onclick="changeMonth(-1)">◀</button>
+<span id="calendarMonth">2026年4月</span>
+<button onclick="changeMonth(1)">▶</button>
 </div>
 </div>
 <div class="card-body">
 <div class="calendar-grid">
-<div class="calendar-weekday">鏃?/div><div class="calendar-weekday">涓€</div><div class="calendar-weekday">浜?/div><div class="calendar-weekday">涓?/div><div class="calendar-weekday">鍥?/div><div class="calendar-weekday">浜?/div><div class="calendar-weekday">鍏?/div>
+<div class="calendar-weekday">日</div><div class="calendar-weekday">一</div><div class="calendar-weekday">二</div><div class="calendar-weekday">三</div><div class="calendar-weekday">四</div><div class="calendar-weekday">五</div><div class="calendar-weekday">六</div>
 <div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day has-post">3</div><div class="calendar-day has-post">4</div><div class="calendar-day">5</div>
-<div class="calendar-day">6</div><div class="calendar-day has-post">7</div><div class="calendar-day today">8</div><div class="calendar-day has-post">9</div><div class="calendar-day">10</div><div class="calendar-day has-post">11</div><div class="calendar-day">12</div>
+<div class="calendar-day">6</div><div class="calendar-day has-post">7</div><div class="calendar-day today">8</div><div class="calendar-day has-post">9</div><div class="calendar-day">10</div><div class="calendar-day has-post">11</div><div class="calendar-day">0</div>
 <div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day has-post">15</div><div class="calendar-day">16</div><div class="calendar-day has-post">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div>
 <div class="calendar-day">20</div><div class="calendar-day has-post">21</div><div class="calendar-day">22</div><div class="calendar-day has-post">23</div><div class="calendar-day">24</div><div class="calendar-day has-post">25</div><div class="calendar-day">26</div>
-<div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day has-post">30</div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div>
+<div class="calendar-day">27</div><div class="calendar-day">0</div><div class="calendar-day">29</div><div class="calendar-day has-post">30</div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div>
 </div>
 </div>
 </div>
 <div class="card">
-<div class="card-header">浠婃棩寰呭彂甯?<button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 鏂板缓浠诲姟</button></div>
+<div class="card-header">今日待发布 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 新建任务</button></div>
 <div class="card-body">
-<div class="post-item"><div class="post-platform platform-icon facebook">f</div><div class="post-content"><div class="post-title">Engine Mount 瀹㈡埛瑙佽瘉</div><div class="post-meta">15:00 路 娆ф床</div></div></div>
-<div class="post-item"><div class="post-platform platform-icon instagram">馃摲</div><div class="post-content"><div class="post-title">Bushing 瀵规瘮淇℃伅鍥?/div><div class="post-meta">21:00 路 鍖楃編</div></div></div>
-<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"><div class="post-title">渚涘簲閾捐秼鍔垮垎鏋?/div><div class="post-meta">鏄庡ぉ 09:00</div></div></div>
+<div class="post-item"><div class="post-platform platform-icon facebook">f</div><div class="post-content"><div class="post-meta">15:00 · 欧洲</div></div></div>
+<div class="post-item"><div class="post-platform platform-icon instagram">📷</div><div class="post-content"><div class="post-meta">21:00 · 北美</div></div></div>
+<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"></div></div>
 </div>
 </div>
 </div>
 
 <div class="card" style="margin-top:24px">
-<div class="card-header">鈴?瀹氭椂浠诲姟绠＄悊 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 鏂板缓</button> <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right;margin-right:8px" onclick="refreshTasks()">馃攧 鍒锋柊</button></div>
+<div class="card-header">⏰ 定时任务管理 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 新建</button> <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right;margin-right:8px" onclick="refreshTasks()">🔄 刷新</button></div>
 <div class="card-body">
 <div style="display:flex;gap:8px;margin-bottom:16px">
-<input class="form-input" style="flex:1;font-size:12px;padding:6px 10px" placeholder="鎼滅储浠诲姟...">
-<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>鍏ㄩ儴鐘舵€?/option><option>寰呮墽琛?/option><option>鎵ц涓?/option><option>宸插畬鎴?/option><option>澶辫触</option></select>
-<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>鍏ㄩ儴绫诲瀷</option><option>涓€娆℃€?/option><option>姣忔棩</option><option>姣忓懆</option><option>姣忔湀</option></select>
+<input class="form-input" style="flex:1;font-size:12px;padding:6px 10px" placeholder="搜索任务...">
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部状态</option><option>待执行</option><option>执行中</option><option>已完成</option><option>失败</option></select>
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部类型</option><option>一次性</option><option>每日</option><option>每周</option><option>每月</option></select>
 </div>
 <table class="task-table">
-<thead><tr><th>浠诲姟鍚嶇О</th><th>绫诲瀷</th><th>鎵ц鏃堕棿</th><th>鐩爣骞冲彴</th><th>鐘舵€?/th><th>鎿嶄綔</th></tr></thead>
-<tbody>
-<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-m)">鏆傛棤瀹氭椂浠诲姟</td></tr>
-</tbody>
+<thead><tr><th>任务名称</th><th>类型</th><th>执行时间</th><th>目标平台</th><th>状态</th><th>操作</th></tr></thead>
+<tbody><tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-m)">暂无定时任务</td></tr></tbody>
 </table>
 </div>
 </div>
@@ -562,46 +558,46 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 <!-- Analytics Page -->
 <div class="page" id="page-analytics">
 <div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">馃搳</div><div class="stat-value">0</div><div class="stat-label">鎬绘洕鍏夐噺</div></div>
-<div class="stat-card"><div class="stat-icon green">馃挰</div><div class="stat-value">0</div><div class="stat-label">鎬讳簰鍔ㄩ噺</div></div>
-<div class="stat-card"><div class="stat-icon purple">馃憜</div><div class="stat-value">0%</div><div class="stat-label">浜掑姩鐜?/div></div>
-<div class="stat-card"><div class="stat-icon orange">馃幆</div><div class="stat-value">0</div><div class="stat-label">璇㈢洏杞寲</div></div>
+<div class="stat-card"><div class="stat-icon blue">📊</div><div class="stat-value">0</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon green">💬</div><div class="stat-value">0</div><div class="stat-label">总互动量</div></div>
+<div class="stat-card"><div class="stat-icon purple">👆</div><div class="stat-value">0%</div><div class="stat-label">互动率</div></div>
+<div class="stat-card"><div class="stat-icon orange">🎯</div><div class="stat-value">0</div><div class="stat-label">询盘转化</div></div>
 </div>
-<!-- 鏁版嵁瀵煎嚭鍜孉I鎺ㄨ崘 -->
+<!-- 数据导出和AI推荐 -->
 <div class="grid-2" style="margin-top:16px">
-<div class="card"><div class="card-header">馃摛 鏁版嵁瀵煎嚭 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('exportData')">瀵煎嚭鎶ヨ〃</button></div><div class="card-body">
+<div class="card"><div class="card-header">📤 数据导出 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('exportData')">导出报表</button></div><div class="card-body">
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-<div class="export-option" onclick="selectExport('csv')"><div class="export-icon">馃搳</div><div><div style="font-weight:600">CSV</div><div style="font-size:10px;color:var(--text-m)">Excel鍏煎</div></div></div>
-<div class="export-option" onclick="selectExport('excel')"><div class="export-icon">馃摋</div><div><div style="font-weight:600">Excel</div><div style="font-size:10px;color:var(--text-m)">瀹屾暣鏍煎紡</div></div></div>
-<div class="export-option" onclick="selectExport('pdf')"><div class="export-icon">馃搫</div><div><div style="font-weight:600">PDF</div><div style="font-size:10px;color:var(--text-m)">鎶ュ憡鏍煎紡</div></div></div>
+<div class="export-option" onclick="selectExport('csv')"><div class="export-icon">📊</div><div><div style="font-weight:600">CSV</div><div style="font-size:10px;color:var(--text-m)">Excel兼容</div></div></div>
+<div class="export-option" onclick="selectExport('excel')"><div class="export-icon">📗</div><div><div style="font-weight:600">Excel</div><div style="font-size:10px;color:var(--text-m)">完整格式</div></div></div>
+<div class="export-option" onclick="selectExport('pdf')"><div class="export-icon">📄</div><div><div style="font-weight:600">PDF</div><div style="font-size:10px;color:var(--text-m)">报告格式</div></div></div>
 </div>
 </div></div>
-<div class="card ai-card"><div class="card-header">馃 AI鏅鸿兘鎺ㄨ崘</div><div class="card-body">
-<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#10b981,#06b6d4)">92</div><div style="flex:1"><div style="font-size:13px;font-weight:600">鏈€浣冲彂甯冩椂闂?/div><div style="font-size:11px;color:var(--text-m)">鍛ㄤ笁/鍛ㄤ簲 10:00-12:00 娆ф床鏃跺尯</div></div></div>
-<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">87</div><div style="flex:1"><div style="font-size:13px;font-weight:600">鎺ㄨ崘鍐呭绫诲瀷</div><div style="font-size:11px;color:var(--text-m)">瀹㈡埛瑙佽瘉瑙嗛杞寲鐜囨渶楂?(+32%)</div></div></div>
-<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">78</div><div style="flex:1"><div style="font-size:13px;font-weight:600">鎺ㄨ崘骞冲彴</div><div style="font-size:11px;color:var(--text-m)">LinkedIn B2B璇㈢洏杞寲鐜囬鍏?/div></div></div>
+<div class="card ai-card"><div class="card-header">🤖 AI智能推荐</div><div class="card-body">
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#10b981,#06b6d4)">92</div><div style="flex:1"><div style="font-size:13px;font-weight:600">最佳发布时间</div><div style="font-size:11px;color:var(--text-m)">周三/周五 10:00-12:00 欧洲时区</div></div></div>
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">87</div><div style="flex:1"><div style="font-size:13px;font-weight:600">推荐内容类型</div><div style="font-size:11px;color:var(--text-m)">客户见证视频转化率最高 (+32%)</div></div></div>
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">78</div><div style="flex:1"><div style="font-size:13px;font-weight:600">推荐平台</div><div style="font-size:11px;color:var(--text-m)">LinkedIn B2B询盘转化率领先</div></div></div>
 </div></div>
 </div>
 <div class="grid-2">
-<div class="card"><div class="card-header">馃搱 鏇濆厜瓒嬪娍 (杩?澶?</div><div class="card-body"><canvas id="exposureChart" height="180"></canvas></div></div>
-<div class="card"><div class="card-header">馃ェ 骞冲彴鍒嗗竷</div><div class="card-body"><canvas id="platformChart" height="180"></canvas></div></div>
+<div class="card"><div class="card-header">📈 曝光趋势 (近7天)</div><div class="card-body"><canvas id="exposureChart" height="180"></canvas></div></div>
+<div class="card"><div class="card-header">🥧 平台分布</div><div class="card-body"><canvas id="platformChart" height="180"></canvas></div></div>
 </div>
 <div class="grid-2">
-<div class="card"><div class="card-header">馃搳 浜у搧琛ㄧ幇鎺掑悕</div><div class="card-body">
+<div class="card"><div class="card-header">📊 产品表现排名</div><div class="card-body">
 <canvas id="productChart" height="160"></canvas>
 </div></div>
-<div class="card"><div class="card-header">馃幆 鍐呭绫诲瀷鏁堟灉</div><div class="card-body">
+<div class="card"><div class="card-header">🎯 内容类型效果</div><div class="card-body">
 <canvas id="contentTypeChart" height="160"></canvas>
 </div></div>
 </div>
 <div class="grid-2">
-<div class="card"><div class="card-header">馃實 鍖哄煙甯傚満琛ㄧ幇</div><div class="card-body">
-<div class="metric-row"><span class="metric-label">馃嚜馃嚭 娆ф床</span><span class="metric-value">12.8K 鏇濆厜<span class="metric-change up">鈫?8%</span></span></div>
-<div class="metric-row"><span class="metric-label">馃嚭馃嚫 鍖楃編</span><span class="metric-value">8.5K 鏇濆厜<span class="metric-change up">鈫?2%</span></span></div>
-<div class="metric-row"><span class="metric-label">馃嚫馃嚘 涓笢</span><span class="metric-value">4.2K 鏇濆厜<span class="metric-change up">鈫?5%</span></span></div>
-<div class="metric-row"><span class="metric-label">馃嚘馃嚭 浜氬お</span><span class="metric-value">3.0K 鏇濆厜<span class="metric-change down">鈫?%</span></span></div>
+<div class="card"><div class="card-header">🌍 区域市场表现</div><div class="card-body">
+<div class="metric-row"><span class="metric-label">🇪🇺 欧洲</span><span class="metric-value">12.8K 曝光<span class="metric-change up">↑18%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇺🇸 北美</span><span class="metric-value">8.5K 曝光<span class="metric-change up">↑12%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇸🇦 中东</span><span class="metric-value">4.2K 曝光<span class="metric-change up">↑25%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇦🇺 亚太</span><span class="metric-value">3.0K 曝光<span class="metric-change down">↓5%</span></span></div>
 </div></div>
-<div class="card"><div class="card-header">馃搮 鍙戝竷鏃舵鍒嗘瀽</div><div class="card-body">
+<div class="card"><div class="card-header">📅 发布时段分析</div><div class="card-body">
 <canvas id="timeChart" height="120"></canvas>
 </div></div>
 </div>
@@ -609,681 +605,105 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text
 
 <!-- Team Page -->
 <div class="page" id="page-team">
-<div class="grid-2">
-<div class="card"><div class="card-header">馃懃 鍥㈤槦鎴愬憳 <button class="btn btn-primary" style="padding:4px 12px;font-size:11px" onclick="showModal('addMember')">+ 娣诲姞鎴愬憳</button></div>
-<div class="card-body">
-<div style="text-align:center;padding:40px;color:var(--text-m)">
-<div style="font-size:48px;margin-bottom:16px">馃懃</div>
-<div style="font-size:16px;margin-bottom:8px">鏆傛棤鍥㈤槦鎴愬憳</div>
-<div style="font-size:12px">娣诲姞鎴愬憳寮€濮嬪崗浣?/div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F465; 团队协作 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="showModal('addMember')">+ 添加成员</button></div></div>
+<div style="text-align:center;padding:60px;color:var(--text-m)">
+<div style="font-size:64px;margin-bottom:20px">&#x1F465;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无团队成员</div>
+<div style="font-size:13px;margin-bottom:24px">添加成员开始协作</div>
+<button class="btn btn-primary" onclick="showModal('addMember')">+ 添加成员</button>
 </div>
-</div>>
-<div class="asset-card" onclick="previewAsset('strut-mount-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#10b981,#06b6d4)">馃敥</div><div class="asset-info"><div class="asset-name">Strut Mount 缁嗚妭鍥?jpg</div><div class="asset-meta"><span class="asset-tag product">浜у搧鍥?/span><span>1.8 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('bushing-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">猸?/div><div class="asset-info"><div class="asset-name">Bushing 瀵规瘮鍥?jpg</div><div class="asset-meta"><span class="asset-tag product">浜у搧鍥?/span><span>3.1 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('control-arm-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">馃Υ</div><div class="asset-info"><div class="asset-name">Control Arm 瀹夎鍥?jpg</div><div class="asset-meta"><span class="asset-tag product">浜у搧鍥?/span><span>2.7 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('banner-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">馃搳</div><div class="asset-info"><div class="asset-name">B2B淇冮攢Banner.jpg</div><div class="asset-meta"><span class="asset-tag banner">Banner</span><span>4.2 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('video-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#06b6d4,#10b981)">馃幀</div><div class="asset-info"><div class="asset-name">浜у搧瀹夎鏁欑▼.mp4</div><div class="asset-meta"><span class="asset-tag video">瑙嗛</span><span>128 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('testimonial-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#f59e0b,#10b981)">馃挰</div><div class="asset-info"><div class="asset-name">寰峰浗瀹㈡埛璇勪环.jpg</div><div class="asset-meta"><span class="asset-tag testimonial">瑙佽瘉</span><span>1.2 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('doc-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#64748b,#475569)">馃搫</div><div class="asset-info"><div class="asset-name">Engine Mount瑙勬牸琛?pdf</div><div class="asset-meta"><span class="asset-tag doc">鏂囨。</span><span>245 KB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('template-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#1877f2,#0d65d9)">馃搻</div><div class="asset-info"><div class="asset-name">FB浜у搧妯℃澘.psd</div><div class="asset-meta"><span class="asset-tag template">妯℃澘</span><span>8.6 MB</span></div></div></div>
-<div class="asset-card" onclick="previewAsset('brand-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#1e293b,#334155)">馃彿锔?/div><div class="asset-info"><div class="asset-name">鍏徃Logo.png</div><div class="asset-meta"><span class="asset-tag brand">鍝佺墝</span><span>156 KB</span></div></div></div>
 </div>
-<div style="text-align:center;margin-top:16px"><button class="btn btn-secondary" onclick="loadMoreAssets()">鍔犺浇鏇村...</button></div>
-</div></div>
-</div>
-
-<!-- API Management Page -->
-<!-- Products Page -->
 <div class="page" id="page-products">
-<div class="card" style="margin-bottom:24px"><div class="card-header">馃殫 浜у搧绠＄悊 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="addProduct()">+ 娣诲姞浜у搧</button></div></div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F697; 产品管理 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="addProduct()">+ 添加产品</button></div></div>
 <div style="text-align:center;padding:60px;color:var(--text-m)">
-<div style="font-size:64px;margin-bottom:20px">馃殫</div>
-<div style="font-size:18px;margin-bottom:8px;color:var(--text)">鏆傛棤浜у搧鏁版嵁</div>
-<div style="font-size:13px;margin-bottom:24px">娣诲姞浜у搧寮€濮嬬鐞嗘偍鐨勪骇鍝佺洰褰?/div>
-<button class="btn btn-primary" onclick="addProduct()">+ 娣诲姞绗竴涓骇鍝?/button>
+<div style="font-size:64px;margin-bottom:20px">&#x1F697;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无产品数据</div>
+<div style="font-size:13px;margin-bottom:24px">添加产品开始管理您的产品目录</div>
+<button class="btn btn-primary" onclick="addProduct()">+ 添加第一个产品</button>
 </div>
 </div>
-<!-- Assets Page -->
 <div class="page" id="page-assets">
-<div class="card" style="margin-bottom:24px"><div class="card-header">馃搧 绱犳潗搴?<button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="uploadAsset()">+ 涓婁紶绱犳潗</button></div></div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F4C1; 素材库 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="uploadAsset()">+ 上传素材</button></div></div>
 <div style="text-align:center;padding:60px;color:var(--text-m)">
-<div style="font-size:64px;margin-bottom:20px">馃搧</div>
-<div style="font-size:18px;margin-bottom:8px;color:var(--text)">鏆傛棤绱犳潗</div>
-<div style="font-size:13px;margin-bottom:24px">涓婁紶鍥剧墖銆佽棰戠瓑绱犳潗寮€濮嬬鐞?/div>
-<button class="btn btn-primary" onclick="uploadAsset()">+ 涓婁紶绱犳潗</button>
+<div style="font-size:64px;margin-bottom:20px">&#x1F4C1;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无素材</div>
+<div style="font-size:13px;margin-bottom:24px">上传图片、视频等素材开始管理</div>
+<button class="btn btn-primary" onclick="uploadAsset()">+ 上传素材</button>
 </div>
 </div>
 <div class="page" id="page-api">
-<div class="grid-2">
-<div class="card"><div class="card-header">馃攲 API 鍙戝竷鏃ュ織 <button class="btn btn-secondary" style="padding:4px 12px;font-size:11px;float:right" onclick="clearLogs()">娓呯┖鏃ュ織</button></div>
-<div class="card-body">
-<div class="api-log">
-<div style="text-align:center;padding:40px;color:var(--text-m)">
-<div style="font-size:14px">鏆傛棤鍙戝竷璁板綍</div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F527; API 管理 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px">+ 连接平台</button></div></div>
+<div style="text-align:center;padding:60px;color:var(--text-m)">
+<div style="font-size:64px;margin-bottom:20px">&#x1F527;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无API连接</div>
+<div style="font-size:13px;margin-bottom:24px">连接平台API开始自动化发布</div>
+<button class="btn btn-primary">+ 连接平台</button>
 </div>
 </div>
-</div>
-
-<div class="card"><div class="card-header">鈿?API 閫熺巼闄愬埗</div><div class="card-body">
-<div class="rate-limit"><div class="platform-icon facebook" style="width:32px;height:32px;font-size:14px">f</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Facebook Graph API</div><div style="font-size:11px;color:var(--text-m)">0/200 娆?灏忔椂</div></div><div class="rate-bar"><div class="rate-fill" style="width:90%;background:var(--orange)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon instagram" style="width:32px;height:32px;font-size:14px">馃摲</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Instagram Graph API</div><div style="font-size:11px;color:var(--text-m)">0/100 娆?灏忔椂</div></div><div class="rate-bar"><div class="rate-fill" style="width:95%;background:var(--red)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon linkedin" style="width:32px;height:32px;font-size:14px">in</div><div style="flex:1"><div style="font-size:13px;font-weight:500">LinkedIn API</div><div style="font-size:11px;color:var(--text-m)">0/100 娆?澶?/div></div><div class="rate-bar"><div class="rate-fill" style="width:45%;background:var(--green)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon youtube" style="width:32px;height:32px;font-size:14px">鈻?/div><div style="flex:1"><div style="font-size:13px;font-weight:500">YouTube Data API</div><div style="font-size:11px;color:var(--text-m)">0/10000 娆?澶?/div></div><div class="rate-bar"><div class="rate-fill" style="width:8.5%;background:var(--green)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon tiktok" style="width:32px;height:32px;font-size:14px">鈾?/div><div style="flex:1"><div style="font-size:13px;font-weight:500">TikTok Business API</div><div style="font-size:11px;color:var(--text-m)">0/100 娆?澶?(鍐峰嵈涓?</div></div><div class="rate-bar"><div class="rate-fill" style="width:0%;background:var(--text-m)"></div></div></div>
-<div class="rate-limit"><div class="platform-icon twitter" style="width:32px;height:32px;font-size:14px">饾晱</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Twitter API v2</div><div style="font-size:11px;color:var(--text-m)">0/450 娆?15鍒嗛挓</div></div><div class="rate-bar"><div class="rate-fill" style="width:5.5%;background:var(--green)"></div></div></div>
-</div></div>
-
-<div class="card"><div class="card-header">鈿欙笍 API 閰嶇疆</div><div class="card-body">
-<div class="form-group"><label class="form-label">榛樿鍙戝竷妯″紡</label><select class="form-input"><option>鑷姩鍙戝竷</option><option>瀹℃牳鍚庡彂甯?/option><option>浠呬繚瀛樿崏绋?/option></select></div>
-<div class="form-group"><label class="form-label">澶辫触閲嶈瘯娆℃暟</label><input class="form-input" type="number" value="3"></div>
-<div class="form-group"><label class="form-label">閲嶈瘯闂撮殧 (绉?</label><input class="form-input" type="number" value="60"></div>
-<div class="form-group"><label class="form-label">Webhook 鍥炶皟 URL</label><input class="form-input" placeholder="https://your-server.com/webhook"></div>
-<div class="btn-group"><button class="btn btn-primary" onclick="saveApiConfig()">淇濆瓨閰嶇疆</button></div>
-</div></div>
-</div>
-</div>
-
-<!-- Modals -->
-<div class="modal-overlay" id="modal-help" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">浣跨敤甯姪</span><button class="modal-close" onclick="hideModal('help')">脳</button></div>
-<div style="line-height:1.8;color:var(--text-s)">
-<p style="margin-bottom:12px"><strong>璐﹀彿绠＄悊锛?/strong>鍦ㄨ处鍙风鐞嗛〉闈㈠～鍐欏悇骞冲彴API鍑瘉锛岀偣鍑昏繛鎺ヨ处鍙蜂繚瀛樸€?/p>
-<p style="margin-bottom:12px"><strong>鍐呭鍒涗綔锛?/strong>閫夋嫨骞冲彴銆佷骇鍝佸拰鍐呭绫诲瀷锛岀偣鍑籄I鐢熸垚鑷姩鐢熸垚鍐呭銆?/p>
-<p style="margin-bottom:12px"><strong>鍙戝竷鏃ュ巻锛?/strong>鏌ョ湅宸叉帓鏈熷唴瀹癸紝鐐瑰嚮鏃ユ湡鍙揩閫熸坊鍔犳柊鍐呭銆?/p>
-<p><strong>鏁版嵁鍒嗘瀽锛?/strong>鏌ョ湅鍚勫钩鍙版洕鍏夈€佷簰鍔ㄣ€佽浆鍖栨暟鎹€?/p>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-newContent" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">鏂板缓鍐呭</span><button class="modal-close" onclick="hideModal('newContent')">脳</button></div>
-<div class="form-group"><label class="form-label">鍐呭绫诲瀷</label><select class="form-input"><option>浜у搧灞曠ず</option><option>瀹㈡埛瑙佽瘉</option><option>鎶€鏈创澹?/option><option>琛屼笟娲炲療</option></select></div>
-<div class="form-group"><label class="form-label">鍙戝竷骞冲彴</label><select class="form-input"><option>Facebook</option><option>Instagram</option><option>LinkedIn</option><option>YouTube</option></select></div>
-<div class="form-group"><label class="form-label">鍏宠仈浜у搧</label><select class="form-input"><option>Engine Mount</option><option>Strut Mount</option><option>Bushing</option><option>Control Arm</option><option>Ball Joint</option><option>Shock Absorber</option><option>Tie Rod End</option><option>Stabilizer Link</option><option>Center Bearing</option><option>Coil Spring</option><option>Sway Bar</option><option>Wheel Hub</option></select></div>
-<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('newContent');showPage('creator')">寮€濮嬪垱浣?/button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-addMember" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">娣诲姞鍥㈤槦鎴愬憳</span><button class="modal-close" onclick="hideModal('addMember')">脳</button></div>
-<div class="form-group"><label class="form-label">濮撳悕</label><input class="form-input" placeholder="杈撳叆濮撳悕"></div>
-<div class="form-group"><label class="form-label">閭</label><input class="form-input" type="email" placeholder="杈撳叆閭"></div>
-<div class="form-group"><label class="form-label">瑙掕壊</label><select class="form-input"><option>鍐呭缂栬緫</option><option>瑙嗚璁捐</option><option>鏁版嵁鍒嗘瀽甯?/option><option>绠＄悊鍛?/option></select></div>
-<div class="form-group"><label class="form-label">绠＄悊骞冲彴</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span></div></div>
-<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addMember');showToast('鎴愬憳宸叉坊鍔?,'success')">娣诲姞鎴愬憳</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-addAsset" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">娣诲姞绱犳潗</span><button class="modal-close" onclick="hideModal('addAsset')">脳</button></div>
-<div class="form-group"><label class="form-label">绱犳潗绫诲瀷</label><select class="form-input"><option>馃柤锔?浜у搧鍥剧墖</option><option>馃搳 Banner</option><option>馃幀 瑙嗛</option><option>馃搫 鏂囨。</option></select></div>
-<div class="form-group"><label class="form-label">绱犳潗鏉ユ簮</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">鏈湴鏂囦欢</span><span class="chip" onclick="toggleChip(this)">浜戠URL</span><span class="chip" onclick="toggleChip(this)">绱犳潗搴?/span></div></div>
-<div class="form-group"><label class="form-label">閫夋嫨鏂囦欢</label><input class="form-input" type="file" accept="image/*,video/*,.pdf,.doc,.docx"></div>
-<div class="form-group"><label class="form-label">鍏宠仈浜у搧</label><select class="form-input"><option>鍏ㄩ儴浜у搧</option><option>Engine Mount</option><option>Strut Mount</option><option>Bushing</option><option>Control Arm</option></select></div>
-<div class="form-group"><label class="form-label">鏍囩</label><input class="form-input" placeholder="杈撳叆鏍囩锛岄€楀彿鍒嗛殧"></div>
-<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addAsset');showToast('绱犳潗宸叉坊鍔?,'success')">涓婁紶绱犳潗</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-addPath" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">娣诲姞绱犳潗璺緞</span><button class="modal-close" onclick="hideModal('addPath')">脳</button></div>
-<div class="form-group"><label class="form-label">璺緞鍚嶇О</label><input class="form-input" placeholder="渚嬪: 娲诲姩绱犳潗"></div>
-<div class="form-group"><label class="form-label">璺緞绫诲瀷</label><select class="form-input" id="pathType"><option value="local">馃搨 鏈湴鐩綍</option><option value="cloud">鈽侊笍 浜戠URL</option><option value="ftp">馃敆 FTP/SFTP</option></select></div>
-<div class="form-group"><label class="form-label">璺緞鍦板潃</label><input class="form-input" id="pathAddress" placeholder="D:\AutoParts\assets\campaigns\ 鎴?https://..."></div>
-<div class="form-group"><label class="form-label">鑷姩鎵弿</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">鍚敤</span><span class="chip" onclick="toggleChip(this)">绂佺敤</span></div></div>
-<div class="form-group"><label class="form-label">鏂囦欢绫诲瀷杩囨护</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">.jpg</span><span class="chip on" onclick="toggleChip(this)">.png</span><span class="chip" onclick="toggleChip(this)">.mp4</span><span class="chip" onclick="toggleChip(this)">.pdf</span><span class="chip" onclick="toggleChip(this)">.psd</span></div></div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="testPath()">娴嬭瘯杩炴帴</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('addPath');showToast('璺緞宸叉坊鍔?,'success')">娣诲姞璺緞</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-assetPreview" onclick="closeModal(event)">
-<div class="modal" style="max-width:800px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">绱犳潗棰勮</span><button class="modal-close" onclick="hideModal('assetPreview')">脳</button></div>
-<div style="background:var(--elevated);border-radius:12px;padding:40px;text-align:center;margin-bottom:16px">
-<div style="font-size:80px;margin-bottom:12px">馃敡</div>
-<div style="font-size:14px;color:var(--text-m)">Engine Mount 涓诲浘.jpg</div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鏂囦欢澶у皬</div><div style="font-weight:600">2.4 MB</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">灏哄</div><div style="font-weight:600">1920 脳 1080</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鍒涘缓鏃堕棿</div><div style="font-weight:600">2024-04-01</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">浣跨敤娆℃暟</div><div style="font-weight:600">12 娆?/div></div>
-</div>
-<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">鍏宠仈浜у搧</div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">Engine Mount</span><span class="chip">Strut Mount</span></div></div>
-<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">鏍囩</div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">浜у搧鍥?/span><span class="chip">涓诲浘</span><span class="chip">楂樻竻</span></div></div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('assetPreview')">鍏抽棴</button><button class="btn btn-secondary">涓嬭浇</button><button class="btn btn-primary" onclick="useAsset()">浣跨敤姝ょ礌鏉?/button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-importAssets" onclick="closeModal(event)">
-<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">鎵归噺瀵煎叆绱犳潗</span><button class="modal-close" onclick="hideModal('importAssets')">脳</button></div>
-<div class="form-group"><label class="form-label">瀵煎叆鏉ユ簮</label><select class="form-input"><option>馃搨 鏈湴鏂囦欢澶?/option><option>鈽侊笍 浜戠URL</option><option>馃摝 鍘嬬缉鍖?/option></select></div>
-<div class="form-group"><label class="form-label">閫夋嫨鏂囦欢澶?/label><input class="form-input" placeholder="D:\AutoParts\assets\new-products\"></div>
-<div class="form-group"><label class="form-label">鐩爣鍒嗙被</label><select class="form-input"><option>馃敡 浜у搧鍥?/option><option>馃挰 瀹㈡埛瑙佽瘉</option><option>馃搳 Banner</option><option>馃幀 瑙嗛</option></select></div>
-<div class="form-group"><label class="form-label">鑷姩閲嶅懡鍚?/label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">浜у搧鍚峗搴忓彿</span><span class="chip" onclick="toggleChip(this)">淇濇寔鍘熷悕</span></div></div>
-<div style="background:var(--elevated);border-radius:8px;padding:16px;margin-bottom:16px">
-<div style="font-size:12px;font-weight:600;margin-bottom:8px">棰勮 (鍙戠幇 24 涓枃浠?</div>
-<div style="font-size:11px;color:var(--text-m);max-height:120px;overflow-y:auto">
-<div style="padding:4px 0">鉁?Engine_Mount_001.jpg</div>
-<div style="padding:4px 0">鉁?Engine_Mount_002.jpg</div>
-<div style="padding:4px 0">鉁?Strut_Mount_001.jpg</div>
-<div style="padding:4px 0;color:var(--text-m)">... 杩樻湁 21 涓枃浠?/div>
-</div>
-</div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('importAssets')">鍙栨秷</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('importAssets');showToast('宸插鍏?24 涓礌鏉?,'success')">寮€濮嬪鍏?/button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-addMember" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">娣诲姞鍥㈤槦鎴愬憳</span><button class="modal-close" onclick="hideModal('addMember')">脳</button></div>
-<div class="form-group"><label class="form-label">濮撳悕</label><input class="form-input" placeholder="杈撳叆濮撳悕"></div>
-<div class="form-group"><label class="form-label">閭</label><input class="form-input" type="email" placeholder="email@autoparts.com"></div>
-<div class="form-group"><label class="form-label">瑙掕壊</label><select class="form-input"><option value="admin">绠＄悊鍛?- 鍏ㄩ儴鏉冮檺</option><option value="editor">缂栬緫 - 鍒涘缓/缂栬緫/鍙戝竷</option><option value="reviewer">瀹℃牳 - 鏌ョ湅/瀹℃牳</option><option value="designer">璁捐 - 鍒涘缓/缂栬緫绱犳潗</option><option value="viewer">鏌ョ湅 - 浠呮煡鐪?/option></select></div>
-<div class="form-group"><label class="form-label">璐熻矗骞冲彴</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span><span class="chip" onclick="toggleChip(this)">TikTok</span></div></div>
-<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addMember');showToast('鎴愬憳宸叉坊鍔?,'success')">鍙戦€侀個璇?/button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-memberDetail" onclick="closeModal(event)">
-<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">鎴愬憳璇︽儏 - 寮犵粡鐞?/span><button class="modal-close" onclick="hideModal('memberDetail')">脳</button></div>
-<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
-<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff">寮?/div>
-<div><div style="font-size:18px;font-weight:600">寮犵粡鐞?/div><div style="font-size:12px;color:var(--text-m)">zhang@autoparts.com</div><span class="role-badge admin">绠＄悊鍛?/span></div>
-</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鍒涘缓鍐呭</div><div style="font-size:20px;font-weight:600">128</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鍙戝竷鍐呭</div><div style="font-size:20px;font-weight:600">86</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">瀹℃牳閫氳繃</div><div style="font-size:20px;font-weight:600">45</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鏈€鍚庢椿璺?/div><div style="font-size:14px;font-weight:600">浠婂ぉ 15:42</div></div>
-</div>
-<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">璐熻矗骞冲彴</div><div style="display:flex;gap:8px"><span class="chip">Facebook</span><span class="chip">LinkedIn</span></div></div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('memberDetail')">鍏抽棴</button><button class="btn btn-secondary">缂栬緫鏉冮檺</button><button class="btn btn-primary">鍙戦€佹秷鎭?/button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-editRole" onclick="closeModal(event)">
-<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">缂栬緫瑙掕壊鏉冮檺</span><button class="modal-close" onclick="hideModal('editRole')">脳</button></div>
-<div class="form-group"><label class="form-label">閫夋嫨瑙掕壊</label><select class="form-input" id="roleSelect" onchange="loadRolePermissions(this.value)"><option value="admin">绠＄悊鍛?/option><option value="editor">缂栬緫</option><option value="reviewer">瀹℃牳</option><option value="designer">璁捐</option><option value="viewer">鏌ョ湅</option></select></div>
-<div style="background:var(--elevated);border-radius:8px;padding:16px;margin-bottom:16px">
-<div style="font-size:12px;font-weight:600;margin-bottom:12px">鏉冮檺璁剧疆</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 鏌ョ湅鍐呭</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 鍒涘缓鍐呭</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 缂栬緫鍐呭</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 鍒犻櫎鍐呭</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 鍙戝竷鍐呭</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 瀹℃牳閫氳繃</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 绠＄悊璐﹀彿</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 绠＄悊鍥㈤槦</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 瀵煎嚭鏁版嵁</label>
-<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 绯荤粺璁剧疆</label>
-</div>
-</div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('editRole')">鍙栨秷</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('editRole');showToast('鏉冮檺宸叉洿鏂?,'success')">淇濆瓨鏉冮檺</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-templates" onclick="closeModal(event)">
-<div class="modal" style="max-width:900px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃搵 鍐呭妯℃澘搴?/span><button class="modal-close" onclick="hideModal('templates')">脳</button></div>
-<div style="display:flex;gap:12px;margin-bottom:16px">
-<input class="form-input" style="flex:1" placeholder="鎼滅储妯℃澘...">
-<select class="form-input" style="width:150px"><option>鍏ㄩ儴绫诲瀷</option><option>浜у搧鍙戝竷</option><option>淇冮攢娲诲姩</option><option>鎶€鏈暀绋?/option><option>瀹㈡埛瑙佽瘉</option></select>
-<button class="btn btn-secondary" onclick="showModal('createTemplate')">+ 鏂板缓妯℃澘</button>
-</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-height:400px;overflow-y:auto">
-<div class="template-card" onclick="applyTemplate('product-launch')">
-<div class="template-preview" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">馃殌</div>
-<div class="template-info"><div class="template-name">鏂板搧鍙戝竷妯℃澘</div><div class="template-desc">閫傜敤浜庢柊浜у搧涓婂競瀹ｄ紶</div><div class="template-tags"><span class="chip">浜у搧</span><span class="chip">鍙戝竷</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('promotion')">
-<div class="template-preview" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">馃帀</div>
-<div class="template-info"><div class="template-name">淇冮攢娲诲姩妯℃澘</div><div class="template-desc">闄愭椂浼樻儬銆佽妭鏃ヤ績閿€</div><div class="template-tags"><span class="chip">淇冮攢</span><span class="chip">娲诲姩</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('tech-tutorial')">
-<div class="template-preview" style="background:linear-gradient(135deg,#10b981,#06b6d4)">馃摎</div>
-<div class="template-info"><div class="template-name">鎶€鏈暀绋嬫ā鏉?/div><div class="template-desc">瀹夎鎸囧崡銆佷娇鐢ㄦ妧宸?/div><div class="template-tags"><span class="chip">鏁欑▼</span><span class="chip">鎶€鏈?/span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('testimonial')">
-<div class="template-preview" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">馃挰</div>
-<div class="template-info"><div class="template-name">瀹㈡埛瑙佽瘉妯℃澘</div><div class="template-desc">瀹㈡埛璇勪环銆佹垚鍔熸渚?/div><div class="template-tags"><span class="chip">瑙佽瘉</span><span class="chip">妗堜緥</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('comparison')">
-<div class="template-preview" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">鈿栵笍</div>
-<div class="template-info"><div class="template-name">浜у搧瀵规瘮妯℃澘</div><div class="template-desc">绔炲搧瀵规瘮銆佷紭鍔垮睍绀?/div><div class="template-tags"><span class="chip">瀵规瘮</span><span class="chip">鍒嗘瀽</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('industry-news')">
-<div class="template-preview" style="background:linear-gradient(135deg,#64748b,#475569)">馃摪</div>
-<div class="template-info"><div class="template-name">琛屼笟璧勮妯℃澘</div><div class="template-desc">琛屼笟鍔ㄦ€併€佽秼鍔垮垎鏋?/div><div class="template-tags"><span class="chip">璧勮</span><span class="chip">琛屼笟</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('behind-scenes')">
-<div class="template-preview" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">馃幀</div>
-<div class="template-info"><div class="template-name">骞曞悗鑺辩诞妯℃澘</div><div class="template-desc">宸ュ巶瀹炴媿銆佸洟闃熸晠浜?/div><div class="template-tags"><span class="chip">鑺辩诞</span><span class="chip">鏁呬簨</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('faq')">
-<div class="template-preview" style="background:linear-gradient(135deg,#f59e0b,#10b981)">鉂?/div>
-<div class="template-info"><div class="template-name">FAQ闂瓟妯℃澘</div><div class="template-desc">甯歌闂銆佷笓涓氳В绛?/div><div class="template-tags"><span class="chip">FAQ</span><span class="chip">闂瓟</span></div></div>
-</div>
-<div class="template-card" onclick="applyTemplate('seasonal')">
-<div class="template-preview" style="background:linear-gradient(135deg,#22c55e,#16a34a)">馃巹</div>
-<div class="template-info"><div class="template-name">鑺傛棩涓婚妯℃澘</div><div class="template-desc">鑺傛棩绁濈銆佷富棰樿惀閿€</div><div class="template-tags"><span class="chip">鑺傛棩</span><span class="chip">涓婚</span></div></div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-preview" onclick="closeModal(event)">
-<div class="modal" style="max-width:1000px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃憗锔?鍙戝竷棰勮</span><button class="modal-close" onclick="hideModal('preview')">脳</button></div>
-<div style="display:flex;gap:12px;margin-bottom:16px">
-<div class="chip-group">
-<span class="chip on" onclick="setPreviewPlatform('facebook',this)">馃摌 Facebook</span>
-<span class="chip" onclick="setPreviewPlatform('instagram',this)">馃摲 Instagram</span>
-<span class="chip" onclick="setPreviewPlatform('linkedin',this)">馃捈 LinkedIn</span>
-<span class="chip" onclick="setPreviewPlatform('twitter',this)">饾晱 Twitter</span>
-</div>
-<div class="chip-group" style="margin-left:auto">
-<span class="chip on" onclick="setPreviewDevice('desktop',this)">馃枼锔?妗岄潰</span>
-<span class="chip" onclick="setPreviewDevice('mobile',this)">馃摫 绉诲姩</span>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-<div>
-<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--text-m)">Facebook 妗岄潰棰勮</div>
-<div class="preview-container desktop" id="previewDesktop">
-<div class="preview-header"><div class="preview-avatar">馃敡</div><div><div class="preview-name">AutoParts B2B</div><div class="preview-time">鍒氬垰</div></div></div>
-<div class="preview-content">
-<div class="preview-title">Engine Mount - 楂樺搧璐ㄦ偓鎸傝В鍐虫柟妗?/div>
-<div class="preview-text">涓烘偍鐨勮溅杈嗘彁渚涘崜瓒婄殑椹鹃┒浣撻獙锛佹垜浠殑Engine Mount閲囩敤浼樿川姗¤兌閰嶆柟锛屾湁鏁堝噺灏戦渿鍔ㄥ拰鍣煶...</div>
-<div class="preview-image" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">馃敡</div>
-<div class="preview-stats"><span>馃憤 128</span><span>馃挰 24</span><span>馃攧 12</span></div>
-</div>
-</div>
-</div>
-<div>
-<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--text-m)">Instagram 绉诲姩棰勮</div>
-<div class="preview-container mobile" id="previewMobile">
-<div class="preview-header"><div class="preview-avatar">馃敡</div><div><div class="preview-name">autoparts_b2b</div><div class="preview-location">馃搷 寰峰浗路鎱曞凹榛?/div></div><span style="margin-left:auto">鈥⑩€⑩€?/span></div>
-<div class="preview-image" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);aspect-ratio:1">馃敡</div>
-<div class="preview-actions"><span>鈾?/span><span>馃挰</span><span>鈫?/span><span style="margin-left:auto">馃敄</span></div>
-<div class="preview-likes">128 娆¤禐</div>
-<div class="preview-caption"><strong>autoparts_b2b</strong> Engine Mount - 楂樺搧璐ㄦ偓鎸傝В鍐虫柟妗?#autoparts #enginemount #b2b</div>
-</div>
-</div>
-</div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('preview')">鍏抽棴</button><button class="btn btn-secondary" onclick="capturePreview()">馃摳 鎴浘</button><button class="btn btn-primary" onclick="publishContent()">馃殌 鍙戝竷</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-createTemplate" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">鏂板缓妯℃澘</span><button class="modal-close" onclick="hideModal('createTemplate')">脳</button></div>
-<div class="form-group"><label class="form-label">妯℃澘鍚嶇О</label><input class="form-input" placeholder="渚嬪: 浜у搧鍙戝竷妯℃澘"></div>
-<div class="form-group"><label class="form-label">妯℃澘绫诲瀷</label><select class="form-input"><option>浜у搧鍙戝竷</option><option>淇冮攢娲诲姩</option><option>鎶€鏈暀绋?/option><option>瀹㈡埛瑙佽瘉</option><option>琛屼笟璧勮</option></select></div>
-<div class="form-group"><label class="form-label">鏍囬妯℃澘</label><input class="form-input" placeholder="浣跨敤 {浜у搧鍚峿 浣滀负鍙橀噺"></div>
-<div class="form-group"><label class="form-label">鍐呭妯℃澘</label><textarea class="form-input" style="min-height:120px" placeholder="杈撳叆妯℃澘鍐呭锛屼娇鐢?{鍙橀噺鍚峿 鎻掑叆鍔ㄦ€佸唴瀹?.."></textarea></div>
-<div class="form-group"><label class="form-label">閫傜敤骞冲彴</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span></div></div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('createTemplate')">鍙栨秷</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('createTemplate');showToast('妯℃澘宸插垱寤?,'success')">淇濆瓨妯℃澘</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-scheduleTask" onclick="closeModal(event)">
-<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">鈴?鍒涘缓瀹氭椂浠诲姟</span><button class="modal-close" onclick="hideModal('scheduleTask')">脳</button></div>
-<div class="form-group"><label class="form-label">浠诲姟鍚嶇О</label><input class="form-input" id="taskName" placeholder="渚嬪: Engine Mount 淇冮攢鍙戝竷"></div>
-<div class="grid-2" style="gap:12px">
-<div class="form-group"><label class="form-label">浠诲姟绫诲瀷</label><select class="form-input" id="taskType" onchange="updateCronPreview()">
-<option value="once">涓€娆℃€ф墽琛?/option>
-<option value="daily">姣忔棩閲嶅</option>
-<option value="weekly">姣忓懆閲嶅</option>
-<option value="monthly">姣忔湀閲嶅</option>
-<option value="custom">鑷畾涔塁ron</option>
-</select></div>
-<div class="form-group"><label class="form-label">鏃跺尯</label><select class="form-input"><option>GMT+1 娆ф床</option><option>GMT-5 鍖楃編涓滈儴</option><option>GMT-8 鍖楃編瑗块儴</option><option>GMT+3 涓笢</option><option>GMT+8 涓浗</option></select></div>
-</div>
-<div id="onceConfig">
-<div class="grid-2" style="gap:12px">
-<div class="form-group"><label class="form-label">鎵ц鏃ユ湡</label><input class="form-input" type="date" value="2026-04-08"></div>
-<div class="form-group"><label class="form-label">鎵ц鏃堕棿</label><input class="form-input" type="time" value="15:00"></div>
-</div>
-</div>
-<div id="repeatConfig" style="display:none">
-<div class="grid-2" style="gap:12px">
-<div class="form-group"><label class="form-label">鎵ц鏃堕棿</label><input class="form-input" type="time" value="09:00"></div>
-<div class="form-group"><label class="form-label" id="repeatDayLabel">鎵ц鏃ユ湡</label><select class="form-input" id="repeatDay">
-<option value="1">鍛ㄤ竴</option><option value="2">鍛ㄤ簩</option><option value="3">鍛ㄤ笁</option><option value="4">鍛ㄥ洓</option><option value="5">鍛ㄤ簲</option><option value="6">鍛ㄥ叚</option><option value="0">鍛ㄦ棩</option>
-</select></div>
-</div>
-</div>
-<div id="cronConfig" style="display:none">
-<div class="form-group"><label class="form-label">Cron琛ㄨ揪寮?/label><input class="form-input" placeholder="0 9 * * * (姣忓ぉ9:00)"></div>
-<div class="cron-preview">绀轰緥: 0 9 * * 1-5 = 宸ヤ綔鏃?:00</div>
-</div>
-<div class="form-group"><label class="form-label">鐩爣骞冲彴</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">馃摌 Facebook</span><span class="chip" onclick="toggleChip(this)">馃摲 Instagram</span><span class="chip" onclick="toggleChip(this)">馃捈 LinkedIn</span><span class="chip" onclick="toggleChip(this)">鈻讹笍 YouTube</span><span class="chip" onclick="toggleChip(this)">鈾?TikTok</span><span class="chip" onclick="toggleChip(this)">饾晱 Twitter</span></div></div>
-<div class="form-group"><label class="form-label">鍏宠仈鍐呭</label><select class="form-input"><option>閫夋嫨宸蹭繚瀛樼殑鍐呭...</option><option>Engine Mount 瀹㈡埛瑙佽瘉</option><option>Bushing 瀵规瘮淇℃伅鍥?/option><option>Strut Mount 浜у搧浠嬬粛</option><option>渚涘簲閾捐秼鍔垮垎鏋?/option></select></div>
-<div class="form-group"><label class="form-label">澶辫触閫氱煡</label><div style="display:flex;gap:16px;margin-top:8px"><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" checked> 閭欢閫氱煡</label><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox"> 浼佷笟寰俊</label><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox"> 閽夐拤</label></div></div>
-<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('scheduleTask')">鍙栨秷</button><button class="btn btn-primary" style="flex:1" onclick="saveTask()">淇濆瓨浠诲姟</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-taskLog" onclick="closeModal(event)">
-<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃搵 浠诲姟鎵ц鏃ュ織</span><button class="modal-close" onclick="hideModal('taskLog')">脳</button></div>
-<div style="background:var(--elevated);border-radius:8px;padding:16px;max-height:400px;overflow-y:auto;font-family:monospace;font-size:12px;line-height:1.8">
-<div style="color:var(--text-m)">[2026-04-07 14:30:00] 浠诲姟寮€濮嬫墽琛?/div>
-<div style="color:var(--green)">[2026-04-07 14:30:01] 鉁?杩炴帴YouTube API鎴愬姛</div>
-<div style="color:var(--green)">[2026-04-07 14:30:02] 鉁?瑙嗛涓婁紶寮€濮? bushing_demo.mp4 (15.2MB)</div>
-<div style="color:var(--text-m)">[2026-04-07 14:30:15] 涓婁紶杩涘害: 25%</div>
-<div style="color:var(--text-m)">[2026-04-07 14:30:30] 涓婁紶杩涘害: 50%</div>
-<div style="color:var(--text-m)">[2026-04-07 14:30:45] 涓婁紶杩涘害: 75%</div>
-<div style="color:var(--text-m)">[2026-04-07 14:31:00] 涓婁紶杩涘害: 100%</div>
-<div style="color:var(--green)">[2026-04-07 14:31:02] 鉁?瑙嗛涓婁紶瀹屾垚</div>
-<div style="color:var(--green)">[2026-04-07 14:31:03] 鉁?璁剧疆瑙嗛鏍囬鍜屾弿杩?/div>
-<div style="color:var(--green)">[2026-04-07 14:31:04] 鉁?娣诲姞鏍囩: #autoparts, #bushing, #b2b</div>
-<div style="color:var(--green)">[2026-04-07 14:31:05] 鉁?浠诲姟鎵ц鎴愬姛</div>
-<div style="color:var(--blue)">[2026-04-07 14:31:06] 瑙嗛ID: yt_bushing_demo_20260407</div>
-</div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('taskLog')">鍏抽棴</button><button class="btn btn-secondary">瀵煎嚭鏃ュ織</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-addProduct" onclick="closeModal(event)">
-<div class="modal" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">娣诲姞浜у搧</span><button class="modal-close" onclick="hideModal('addProduct')">脳</button></div>
-<div class="form-group"><label class="form-label">浜у搧鍚嶇О</label><input class="form-input" placeholder="渚嬪: Engine Mount"></div>
-<div class="form-group"><label class="form-label">浜у搧鍒嗙被</label><select class="form-input"><option>鎮寕绯荤粺</option><option>杞悜绯荤粺</option><option>浼犲姩绯荤粺</option></select></div>
-<div class="form-row"><div class="form-group"><label class="form-label">SKU鏁伴噺</label><input class="form-input" type="number" placeholder="0"></div><div class="form-group"><label class="form-label">浠锋牸鍖洪棿</label><input class="form-input" placeholder="$0 - $0"></div></div>
-<div class="form-group"><label class="form-label">浜у搧鎻忚堪</label><textarea class="form-input" style="min-height:80px" placeholder="杈撳叆浜у搧鎻忚堪..."></textarea></div>
-<div class="form-group"><label class="form-label">閫傞厤杞﹀瀷</label><input class="form-input" placeholder="涓扮敯銆佹湰鐢般€佸ぇ浼椼€佸疂椹瓑"></div>
-<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addProduct');showToast('浜у搧宸叉坊鍔?,'success')">娣诲姞浜у搧</button></div>
-</div>
-</div>
-
-<div class="modal-overlay" id="modal-productDetail" onclick="closeModal(event)">
-<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">浜у搧璇︽儏 - Engine Mount</span><button class="modal-close" onclick="hideModal('productDetail')">脳</button></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-<div>
-<div style="font-weight:600;margin-bottom:12px">馃搳 琛ㄧ幇鏁版嵁</div>
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鎬绘洕鍏夐噺</div><div style="font-size:20px;font-weight:600;color:var(--blue)">8,234</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">浜掑姩閲?/div><div style="font-size:20px;font-weight:600;color:var(--green)">412</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">璇㈢洏杞寲</div><div style="font-size:20px;font-weight:600;color:var(--purple)">42</div></div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">鍙戝竷鍐呭</div><div style="font-size:20px;font-weight:600">28绡?/div></div>
-</div>
-</div>
-<div>
-<div style="font-weight:600;margin-bottom:12px">馃挵 浠锋牸淇℃伅</div>
-<div style="background:var(--elevated);padding:12px;border-radius:8px;margin-bottom:8px">
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:var(--text-m)">鏈€浣庝环</span><span style="font-weight:600">$15.00</span></div>
-<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:var(--text-m)">鏈€楂樹环</span><span style="font-weight:600">$85.00</span></div>
-<div style="display:flex;justify-content:space-between"><span style="color:var(--text-m)">骞冲潎浠?/span><span style="font-weight:600">$42.50</span></div>
-</div>
-</div>
-</div>
-<div style="margin-top:16px">
-<div style="font-weight:600;margin-bottom:12px">馃摝 SKU 鍒楄〃 (鍏?56涓?</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-<span class="chip">EM-TOY-001</span><span class="chip">EM-TOY-002</span><span class="chip">EM-HON-001</span><span class="chip">EM-VW-001</span><span class="chip">EM-BMW-001</span><span class="chip">EM-FORD-001</span>
-</div>
-<div style="font-size:12px;color:var(--text-m)">閫傞厤杞﹀瀷锛氫赴鐢般€佹湰鐢般€佸ぇ浼椼€佸疂椹€佺鐗广€佸椹般€佸ゥ杩€佹棩浜х瓑</div>
-</div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('productDetail')">鍏抽棴</button><button class="btn btn-primary" onclick="showPage('creator');hideModal('productDetail')">鍒涘缓鍐呭</button></div>
-</div>
-</div>
-
-<!-- 鐢ㄦ埛鍒囨崲妯℃€佹 -->
-<div class="modal-overlay" id="modal-userSwitch" onclick="closeModal(event)">
-<div class="modal" style="max-width:400px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃懁 鐢ㄦ埛鍒囨崲</span><button class="modal-close" onclick="hideModal('userSwitch')">脳</button></div>
-<div style="padding:8px">
-<div class="user-list-item active" onclick="switchUser('zhang',event)">
-<div class="user-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">寮?/div>
-<div style="flex:1"><div style="font-weight:600">寮犵粡鐞?/div><div style="font-size:11px;color:var(--text-m)">zhang@autoparts.com</div></div>
-<span class="chip">褰撳墠</span>
-</div>
-<div class="user-list-item" onclick="switchUser('li',event)">
-<div class="user-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">鏉?/div>
-<div style="flex:1"><div style="font-weight:600">鏉庣紪杈?/div><div style="font-size:11px;color:var(--text-m)">li@autoparts.com</div></div>
-</div>
-<div class="user-list-item" onclick="switchUser('wang',event)">
-<div class="user-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">鐜?/div>
-<div style="flex:1"><div style="font-weight:600">鐜嬭璁?/div><div style="font-size:11px;color:var(--text-m)">wang@autoparts.com</div></div>
-</div>
-<div class="user-list-item" onclick="switchUser('chen',event)">
-<div class="user-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">闄?/div>
-<div style="flex:1"><div style="font-weight:600">闄堝鏍?/div><div style="font-size:11px;color:var(--text-m)">chen@autoparts.com</div></div>
-</div>
-</div>
-<div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px">
-<button class="btn btn-secondary" style="flex:1" onclick="showModal('addUser')">+ 娣诲姞鐢ㄦ埛</button>
-<button class="btn btn-secondary" style="flex:1" onclick="showModal('userSettings')">鈿欙笍 鐢ㄦ埛璁剧疆</button>
-</div>
-</div>
-</div>
-
-<!-- AI缈昏瘧妯℃€佹 -->
-<div class="modal-overlay" id="modal-translate" onclick="closeModal(event)">
-<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃寪 AI澶氳瑷€缈昏瘧</span><button class="modal-close" onclick="hideModal('translate')">脳</button></div>
-<div class="form-group"><label class="form-label">鍘熸枃鍐呭</label>
-<textarea class="form-input" id="translateSource" style="height:100px" placeholder="杈撳叆闇€瑕佺炕璇戠殑鍐呭..."></textarea>
-</div>
-<div class="form-group"><label class="form-label">鐩爣璇█</label>
-<div style="display:flex;flex-wrap:wrap;gap:8px">
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox" checked> 馃嚞馃嚙 English
-</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox" checked> 馃嚛馃嚜 Deutsch
-</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox" checked> 馃嚜馃嚫 Espa帽ol
-</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox" checked> 馃嚙馃嚪 Portugu锚s
-</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox" checked> 馃嚪馃嚭 袪褍褋褋泻懈泄
-</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
-<input type="checkbox"> 馃嚫馃嚘 丕賱毓乇亘賷丞
-</label>
-</div>
-</div>
-<div id="translateResult" style="margin-top:16px">
-<div class="translation-item">
-<div class="lang-label">馃嚞馃嚙 English</div>
-<div class="lang-content">Our Engine Mount products feature premium rubber compounds for superior vibration dampening and extended service life. ISO/TS 16949 certified.</div>
-</div>
-<div class="translation-item">
-<div class="lang-label">馃嚜馃嚫 Espa帽ol</div>
-<div class="lang-content">Nuestros productos de soporte de motor cuentan con compuestos de caucho premium para una amortiguaci贸n de vibraciones superior y vida 煤til extendida.</div>
-</div>
-<div class="translation-item">
-<div class="lang-label">馃嚙馃嚪 Portugu锚s</div>
-<div class="lang-content">Nossos produtos de suporte de motor apresentam compostos de borracha premium para amortecimento superior de vibra莽玫es e vida 煤til estendida.</div>
-</div>
-<div class="translation-item">
-<div class="lang-label">馃嚪馃嚭 袪褍褋褋泻懈泄</div>
-<div class="lang-content">袧邪褕懈 芯锌芯褉褘 写胁懈谐邪褌械谢褟 懈蟹谐芯褌芯胁谢械薪褘 懈蟹 锌褉械屑懈邪谢褜薪褘褏 褉械蟹懈薪芯胁褘褏 泻芯屑锌邪褍薪写芯胁 写谢褟 锌褉械胁芯褋褏芯写薪芯谐芯 谐邪褕械薪懈褟 胁懈斜褉邪褑懈泄 懈 写谢懈褌械谢褜薪芯谐芯 褋褉芯泻邪 褋谢褍卸斜褘.</div>
-</div>
-</div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('translate')">鍙栨秷</button><button class="btn btn-primary" onclick="applyTranslations()">搴旂敤缈昏瘧</button></div>
-</div>
-</div>
-
-<!-- 瀵煎嚭鏁版嵁妯℃€佹 -->
-<div class="modal-overlay" id="modal-exportData" onclick="closeModal(event)">
-<div class="modal" style="max-width:500px" onclick="event.stopPropagation()">
-<div class="modal-header"><span class="modal-title">馃摛 瀵煎嚭鏁版嵁鎶ヨ〃</span><button class="modal-close" onclick="hideModal('exportData')">脳</button></div>
-<div class="form-group"><label class="form-label">瀵煎嚭鏍煎紡</label>
-<div style="display:flex;gap:8px">
-<button class="btn btn-primary" onclick="setExportFormat('csv')">CSV</button>
-<button class="btn btn-secondary" onclick="setExportFormat('excel')">Excel</button>
-<button class="btn btn-secondary" onclick="setExportFormat('pdf')">PDF</button>
-</div>
-</div>
-<div class="form-group"><label class="form-label">鏁版嵁鑼冨洿</label>
-<select class="form-input"><option>鏈€杩?澶?/option><option>鏈€杩?0澶?/option><option>鏈湀</option><option>鏈搴?/option><option>鑷畾涔夎寖鍥?/option></select>
-</div>
-<div class="form-group"><label class="form-label">鍖呭惈鍐呭</label>
-<div style="display:flex;flex-wrap:wrap;gap:8px">
-<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 鏇濆厜鏁版嵁</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 浜掑姩鏁版嵁</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 杞寲鏁版嵁</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox"> 鍐呭璇︽儏</label>
-<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox"> 璐﹀彿琛ㄧ幇</label>
-</div>
-</div>
-<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('exportData')">鍙栨秷</button><button class="btn btn-primary" onclick="exportData()">瀵煎嚭</button></div>
-</div>
-</div>
-
-<!-- 璇㈢洏绠＄悊椤甸潰 -->
 <div class="page" id="page-inquiries">
-<div class="stats-grid">
-<div class="stat-card"><div class="stat-icon blue">馃摡</div><div class="stat-value">0</div><div class="stat-label">鏈湀璇㈢洏</div></div>
-<div class="stat-card"><div class="stat-icon green">鉁?/div><div class="stat-value">0</div><div class="stat-label">宸茶窡杩?/div></div>
-<div class="stat-card"><div class="stat-icon orange">鈴?/div><div class="stat-value">0</div><div class="stat-label">寰呭鐞?/div></div>
-<div class="stat-card"><div class="stat-icon purple">馃挵</div><div class="stat-value">$0</div><div class="stat-label">棰勪及閲戦</div></div>
-</div>
-<div class="card" style="margin-top:24px">
-<div class="card-header">馃摡 璇㈢洏鍒楄〃 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('addInquiry')">+ 鏂板缓璇㈢洏</button></div>
-<div class="card-body">
-<div style="display:flex;gap:8px;margin-bottom:16px">
-<input class="form-input" style="flex:1;font-size:12px;padding:6px 10px" placeholder="鎼滅储瀹㈡埛/浜у搧...">
-<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>鍏ㄩ儴鐘舵€?/option><option>寰呭鐞?/option><option>璺熻繘涓?/option><option>宸叉姤浠?/option><option>宸叉垚浜?/option><option>宸插叧闂?/option></select>
-<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>鍏ㄩ儴鏉ユ簮</option><option>Facebook</option><option>LinkedIn</option><option>瀹樼綉</option><option>閭欢</option></select>
-</div>
-<table class="task-table">
-<thead><tr><th>浠诲姟鍚嶇О</th><th>绫诲瀷</th><th>鎵ц鏃堕棿</th><th>鐩爣骞冲彴</th><th>鐘舵€?/th><th>鎿嶄綔</th></tr></thead>
-<tbody>
-<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-m)">鏆傛棤瀹氭椂浠诲姟</td></tr>
-</tbody>
-</table>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F4CB; 询盘管理 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px">+ 新建询盘</button></div></div>
+<div style="text-align:center;padding:60px;color:var(--text-m)">
+<div style="font-size:64px;margin-bottom:20px">&#x1F4CB;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无询盘</div>
+<div style="font-size:13px;margin-bottom:24px">询盘将在这里集中管理</div>
 </div>
 </div>
-</div>
-
-<!-- 娑堟伅涓績椤甸潰 -->
 <div class="page" id="page-messages">
-<div class="grid-2" style="gap:16px;height:calc(100vh - 180px)">
-<div class="card" style="display:flex;flex-direction:column">
-<div class="card-header">馃挰 娑堟伅鍒楄〃 <span style="font-size:11px;color:var(--text-m);margin-left:8px">0 鏈</span></div>
-<div class="card-body" style="flex:1;overflow-y:auto;padding:8px">
-<div class="message-item unread" onclick="selectMessage(1)">
-<div class="msg-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">M</div>
-<div class="msg-content"><div class="msg-header"><span class="msg-name">Michael (AutoParts)</span><span class="msg-time">10:32</span></div><div class="msg-preview">璇㈢洏鎶ヤ环鏀跺埌锛岃闂氦鏈熷涔咃紵</div></div>
-</div>
-<div class="message-item unread" onclick="selectMessage(2)">
-<div class="msg-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">S</div>
-<div class="msg-content"><div class="msg-header"><span class="msg-name">Sarah (UK Suspension)</span><span class="msg-time">09:15</span></div><div class="msg-preview">鎰熻阿鎻愪緵鏍峰搧锛岃川閲忓緢濂斤紒</div></div>
-</div>
-<div class="message-item" onclick="selectMessage(3)">
-<div class="msg-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">A</div>
-<div class="msg-content"><div class="msg-header"><span class="msg-name">Ahmed (ME Trading)</span><span class="msg-time">鏄ㄥぉ</span></div><div class="msg-preview">璇风‘璁ゆ渶鏂版姤浠峰崟...</div></div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F4AC; 消息中心 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px">+ 新消息</button></div></div>
+<div style="text-align:center;padding:60px;color:var(--text-m)">
+<div style="font-size:64px;margin-bottom:20px">&#x1F4AC;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无消息</div>
+<div style="font-size:13px;margin-bottom:24px">消息通知将在这里显示</div>
 </div>
 </div>
-</div>
-<div class="card" style="display:flex;flex-direction:column">
-<div class="card-header">瀵硅瘽璇︽儏 - Michael</div>
-<div class="card-body" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px">
-<div class="chat-msg received"><div class="chat-bubble">鎮ㄥソ锛屾垜浠Engine Mount浜у搧寰堟劅鍏磋叮锛岃鎻愪緵鎶ヤ环銆?/div><div class="chat-time">10:15</div></div>
-<div class="chat-msg sent"><div class="chat-bubble">鎰熻阿鎮ㄧ殑璇㈢洏锛佹壒閲忛噰璐环鏍硷細100-500浠?$25/浠讹紝500-1000浠?$22/浠?/div><div class="chat-time">10:18</div></div>
-<div class="chat-msg received"><div class="chat-bubble">鎴戜滑璁″垝閲囪喘500浠讹紝璇烽棶浜ゆ湡澶氫箙锛?/div><div class="chat-time">10:32</div></div>
-</div>
-<div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px">
-<input class="form-input" style="flex:1" placeholder="杈撳叆鍥炲...">
-<button class="btn btn-primary" onclick="sendMessage()">鍙戦€?/button>
-</div>
-</div>
-</div>
-</div>
-
-<!-- 绔炲搧鐩戞帶椤甸潰 -->
 <div class="page" id="page-competitors">
-<div class="grid-2">
-<div class="card"><div class="card-header">馃攳 鐩戞帶绔炲搧</div><div class="card-body">
-<div class="competitor-item" onclick="selectCompetitor(1)">
-<div class="comp-logo" style="background:linear-gradient(135deg,#ef4444,#f97316)">B</div>
-<div style="flex:1"><div style="font-weight:600">Bosch Automotive</div><div style="font-size:11px;color:var(--text-m)">4骞冲彴 路 鏇存柊浜?2灏忔椂鍓?/div></div>
-<span class="chip">閲嶇偣</span>
-</div>
-<div class="competitor-item" onclick="selectCompetitor(2)">
-<div class="comp-logo" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">T</div>
-<div style="flex:1"><div style="font-weight:600">TRW Aftermarket</div><div style="font-size:11px;color:var(--text-m)">3骞冲彴 路 鏇存柊浜?5灏忔椂鍓?/div></div>
-</div>
-<div class="competitor-item" onclick="selectCompetitor(3)">
-<div class="comp-logo" style="background:linear-gradient(135deg,#10b981,#06b6d4)">M</div>
-<div style="flex:1"><div style="font-weight:600">Moog Parts</div><div style="font-size:11px;color:var(--text-m)">2骞冲彴 路 鏇存柊浜?1澶╁墠</div></div>
-</div>
-</div></div>
-<div class="card"><div class="card-header">馃搳 绔炲搧鍔ㄦ€?- Bosch</div><div class="card-body">
-<div class="activity-item"><span class="act-icon">馃摌</span><div style="flex:1"><div style="font-size:13px">鍙戝竷鏂颁骇鍝佸浼犺棰?/div><div style="font-size:11px;color:var(--text-m)">Facebook 路 2灏忔椂鍓?路 1.2K鎾斁</div></div></div>
-<div class="activity-item"><span class="act-icon">馃摲</span><div style="flex:1"><div style="font-size:13px">淇冮攢娲诲姩锛氭偓鎸傜郴缁?鎶?/div><div style="font-size:11px;color:var(--text-m)">Instagram 路 5灏忔椂鍓?路 328浜掑姩</div></div></div>
-<div class="activity-item"><span class="act-icon">馃捈</span><div style="flex:1"><div style="font-size:13px">鍙戝竷琛屼笟鐧界毊涔?/div><div style="font-size:11px;color:var(--text-m)">LinkedIn 路 1澶╁墠</div></div></div>
-<div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-<div style="font-size:12px;font-weight:600;margin-bottom:8px">馃搱 绔炲搧瀵规瘮</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
-<div><div style="font-size:18px;font-weight:600">45.2K</div><div style="font-size:10px;color:var(--text-m)">绮変笣鏁?/div></div>
-<div><div style="font-size:18px;font-weight:600">3.8%</div><div style="font-size:10px;color:var(--text-m)">浜掑姩鐜?/div></div>
-<div><div style="font-size:18px;font-weight:600">12/鍛?/div><div style="font-size:10px;color:var(--text-m)">鍙戝竷棰戠巼</div></div>
+<div class="card" style="margin-bottom:24px"><div class="card-header">&#x1F4CA; 竞品监控 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px">+ 添加竞品</button></div></div>
+<div style="text-align:center;padding:60px;color:var(--text-m)">
+<div style="font-size:64px;margin-bottom:20px">&#x1F4CA;</div>
+<div style="font-size:18px;margin-bottom:8px;color:var(--text)">暂无竞品数据</div>
+<div style="font-size:13px;margin-bottom:24px">添加竞品开始监控市场动态</div>
+<button class="btn btn-primary">+ 添加竞品</button>
 </div>
 </div>
-</div></div>
-</div>
-</div>
-
-<!-- 宸ヤ綔娴侀〉闈?-->
 <div class="page" id="page-workflow">
 <div class="card" style="margin-bottom:24px">
-<div class="card-header">鈿欙笍 宸ヤ綔娴侀厤缃?/div>
+<div class="card-header">⚙️ 工作流配置</div>
 <div class="card-body">
 <div class="workflow-item">
-<div class="wf-icon" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">馃摑</div>
-<div style="flex:1"><div style="font-weight:600">鍐呭鍙戝竷瀹℃壒娴佺▼</div><div style="font-size:11px;color:var(--text-m)">鍒涘缓 鈫?瀹℃牳 鈫?鍙戝竷</div></div>
-<span class="task-status active">鍚敤涓?/span>
+<div class="wf-icon" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">📝</div>
+<div style="flex:1"><div style="font-weight:600">内容发布审批流程</div><div style="font-size:11px;color:var(--text-m)">创建 → 审核 → 发布</div></div>
+<span class="task-status active">启用中</span>
 </div>
 <div class="workflow-item">
-<div class="wf-icon" style="background:linear-gradient(135deg,#10b981,#06b6d4)">馃摡</div>
-<div style="flex:1"><div style="font-weight:600">璇㈢洏璺熻繘娴佺▼</div><div style="font-size:11px;color:var(--text-m)">鎺ユ敹 鈫?鍒嗛厤 鈫?璺熻繘 鈫?鎶ヤ环 鈫?鎴愪氦</div></div>
-<span class="task-status active">鍚敤涓?/span>
+<div class="wf-icon" style="background:linear-gradient(135deg,#10b981,#06b6d4)">📩</div>
+<div style="flex:1"><div style="font-weight:600">询盘跟进流程</div><div style="font-size:11px;color:var(--text-m)">接收 → 分配 → 跟进 → 报价 → 成交</div></div>
+<span class="task-status active">启用中</span>
 </div>
 <div class="workflow-item">
-<div class="wf-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">馃敂</div>
-<div style="flex:1"><div style="font-weight:600">寮傚父鍛婅娴佺▼</div><div style="font-size:11px;color:var(--text-m)">API澶辫触 鈫?閫氱煡 鈫?澶勭悊</div></div>
-<span class="task-status active">鍚敤涓?/span>
+<div class="wf-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">🔔</div>
+<div style="flex:1"><div style="font-weight:600">异常告警流程</div><div style="font-size:11px;color:var(--text-m)">API失败 → 通知 → 处理</div></div>
+<span class="task-status active">启用中</span>
 </div>
 </div>
 </div>
 <div class="grid-2">
-<div class="card"><div class="card-header">馃搵 瀹℃壒闃熷垪</div><div class="card-body">
-<div class="approval-item"><div style="flex:1"><div style="font-weight:600">Engine Mount 淇冮攢鍐呭</div><div style="font-size:11px;color:var(--text-m)">鏉庣紪杈?路 10鍒嗛挓鍓?/div></div><div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">閫氳繃</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">椹冲洖</button></div></div>
-<div class="approval-item"><div style="flex:1"><div style="font-weight:600">瀹㈡埛瑙佽瘉瑙嗛</div><div style="font-size:11px;color:var(--text-m)">寮犺璁?路 1灏忔椂鍓?/div></div><div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">閫氳繃</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">椹冲洖</button></div></div>
+<div class="card"><div class="card-header">📋 审批队列</div><div class="card-body">
+<div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">通过</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">驳回</button></div></div>
+<div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">通过</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">驳回</button></div></div>
 </div></div>
-<div class="card"><div class="card-header">馃搳 宸ヤ綔娴佺粺璁?/div><div class="card-body">
+<div class="card"><div class="card-header">📊 工作流统计</div><div class="card-body">
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
-<div><div style="font-size:24px;font-weight:600">156</div><div style="font-size:11px;color:var(--text-m)">鏈湀澶勭悊</div></div>
-<div><div style="font-size:24px;font-weight:600">2.3h</div><div style="font-size:11px;color:var(--text-m)">骞冲潎鑰楁椂</div></div>
-<div><div style="font-size:24px;font-weight:600">98%</div><div style="font-size:11px;color:var(--text-m)">鎸夋椂瀹屾垚</div></div>
-<div><div style="font-size:24px;font-weight:600">12</div><div style="font-size:11px;color:var(--text-m)">寰呭鐞?/div></div>
+<div><div style="font-size:24px;font-weight:600">0</div><div style="font-size:11px;color:var(--text-m)">本月处理</div></div>
+<div><div style="font-size:24px;font-weight:600">2.3h</div><div style="font-size:11px;color:var(--text-m)">平均耗时</div></div>
+<div><div style="font-size:24px;font-weight:600">98%</div><div style="font-size:11px;color:var(--text-m)">按时完成</div></div>
+<div><div style="font-size:24px;font-weight:600">0</div><div style="font-size:11px;color:var(--text-m)">待处理</div></div>
 </div>
 </div></div>
 </div>
 </div>
 
-</div> <!-- 鍏抽棴 content -->
-</div> <!-- 鍏抽棴 main -->
+</div> <!-- 关闭 content -->
+</div> <!-- 关闭 main -->
 
 <div class="toast-container" id="toastContainer"></div>
 
@@ -1297,7 +717,7 @@ if(evt && evt.target) {
 var navItem = evt.target.closest('.nav-item');
 if(navItem) navItem.classList.add('active');
 }
-const titles = {dashboard:'浠〃鐩?,accounts:'璐﹀彿绠＄悊',creator:'鍐呭鍒涗綔',calendar:'鍙戝竷鏃ュ巻',analytics:'鏁版嵁鍒嗘瀽',team:'鍥㈤槦鍗忎綔',assets:'绱犳潗搴?,products:'浜у搧绠＄悊',api:'API绠＄悊',inquiries:'璇㈢洏绠＄悊',messages:'娑堟伅涓績',competitors:'绔炲搧鐩戞帶',workflow:'宸ヤ綔娴?};
+const titles = {dashboard:'仪表盘',accounts:'账号管理',creator:'内容创作',calendar:'发布日历',analytics:'数据分析',team:'团队协作',assets:'素材库',products:'产品管理',api:'API管理',inquiries:'询盘管理',messages:'消息中心',competitors:'竞品监控',workflow:'工作流'};
 document.getElementById('headerTitle').textContent = titles[pageId];
 }
 function showModal(id) { document.getElementById('modal-' + id).classList.add('active'); }
@@ -1306,7 +726,7 @@ function closeModal(e) { if(e.target.classList.contains('modal-overlay')) e.targ
 function showToast(msg, type) {
 const t = document.createElement('div');
 t.className = 'toast ' + type;
-t.innerHTML = '<span>' + (type==='success'?'鉁?:'鉁?) + '</span><span>' + msg + '</span>';
+t.innerHTML = '<span>' + (type==='success'?'✓':'✕') + '</span><span>' + msg + '</span>';
 document.getElementById('toastContainer').appendChild(t);
 setTimeout(() => t.remove(), 4000);
 }
@@ -1320,53 +740,53 @@ function aiGenerate() {
 const output = document.getElementById('aiOutput');
 const body = document.getElementById('contentBody');
 output.style.display = 'block';
-output.innerHTML = '<div class="loading"><div class="spinner"></div><span>AI 姝ｅ湪鐢熸垚鍐呭...</span></div>';
+output.innerHTML = '<div class="loading"><div class="spinner"></div><span>AI 正在生成内容...</span></div>';
 setTimeout(() => {
-const content = '瀹㈡埛瑙佽瘉\n\n"杩囧幓6涓湀锛屾垜浠洜 Engine Mount 璐ㄩ噺闂鏀跺埌浜嗚秴杩?0璧峰鎴锋姇璇夈€傝嚜浠庢洿鎹緵搴斿晢鍚庯紝鎶曡瘔褰掗浂锛屽璐巼鎻愬崌浜?5%锛?\n\n鈥斺€?寰峰浗鏌愬ぇ鍨嬫苯閰嶅垎閿€鍟嗛噰璐粡鐞?Michael\n\n涓轰粈涔堥€夋嫨鎴戜滑鐨?Engine Mount锛焅n鈥?閲囩敤浼樿川澶╃劧姗¤兌锛岃€愭补鑰愯€佸寲\n鈥?绮惧瘑閲戝睘楠ㄦ灦锛屾壙杞藉姏鎻愬崌40%\n鈥?閫氳繃ISO/TS16949璁よ瘉锛孫E鍝佽川淇濊瘉\n鈥?閫傞厤涓绘祦杞﹀瀷锛氫赴鐢般€佹湰鐢般€佸ぇ浼椼€佸疂椹瓑\n\n#EngineMount #AutoParts #B2B #Automotive';
+const content = '';
 output.innerHTML = content;
 body.value = content;
-document.getElementById('contentTitle').value = 'Engine Mount 瀹㈡埛鎴愬姛妗堜緥';
-showToast('鍐呭鐢熸垚鎴愬姛锛?, 'success');
+document.getElementById('contentTitle').value = '';
+showToast('', 'success');
 }, 2000);
 }
 function connectAccount(platform, e) {
 var evt = e || window.event;
 var btn = evt ? evt.target : null;
 if(btn) {
-btn.innerHTML = '杩炴帴涓?..';
+btn.innerHTML = '连接中...';
 btn.disabled = true;
 setTimeout(() => {
-btn.innerHTML = '杩炴帴璐﹀彿';
+btn.innerHTML = '连接账号';
 btn.disabled = false;
-showToast(platform + ' 璐﹀彿杩炴帴鎴愬姛锛?, 'success');
+showToast(platform + ' 账号连接成功！', 'success');
 }, 1500);
 }
 }
-function testAccount(platform) { showToast(platform + ' 杩炴帴娴嬭瘯鎴愬姛锛?, 'success'); }
-function saveContent() { showToast('鑽夌宸蹭繚瀛?, 'success'); }
-function scheduleContent() { showToast('宸叉坊鍔犲埌鍙戝竷闃熷垪', 'success'); }
-function publishNow() { showToast('鍐呭鍙戝竷鎴愬姛锛?, 'success'); }
-function changeMonth(dir) { showToast(dir > 0 ? '涓嬩釜鏈? : '涓婁釜鏈?, 'success'); }
-// 绱犳潗搴撳姛鑳?
-function browsePath(type) { showToast('璇烽€夋嫨' + type + '鐩綍', 'success'); }
-function syncCloud() { showToast('浜戠绱犳潗鍚屾涓?..', 'success'); }
-function refreshAssets() { showToast('绱犳潗搴撳凡鍒锋柊', 'success'); }
+function testAccount(platform) { showToast(platform + ' 连接测试成功！', 'success'); }
+function saveContent() { showToast('', 'success'); }
+function scheduleContent() { showToast('', 'success'); }
+function publishNow() { showToast('', 'success'); }
+function changeMonth(dir) { showToast(dir > 0 ? '下个月' : '上个月', 'success'); }
+// 素材库功能
+function browsePath(type) { showToast('请选择' + type + '目录', 'success'); }
+function syncCloud() { showToast('', 'success'); }
+function refreshAssets() { showToast('', 'success'); }
 function filterAssets(type, e) {
 document.querySelectorAll('.asset-toolbar .tool-btn').forEach(b => b.classList.remove('active'));
 var evt = e || window.event;
 if(evt && evt.target) evt.target.classList.add('active');
-showToast('绛涢€? ' + type, 'success');
+showToast('筛选: ' + type, 'success');
 }
-function previewAsset(id) { showToast('棰勮绱犳潗: ' + id, 'success'); }
-// API绠＄悊鍔熻兘
-function clearLogs() { showToast('鏃ュ織宸叉竻绌?, 'success'); }
-function exportLogs() { showToast('鏃ュ織瀵煎嚭鎴愬姛', 'success'); }
-function saveApiConfig() { showToast('API閰嶇疆宸蹭繚瀛?, 'success'); }
-// 浜у搧绠＄悊鍔熻兘
+function previewAsset(id) { showToast('预览素材: ' + id, 'success'); }
+// API管理功能
+function clearLogs() { showToast('', 'success'); }
+function exportLogs() { showToast('', 'success'); }
+function saveApiConfig() { showToast('', 'success'); }
+// 产品管理功能
 function showProductDetail(id) { showModal('productDetail'); }
 function addProduct() { showModal('addProduct'); }
 
-// 绱犳潗绠＄悊鍔熻兘
+// 素材管理功能
 function browsePath(type) {
 const paths = {
 root: 'D:\\AutoParts\\assets\\',
@@ -1377,78 +797,78 @@ testimonials: 'D:\\AutoParts\\assets\\testimonials\\',
 docs: 'D:\\AutoParts\\assets\\docs\\',
 templates: 'D:\\AutoParts\\assets\\templates\\'
 };
-showToast('娴忚: ' + (paths[type] || type), 'info');
+showToast('浏览: ' + (paths[type] || type), 'info');
 }
-function syncCloud() { showToast('姝ｅ湪鍚屾浜戠绱犳潗搴?..', 'info'); setTimeout(() => showToast('鍚屾瀹屾垚锛屾柊澧?12 涓礌鏉?, 'success'), 2000); }
-function refreshAssets() { showToast('姝ｅ湪鎵弿绱犳潗搴?..', 'info'); setTimeout(() => showToast('鎵弿瀹屾垚锛屽叡 293 涓礌鏉?, 'success'), 1500); }
+function syncCloud() { showToast('正在同步云端素材库...', 'info'); setTimeout(() => showToast('同步完成，新增 12 个素材', 'success'), 2000); }
+function refreshAssets() { showToast('正在扫描素材库...', 'info'); setTimeout(() => showToast('扫描完成，共 293 个素材', 'success'), 1500); }
 function importAssets() { showModal('importAssets'); }
 function previewAsset(id) { showModal('assetPreview'); }
-function searchAssets(query) { if(query.length > 2) showToast('鎼滅储: ' + query, 'info'); }
-function loadMoreAssets() { showToast('鍔犺浇鏇村绱犳潗...', 'info'); }
-function testPath() { showToast('杩炴帴娴嬭瘯鎴愬姛', 'success'); }
-function useAsset() { hideModal('assetPreview'); showToast('绱犳潗宸叉坊鍔犲埌缂栬緫鍣?, 'success'); }
+function searchAssets(query) { if(query.length > 2) showToast('搜索: ' + query, 'info'); }
+function loadMoreAssets() { showToast('加载更多素材...', 'info'); }
+function testPath() { showToast('', 'success'); }
+function useAsset() { hideModal('assetPreview'); showToast('', 'success'); }
 
-// 鍥㈤槦鏉冮檺鍔熻兘
+// 团队权限功能
 function showMemberDetail(id) { showModal('memberDetail'); }
-function loadRolePermissions(role) { showToast('宸插姞杞?' + role + ' 瑙掕壊鏉冮檺', 'info'); }
-function loadMoreLogs() { showToast('鍔犺浇鏇村鏃ュ織...', 'info'); }
+function loadRolePermissions(role) { showToast('已加载 ' + role + ' 角色权限', 'info'); }
+function loadMoreLogs() { showToast('加载更多日志...', 'info'); }
 
-// 鍐呭妯℃澘鍔熻兘
+// 内容模板功能
 function applyTemplate(id) {
 const templates = {
-'product-launch': {title: '馃殌 {浜у搧鍚峿 姝ｅ紡涓婂競锛?, body: '鎴戜滑寰堥珮鍏村湴瀹ｅ竷 {浜у搧鍚峿 鐜板凡涓婂競锛乗n\n鉁?鏍稿績鐗圭偣锛歕n鈥?鐗圭偣1\n鈥?鐗圭偣2\n鈥?鐗圭偣3\n\n馃摝 閫傞厤杞﹀瀷锛歿杞﹀瀷鍒楄〃}\n馃挵 鎵瑰彂浠锋牸锛氳仈绯绘垜浠幏鍙栨渶浼樻姤浠穃n\n#AutoParts #B2B #{浜у搧鍚峿'},
-'promotion': {title: '馃帀 闄愭椂浼樻儬娲诲姩', body: '馃敟 {娲诲姩鍚嶇О} 寮€濮嬪暒锛乗n\n鈴?娲诲姩鏃堕棿锛歿寮€濮嬫棩鏈焳 - {缁撴潫鏃ユ湡}\n馃挵 浼樻儬鍔涘害锛歿鎶樻墸淇℃伅}\n\n閫傜敤浜у搧锛歕n鈥?{浜у搧1}\n鈥?{浜у搧2}\n\n绔嬪嵆璇环鑾峰彇涓撳睘浼樻儬锛乗n#淇冮攢 #浼樻儬 #AutoParts'},
-'tech-tutorial': {title: '馃摎 {浜у搧鍚峿 瀹夎鎸囧崡', body: '浠婂ぉ涓哄ぇ瀹跺甫鏉?{浜у搧鍚峿 鐨勪笓涓氬畨瑁呮暀绋嬶細\n\n馃敡 鎵€闇€宸ュ叿锛歕n鈥?宸ュ叿1\n鈥?宸ュ叿2\n\n馃搵 瀹夎姝ラ锛歕n1. 姝ラ涓€\n2. 姝ラ浜孿n3. 姝ラ涓塡n\n鈿狅笍 娉ㄦ剰浜嬮」锛歕n鈥?娉ㄦ剰鐐?\n鈥?娉ㄦ剰鐐?\n\n#瀹夎鏁欑▼ #鎶€鏈垎浜?#{浜у搧鍚峿'},
-'testimonial': {title: '馃挰 瀹㈡埛濂借瘎鍒嗕韩', body: '鎰熻阿鏉ヨ嚜 {瀹㈡埛鍦板尯} 鐨?{瀹㈡埛鍚嶇О} 鍒嗕韩锛歕n\n"{璇勪环鍐呭}"\n\n馃搳 閲囪喘淇℃伅锛歕n鈥?浜у搧锛歿浜у搧鍚峿\n鈥?鏁伴噺锛歿閲囪喘鏁伴噺}\n鈥?鍚堜綔鏃堕暱锛歿鍚堜綔鏃堕暱}\n\n鏈熷緟涓庢洿澶氬鎴峰缓绔嬮暱鏈熷悎浣滐紒\n#瀹㈡埛瑙佽瘉 #B2B鍚堜綔'}
+'product-launch': {title: '🚀 {产品名} 正式上市！', body: '我们很高兴地宣布 {产品名} 现已上市！\n\n✨ 核心特点：\n• 特点1\n• 特点2\n• 特点3\n\n📦 适配车型：{车型列表}\n💰 批发价格：联系我们获取最优报价\n\n#AutoParts #B2B #{产品名}'},
+'promotion': {title: '🎉 限时优惠活动', body: '🔥 {活动名称} 开始啦！\n\n⏰ 活动时间：{开始日期} - {结束日期}\n💰 优惠力度：{折扣信息}\n\n适用产品：\n• {产品1}\n• {产品2}\n\n立即询价获取专属优惠！\n#促销 #优惠 #AutoParts'},
+'tech-tutorial': {title: '📚 {产品名} 安装指南', body: '今天为大家带来 {产品名} 的专业安装教程：\n\n🔧 所需工具：\n• 工具1\n• 工具2\n\n📋 安装步骤：\n1. 步骤一\n2. 步骤二\n3. 步骤三\n\n⚠️ 注意事项：\n• 注意点1\n• 注意点2\n\n#安装教程 #技术分享 #{产品名}'},
+'testimonial': {title: '💬 客户好评分享', body: '感谢来自 {客户地区} 的 {客户名称} 分享：\n\n"{评价内容}"\n\n📊 采购信息：\n• 产品：{产品名}\n• 数量：{采购数量}\n• 合作时长：{合作时长}\n\n期待与更多客户建立长期合作！\n#客户见证 #B2B合作'}
 };
 const t = templates[id];
 if(t) {
 document.getElementById('contentTitle').value = t.title;
 document.getElementById('contentBody').value = t.body;
 hideModal('templates');
-showToast('妯℃澘宸插簲鐢?, 'success');
+showToast('', 'success');
 }
 }
 function setPreviewPlatform(platform, el) {
 document.querySelectorAll('.chip-group:first-child .chip').forEach(c => c.classList.remove('on'));
 el.classList.add('on');
-showToast('鍒囨崲鍒?' + platform + ' 棰勮', 'info');
+showToast('切换到 ' + platform + ' 预览', 'info');
 }
 function setPreviewDevice(device, el) {
 document.querySelectorAll('.chip-group:last-child .chip').forEach(c => c.classList.remove('on'));
 el.classList.add('on');
-showToast('鍒囨崲鍒? + (device === 'mobile' ? '绉诲姩绔? : '妗岄潰绔?) + '棰勮', 'info');
+showToast('切换到' + (device === 'mobile' ? '移动端' : '桌面端') + '预览', 'info');
 }
-function capturePreview() { showToast('棰勮鎴浘宸蹭繚瀛?, 'success'); }
-function publishContent() { hideModal('preview'); showToast('鍐呭宸插彂甯冨埌閫夊畾骞冲彴', 'success'); }
+function capturePreview() { showToast('', 'success'); }
+function publishContent() { hideModal('preview'); showToast('', 'success'); }
 
-// 瀹氭椂浠诲姟绠＄悊
+// 定时任务管理
 function updateCronPreview() {
 const type = document.getElementById('taskType').value;
 document.getElementById('onceConfig').style.display = type === 'once' ? 'block' : 'none';
 document.getElementById('repeatConfig').style.display = ['daily','weekly','monthly'].includes(type) ? 'block' : 'none';
 document.getElementById('cronConfig').style.display = type === 'custom' ? 'block' : 'none';
-if(type === 'weekly') document.getElementById('repeatDayLabel').textContent = '鎵ц鏃ユ湡(鍛?';
-else if(type === 'monthly') document.getElementById('repeatDayLabel').textContent = '鎵ц鏃ユ湡(鏈?';
+if(type === 'weekly') document.getElementById('repeatDayLabel').textContent = '执行日期(周)';
+else if(type === 'monthly') document.getElementById('repeatDayLabel').textContent = '执行日期(月)';
 }
 function saveTask() {
 hideModal('scheduleTask');
-showToast('瀹氭椂浠诲姟宸插垱寤?, 'success');
+showToast('', 'success');
 }
 function editTask(id) { showModal('scheduleTask'); }
-function cancelTask(id) { showToast('浠诲姟 #' + id + ' 宸插彇娑?, 'info'); }
-function pauseTask(id) { showToast('浠诲姟 #' + id + ' 宸叉殏鍋?, 'info'); }
+function cancelTask(id) { showToast('任务 #' + id + ' 已取消', 'info'); }
+function pauseTask(id) { showToast('任务 #' + id + ' 已暂停', 'info'); }
 function viewTaskLog(id) { showModal('taskLog'); }
-function retryTask(id) { showToast('浠诲姟 #' + id + ' 閲嶆柊鎵ц涓?..', 'info'); }
-function rerunTask(id) { showToast('浠诲姟 #' + id + ' 閲嶆柊鎵ц涓?..', 'info'); }
-function refreshTasks() { showToast('浠诲姟鍒楄〃宸插埛鏂?, 'success'); }
+function retryTask(id) { showToast('任务 #' + id + ' 重新执行中...', 'info'); }
+function rerunTask(id) { showToast('任务 #' + id + ' 重新执行中...', 'info'); }
+function refreshTasks() { showToast('', 'success'); }
 
-// 澶氳瑷€鏀寔
+// 多语言支持
 const translations = {
-zh: {dashboard:'浠〃鐩?,accounts:'璐﹀彿绠＄悊',creator:'鍐呭鍒涗綔',calendar:'鍙戝竷鏃ュ巻',analytics:'鏁版嵁鍒嗘瀽',team:'鍥㈤槦鍗忎綔',assets:'绱犳潗搴?,products:'浜у搧绠＄悊',api:'API绠＄悊',newContent:'鏂板缓鍐呭',help:'甯姪',exposure:'鎬绘洕鍏夐噺',interaction:'鎬讳簰鍔ㄩ噺',rate:'浜掑姩鐜?,inquiry:'璇㈢洏杞寲'},
+zh: {dashboard:'仪表盘',accounts:'账号管理',creator:'内容创作',calendar:'发布日历',analytics:'数据分析',team:'团队协作',assets:'素材库',products:'产品管理',api:'API管理',newContent:'新建内容',help:'帮助',exposure:'总曝光量',interaction:'总互动量',rate:'互动率',inquiry:'询盘转化'},
 en: {dashboard:'Dashboard',accounts:'Accounts',creator:'Creator',calendar:'Calendar',analytics:'Analytics',team:'Team',assets:'Assets',products:'Products',api:'API',newContent:'New Content',help:'Help',exposure:'Total Exposure',interaction:'Interactions',rate:'Engagement Rate',inquiry:'Inquiries'},
 de: {dashboard:'Dashboard',accounts:'Konten',creator:'Ersteller',calendar:'Kalender',analytics:'Analytik',team:'Team',assets:'Materialien',products:'Produkte',api:'API',newContent:'Neuer Inhalt',help:'Hilfe',exposure:'Gesamtansichten',interaction:'Interaktionen',rate:'Engagement',inquiry:'Anfragen'},
-ar: {dashboard:'賱賵丨丞 丕賱賯賷丕丿丞',accounts:'丕賱丨爻丕亘丕鬲',creator:'丕賱賲賳卮卅',calendar:'丕賱鬲賯賵賷賲',analytics:'丕賱鬲丨賱賷賱丕鬲',team:'丕賱賮乇賷賯',assets:'丕賱賲賵丕丿',products:'丕賱賲賳鬲噩丕鬲',api:'API',newContent:'賲丨鬲賵賶 噩丿賷丿',help:'賲爻丕毓丿丞',exposure:'廿噩賲丕賱賷 丕賱賲卮丕賴丿丕鬲',interaction:'鬲賮丕毓賱丕鬲',rate:'賲毓丿賱 丕賱鬲賮丕毓賱',inquiry:'丕賱丕爻鬲賮爻丕乇丕鬲'}
+ar: {dashboard:'لوحة القيادة',accounts:'الحسابات',creator:'المنشئ',calendar:'التقويم',analytics:'التحليلات',team:'الفريق',assets:'المواد',products:'المنتجات',api:'API',newContent:'محتوى جديد',help:'مساعدة',exposure:'إجمالي المشاهدات',interaction:'تفاعلات',rate:'معدل التفاعل',inquiry:'الاستفسارات'}
 };
 let currentLang = 'zh';
 function changeLang(lang) {
@@ -1464,10 +884,10 @@ const keys = ['exposure','interaction','rate','inquiry'];
 if(keys[i]) el.textContent = t[keys[i]];
 });
 document.querySelector('.btn.btn-primary').textContent = '+ ' + t.newContent;
-showToast('璇█宸插垏鎹?, 'success');
+showToast('', 'success');
 }
 
-// Canvas 鍥捐〃缁樺埗
+// Canvas 图表绘制
 function drawLineChart(canvasId, labels, data, color) {
 const canvas = document.getElementById(canvasId);
 if (!canvas) return;
@@ -1590,14 +1010,14 @@ ctx.fillText(v + 'K', pad + barW + 5, y + barH/2 + 4);
 });
 }
 
-// 鐢ㄦ埛鏁版嵁闅旂绯荤粺
-const currentUser = {id:'zhang',name:'寮犵粡鐞?,avatar:'寮?};
+// 用户数据隔离系统
+const currentUser = {id:'zhang',name:'张经理',avatar:'张'};
 function switchUser(userId, e) {
 const users = {
-zhang:{id:'zhang',name:'寮犵粡鐞?,avatar:'寮?,color:'#3b82f6'},
-li:{id:'li',name:'鏉庣紪杈?,avatar:'鏉?,color:'#10b981'},
-wang:{id:'wang',name:'鐜嬭璁?,avatar:'鐜?,color:'#f59e0b'},
-chen:{id:'chen',name:'闄堝鏍?,avatar:'闄?,color:'#8b5cf6'}
+zhang:{id:'zhang',name:'张经理',avatar:'张',color:'#3b82f6'},
+li:{id:'li',name:'李编辑',avatar:'李',color:'#10b981'},
+wang:{id:'wang',name:'王设计',avatar:'王',color:'#f59e0b'},
+chen:{id:'chen',name:'陈审核',avatar:'陈',color:'#8b5cf6'}
 };
 currentUser.id = users[userId].id;
 currentUser.name = users[userId].name;
@@ -1612,9 +1032,9 @@ if(listItem) listItem.classList.add('active');
 }
 loadUserData();
 hideModal('userSwitch');
-showToast('宸插垏鎹㈢敤鎴? ' + currentUser.name, 'success');
+showToast('已切换用户: ' + currentUser.name, 'success');
 }
-// 鏁版嵁瀛樺偍浣跨敤鐢ㄦ埛鍓嶇紑闅旂
+// 数据存储使用用户前缀隔离
 function saveData(key, value) {
 const storageKey = 'autoparts_' + currentUser.id + '_' + key;
 localStorage.setItem(storageKey, JSON.stringify(value));
@@ -1625,31 +1045,23 @@ const data = localStorage.getItem(storageKey);
 return data ? JSON.parse(data) : null;
 }
 function loadUserData() {
-console.log('鍔犺浇鐢ㄦ埛鏁版嵁:', currentUser.name);
-// 鍙互鍦ㄨ繖閲屽姞杞界敤鎴风壒瀹氱殑鏁版嵁
+console.log('加载用户数据:', currentUser.name);
+// 可以在这里加载用户特定的数据
 }
-// 澶氳瑷€缈昏瘧绯荤粺
+// 多语言翻译系统
 const userTranslations = {};
 function applyTranslations() {
 const source = document.getElementById('translateSource').value;
 const targetLangs = ['en','de','es','pt','ru','ar'];
-userTranslations[currentUser.id] = {
-source: source,
-en: 'Our Engine Mount products feature premium rubber compounds for superior vibration dampening.',
-de: 'Unsere Motorlager zeichnen sich durch hochwertige Gummimischungen aus.',
-es: 'Nuestros soportes de motor cuentan con compuestos de caucho premium.',
-pt: 'Nossos suportes de motor apresentam compostos de borracha premium.',
-ru: '袧邪褕懈 芯锌芯褉褘 写胁懈谐邪褌械谢褟 懈蟹谐芯褌芯胁谢械薪褘 懈蟹 锌褉械屑懈邪谢褜薪褘褏 褉械蟹懈薪芯胁褘褏 泻芯屑锌邪褍薪写芯胁.',
-ar: '賲賳鬲噩丕鬲 丨丕賲賱 丕賱賲丨乇賰 丕賱禺丕氐丞 亘賳丕 賲氐賳賵毓丞 賲賳 賲乇賰亘丕鬲 丕賱賲胤丕胤 丕賱賮丕禺乇丞.'
-};
+userTranslations[currentUser.id] = {};
 showTranslationList();
 hideModal('translate');
-showToast('缈昏瘧宸插簲鐢ㄥ埌鍐呭', 'success');
+showToast('', 'success');
 }
 function showTranslationList() {
 const list = document.getElementById('translationList');
 if(!list) return;
-const langs = {'en':'馃嚞馃嚙 English','de':'馃嚛馃嚜 Deutsch','es':'馃嚜馃嚫 Espa帽ol','pt':'馃嚙馃嚪 Portugu锚s','ru':'馃嚪馃嚭 袪褍褋褋泻懈泄','ar':'馃嚫馃嚘 丕賱毓乇亘賷丞'};
+const langs = {'en':'🇬🇧 English','de':'🇩🇪 Deutsch','es':'🇪🇸 Español','pt':'🇧🇷 Português','ru':'🇷🇺 Русский','ar':'🇸🇦 العربية'};
 let html = '';
 for(const [code, label] of Object.entries(langs)) {
 if(userTranslations[currentUser.id] && userTranslations[currentUser.id][code]) {
@@ -1662,25 +1074,25 @@ list.innerHTML = html;
 }
 }
 
-// 鍒濆鍖栧浘琛?
+// 初始化图表
 function initCharts() {
-drawLineChart('exposureChart', ['鍛ㄤ竴','鍛ㄤ簩','鍛ㄤ笁','鍛ㄥ洓','鍛ㄤ簲','鍛ㄥ叚','鍛ㄦ棩'], [3.2,4.1,3.8,5.2,4.8,6.1,5.5], '#3b82f6');
+drawLineChart('exposureChart', ['周一','周二','周三','周四','周五','周六','周日'], [3.2,4.1,3.8,5.2,4.8,6.1,5.5], '#3b82f6');
 drawPieChart('platformChart', [12300,8700,5200,2300], ['Facebook','Instagram','LinkedIn','YouTube'], ['#1877f2','#e4405f','#0a66c2','#ff0000']);
-drawBarChart('productChart', ['Engine','Strut','Bushing','Control','Ball'], [8.2,6.5,5.8,4.2,3.5], ['#3b82f6','#10b981','#f59e0b','#8b5cf6','#ef4444']);
-drawHorizontalBarChart('contentTypeChart', ['浜у搧灞曠ず','瀹㈡埛瑙佽瘉','鎶€鏈创澹?,'琛屼笟娲炲療'], [8.2,6.5,5.1,4.7], '#8b5cf6');
+drawBarChart('productChart', [], [], []);
+drawHorizontalBarChart('contentTypeChart', ['产品展示','客户见证','技术贴士','行业洞察'], [8.2,6.5,5.1,4.7], '#8b5cf6');
 drawBarChart('timeChart', ['6-9','9-12','12-15','15-18','18-21','21-24'], [1.2,3.5,4.8,6.2,5.1,2.8], ['#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#06b6d4']);
 }
-// 鏂板姛鑳藉嚱鏁?
-function selectMessage(id) { console.log('閫夋嫨娑堟伅:', id); }
-function sendMessage() { showToast('娑堟伅宸插彂閫?, 'success'); }
-function selectCompetitor(id) { console.log('閫夋嫨绔炲搧:', id); }
-function editWorkflow(id) { showModal('editWorkflow'); showToast('缂栬緫宸ヤ綔娴?#' + id, 'success'); }
-function approve(id) { showToast('瀹℃壒閫氳繃', 'success'); }
-function reject(id) { showToast('宸查┏鍥?, 'error'); }
-function selectExport(format) { showToast('閫夋嫨瀵煎嚭鏍煎紡: ' + format.toUpperCase(), 'success'); }
-function setExportFormat(format) { showToast('璁剧疆瀵煎嚭鏍煎紡: ' + format.toUpperCase(), 'success'); }
-function exportData() { hideModal('exportData'); showToast('鏁版嵁瀵煎嚭鎴愬姛锛?, 'success'); }
-function followUp(id) { showModal('followUp'); showToast('璺熻繘璇㈢洏 #' + id, 'success'); }
+// 新功能函数
+function selectMessage(id) { console.log('选择消息:', id); }
+function sendMessage() { showToast('', 'success'); }
+function selectCompetitor(id) { console.log('选择竞品:', id); }
+function editWorkflow(id) { showModal('editWorkflow'); showToast('编辑工作流 #' + id, 'success'); }
+function approve(id) { showToast('', 'success'); }
+function reject(id) { showToast('已驳回', 'error'); }
+function selectExport(format) { showToast('选择导出格式: ' + format.toUpperCase(), 'success'); }
+function setExportFormat(format) { showToast('设置导出格式: ' + format.toUpperCase(), 'success'); }
+function exportData() { hideModal('exportData'); showToast('', 'success'); }
+function followUp(id) { showModal('followUp'); showToast('跟进询盘 #' + id, 'success'); }
 function viewQuote(id) { showModal('viewQuote'); }
 function viewOrder(id) { showModal('viewOrder'); }
 window.addEventListener('load', initCharts);
