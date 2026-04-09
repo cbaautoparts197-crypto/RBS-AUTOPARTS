@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AutoParts B2B 社媒营销管理系统 v2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c12;--surface:#13131c;--elevated:#1a1a26;--hover:#22222f;--border:rgba(255,255,255,0.08);--text:#fff;--text-s:#b0b0c0;--text-m:#606075;--blue:#3b82f6;--blue-g:rgba(59,130,246,0.2);--green:#10b981;--green-g:rgba(16,185,129,0.2);--red:#ef4444;--purple:#8b5cf6;--orange:#f59e0b;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+.sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:var(--surface);border-right:1px solid var(--border);padding:20px 12px;z-index:100;overflow-y:auto;}
+.logo{display:flex;align-items:center;gap:10px;padding:0 8px;margin-bottom:24px;}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;color:var(--text-s);cursor:pointer;transition:all 0.2s;margin-bottom:4px;}
+.nav-item:hover{background:var(--hover);color:var(--text);}
+.nav-item.active{background:var(--blue-g);color:var(--blue);}
+.main{margin-left:240px;}
+.header{height:56px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:50;}
+.content{padding:24px;}
+.page{display:none;animation:fadeIn 0.3s;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px;}
+.card-header{padding:16px 20px;border-bottom:1px solid var(--border);font-weight:600;font-size:14px;display:flex;justify-content:space-between;align-items:center;}
+.card-body{padding:20px;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;}
+.stat-card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.2s;}
+.stat-card:hover{transform:translateY(-2px);border-color:var(--border);}
+.stat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
+.stat-icon.blue{background:var(--blue-g);color:var(--blue);}
+.stat-icon.green{background:var(--green-g);color:var(--green);}
+.stat-icon.purple{background:rgba(139,92,246,0.2);color:var(--purple);}
+.stat-icon.orange{background:rgba(245,158,11,0.2);color:var(--orange);}
+.stat-value{font-size:28px;font-weight:700;}
+.stat-label{font-size:12px;color:var(--text-m);margin-top:4px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.grid-3{display:grid;grid-template-columns:2fr 1fr;gap:20px;}
+.account-card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.account-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.account-info{display:flex;align-items:center;gap:12px;}
+.platform-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;}
+.platform-icon.facebook{background:linear-gradient(135deg,#1877f2,#0d65d9);}
+.platform-icon.instagram{background:linear-gradient(135deg,#e4405f,#fd1d1d,#fcb045);}
+.platform-icon.linkedin{background:linear-gradient(135deg,#0a66c2,#004182);}
+.platform-icon.youtube{background:linear-gradient(135deg,#ff0000,#cc0000);}
+.platform-icon.tiktok{background:linear-gradient(135deg,#000,#25f4ee,#fe2c55);}
+.platform-icon.twitter{background:linear-gradient(135deg,#1da1f2,#0d8bd9);}
+.platform-icon.pinterest{background:linear-gradient(135deg,#e60023,#bd081c);}
+.platform-icon.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);}
+.status-badge{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.status-badge.connected{background:var(--green-g);color:var(--green);}
+.status-badge.disconnected{background:var(--hover);color:var(--text-m);}
+.form-group{margin-bottom:12px;}
+.form-label{display:block;font-size:12px;color:var(--text-m);margin-bottom:6px;}
+.form-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--text);font-family:inherit;}
+.form-input:focus{outline:none;border-color:var(--blue);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.btn{padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer;transition:all 0.2s;border:none;}
+.btn-primary{background:var(--blue);color:white;}
+.btn-primary:hover{background:#2563eb;}
+.btn-secondary{background:var(--hover);color:var(--text);border:1px solid var(--border);}
+.btn-group{display:flex;gap:10px;margin-top:16px;}
+.creator-grid{display:grid;grid-template-columns:1fr 340px;gap:20px;}
+.editor-area{background:var(--elevated);border:1px solid var(--border);border-radius:12px;}
+.editor-toolbar{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;}
+.tool-btn{padding:8px 12px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--text-s);font-size:12px;cursor:pointer;}
+.tool-btn:hover{background:var(--hover);color:var(--text);}
+.tool-btn.active{background:var(--blue-g);color:var(--blue);border-color:var(--blue);}
+.editor-content{padding:20px;}
+.editor-title{font-size:22px;font-weight:700;background:transparent;border:none;color:var(--text);width:100%;margin-bottom:12px;font-family:inherit;}
+.editor-title::placeholder{color:var(--text-m);}
+.editor-body{width:100%;min-height:280px;background:transparent;border:none;color:var(--text);font-size:14px;line-height:1.7;font-family:inherit;resize:none;}
+.editor-body:focus{outline:none;}
+.settings-card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;}
+.settings-title{font-size:13px;font-weight:600;margin-bottom:12px;}
+.chip-group{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{padding:6px 12px;border-radius:16px;background:var(--surface);border:1px solid var(--border);color:var(--text-s);font-size:12px;cursor:pointer;transition:all 0.2s;}
+.chip:hover{background:var(--hover);}
+.chip.selected{background:var(--blue-g);border-color:var(--blue);color:var(--blue);}
+.calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.calendar-nav{display:flex;align-items:center;gap:12px;}
+.calendar-nav button{width:32px;height:32px;border-radius:8px;background:var(--hover);border:none;color:var(--text);cursor:pointer;font-size:16px;}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.calendar-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:13px;cursor:pointer;position:relative;}
+.calendar-day:hover{background:var(--hover);}
+.calendar-day.today{background:var(--blue-g);color:var(--blue);font-weight:600;}
+.calendar-day.has-post::after{content:'';position:absolute;bottom:4px;width:6px;height:6px;background:var(--green);border-radius:50%;}
+.calendar-weekday{text-align:center;font-size:11px;color:var(--text-m);padding:8px 0;font-weight:500;}
+.metric-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+.metric-row:last-child{border-bottom:none;}
+.metric-label{color:var(--text-s);font-size:13px;}
+.metric-value{font-weight:600;font-size:13px;}
+.metric-change{font-size:11px;margin-left:6px;}
+.metric-change.up{color:var(--green);}
+.metric-change.down{color:var(--red);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.team-card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
+.team-avatar{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;}
+.team-avatar-sm{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;}
+.team-list{display:flex;flex-direction:column;gap:8px;}
+.team-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;cursor:pointer;transition:all 0.2s;}
+.team-item:hover{background:var(--hover);}
+.role-badge{padding:4px 10px;border-radius:12px;font-size:10px;font-weight:600;text-transform:uppercase;}
+.role-badge.admin{background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;}
+.role-badge.editor{background:linear-gradient(135deg,#10b981,#06b6d4);color:#fff;}
+.role-badge.reviewer{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;}
+.role-badge.designer{background:linear-gradient(135deg,#ec4899,#f43f5e);color:#fff;}
+.role-badge.viewer{background:var(--surface);color:var(--text-m);border:1px solid var(--border);}
+.permission-table{width:100%;border-collapse:collapse;font-size:11px;}
+.permission-table th,.permission-table td{padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);}
+.permission-table th{background:var(--elevated);font-weight:600;color:var(--text-m);}
+.permission-table td:first-child{text-align:left;font-weight:500;}
+.permission-table .check{color:var(--green);font-weight:700;}
+.permission-table .no{color:var(--text-m);}
+.log-list{display:flex;flex-direction:column;gap:4px;}
+.log-item{display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--elevated);border-radius:6px;font-size:12px;}
+.log-time{color:var(--text-m);font-family:monospace;min-width:70px;}
+.log-user{color:var(--blue);min-width:60px;}
+.log-action{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;min-width:50px;text-align:center;}
+.log-action.create{background:#3b82f620;color:#3b82f6;}
+.log-action.edit{background:#f59e0b20;color:#f59e0b;}
+.log-action.approve{background:#10b98120;color:#10b981;}
+.log-action.publish{background:#8b5cf620;color:#8b5cf6;}
+.log-action.delete{background:#ef444420;color:#ef4444;}
+.log-action.upload{background:#06b6d420;color:#06b6d4;}
+.log-action.setting{background:#64748b20;color:#64748b;}
+.log-action.system{background:#1e293b20;color:#94a3b8;}
+.log-desc{flex:1;color:var(--text-s);}
+.template-card{background:var(--elevated);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
+.template-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+.template-preview{height:80px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.template-info{padding:12px;}
+.template-name{font-weight:600;font-size:13px;margin-bottom:4px;}
+.template-desc{font-size:11px;color:var(--text-m);margin-bottom:8px;}
+.template-tags{display:flex;gap:4px;}
+.template-tags .chip{padding:2px 8px;font-size:10px;}
+.preview-container{background:#fff;border-radius:12px;overflow:hidden;color:#1e293b;}
+.preview-container.desktop{padding:16px;}
+.preview-container.mobile{max-width:320px;margin:0 auto;}
+.preview-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.preview-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.preview-name{font-weight:600;font-size:13px;}
+.preview-time,.preview-location{font-size:11px;color:#64748b;}
+.preview-content{border:1px solid #e2e8f0;border-radius:8px;overflow:hidden;}
+.preview-title{padding:12px;font-weight:600;font-size:14px;}
+.preview-text{padding:0 12px 12px;font-size:13px;line-height:1.5;color:#475569;}
+.preview-image{height:200px;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.preview-stats{padding:12px;display:flex;gap:16px;font-size:12px;color:#64748b;border-top:1px solid #e2e8f0;}
+.preview-actions{padding:12px;display:flex;gap:16px;font-size:20px;}
+.preview-likes{padding:0 12px;font-size:12px;font-weight:600;}
+.preview-caption{padding:12px;font-size:12px;line-height:1.4;}
+.task-table{width:100%;border-collapse:collapse;font-size:12px;}
+.task-table th,.task-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);}
+.task-table th{background:var(--elevated);font-weight:600;color:var(--text-m);font-size:11px;text-transform:uppercase;}
+.task-table tbody tr:hover{background:var(--hover);}
+.task-type{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;}
+.task-type.once{background:#3b82f620;color:#3b82f6;}
+.task-type.daily{background:#10b98120;color:#10b981;}
+.task-type.weekly{background:#f59e0b20;color:#f59e0b;}
+.task-type.monthly{background:#8b5cf620;color:#8b5cf6;}
+.task-status{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;}
+.task-status.pending{background:#f59e0b20;color:#f59e0b;}
+.task-status.active{background:#10b98120;color:#10b981;}
+.task-status.completed{background:#3b82f620;color:#3b82f6;}
+.task-status.failed{background:#ef444420;color:#ef4444;}
+.cron-preview{background:var(--elevated);border-radius:8px;padding:12px;margin-top:8px;font-family:monospace;font-size:11px;color:var(--text-m);}
+.team-name{font-weight:600;margin-bottom:4px;}
+.team-role{font-size:12px;color:var(--text-m);}
+.team-platforms{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap;}
+.team-platforms span{padding:4px 8px;background:var(--surface);border-radius:4px;font-size:11px;}
+.post-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:center;}
+.post-item:last-child{border-bottom:none;}
+.post-platform{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.post-content{flex:1;}
+.post-title{font-size:14px;font-weight:500;margin-bottom:4px;}
+.post-meta{font-size:12px;color:var(--text-m);}
+.post-status{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:500;}
+.post-status.published{background:var(--green-g);color:var(--green);}
+.post-status.scheduled{background:var(--blue-g);color:var(--blue);}
+.post-status.draft{background:var(--hover);color:var(--text-m);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:200;}
+.modal-overlay.active{display:flex;}
+.modal{background:var(--elevated);border:1px solid var(--border);border-radius:16px;padding:24px;width:90%;max-width:500px;max-height:90vh;overflow-y:auto;}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.modal-title{font-size:18px;font-weight:700;}
+.modal-close{width:32px;height:32px;border-radius:50%;background:var(--hover);border:none;color:var(--text);cursor:pointer;font-size:18px;}
+.toast-container{position:fixed;bottom:24px;right:24px;z-index:300;}
+.toast{background:var(--elevated);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:10px;margin-top:10px;animation:slideIn 0.3s;}
+@keyframes slideIn{from{transform:translateX(100px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+.toast.success{border-color:var(--green);}
+.toast.error{border-color:var(--red);}
+.ai-output{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;font-size:14px;line-height:1.7;}
+.loading{display:flex;align-items:center;gap:8px;color:var(--text-m);}
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* 素材库样式 */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.asset-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.2s;}
+.asset-card:hover{transform:translateY(-4px);border-color:var(--blue);}
+.asset-preview{height:140px;background:var(--hover);display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;}
+.asset-preview.image{background-size:cover;background-position:center;}
+.asset-info{padding:12px;}
+.asset-name{font-size:13px;font-weight:500;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.asset-meta{font-size:11px;color:var(--text-m);display:flex;justify-content:space-between;}
+.asset-tag{padding:2px 6px;border-radius:4px;font-size:10px;background:var(--hover);}
+.asset-tag.product{background:var(--blue-g);color:var(--blue);}
+.asset-tag.banner{background:rgba(139,92,246,0.2);color:var(--purple);}
+.asset-tag.video{background:rgba(239,68,68,0.2);color:var(--red);}
+.asset-toolbar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.asset-search{flex:1;min-width:200px;}
+.path-config{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:20px;}
+.path-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
+.path-icon{width:36px;height:36px;border-radius:8px;background:var(--hover);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.path-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-size:13px;color:var(--text);}
+.path-status{padding:4px 10px;border-radius:12px;font-size:11px;}
+.path-status.valid{background:var(--green-g);color:var(--green);}
+.path-status.invalid{background:rgba(239,68,68,0.2);color:var(--red);}
+/* API日志样式 */
+.api-log{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;font-family:'Courier New',monospace;font-size:12px;max-height:300px;overflow-y:auto;}
+.log-entry{padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+.log-time{color:var(--text-m);white-space:nowrap;}
+.log-status{padding:2px 6px;border-radius:4px;font-size:10px;white-space:nowrap;}
+.log-status.success{background:var(--green-g);color:var(--green);}
+.log-status.error{background:rgba(239,68,68,0.2);color:var(--red);}
+.log-status.pending{background:var(--blue-g);color:var(--blue);}
+.log-text{flex:1;word-break:break-all;}
+.rate-limit{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
+.rate-bar{flex:1;height:8px;background:var(--hover);border-radius:4px;overflow:hidden;}
+.rate-fill{height:100%;border-radius:4px;transition:width 0.3s;}
+/* 消息中心样式 */
+.message-item{display:flex;gap:12px;padding:12px;cursor:pointer;transition:background 0.2s;border-bottom:1px solid var(--border);}
+.message-item:hover{background:var(--hover);}
+.message-item.unread{background:rgba(59,130,246,0.05);}
+.message-item.unread .msg-name{font-weight:600;}
+.msg-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:14px;flex-shrink:0;}
+.msg-content{flex:1;min-width:0;}
+.msg-header{display:flex;justify-content:space-between;margin-bottom:4px;}
+.msg-name{font-size:13px;}
+.msg-time{font-size:11px;color:var(--text-m);}
+.msg-preview{font-size:12px;color:var(--text-m);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.chat-msg{display:flex;flex-direction:column;max-width:80%;}
+.chat-msg.sent{align-self:flex-end;}
+.chat-msg.received{align-self:flex-start;}
+.chat-bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;}
+.chat-msg.sent .chat-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:4px;}
+.chat-msg.received .chat-bubble{background:var(--elevated);border-bottom-left-radius:4px;}
+.chat-time{font-size:10px;color:var(--text-m);margin-top:4px;text-align:right;}
+/* 竞品监控样式 */
+.competitor-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;}
+.competitor-item:hover{background:var(--hover);transform:translateX(4px);}
+.comp-logo{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;}
+.activity-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.act-icon{font-size:16px;}
+/* 工作流样式 */
+.workflow-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
+.wf-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.approval-item{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
+/* 数据导出样式 */
+.export-option{display:flex;align-items:center;gap:12px;padding:16px;background:var(--elevated);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;border:2px solid transparent;}
+.export-option:hover{background:var(--hover);border-color:var(--blue);}
+.export-option.selected{border-color:var(--blue);background:rgba(59,130,246,0.1);}
+.export-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--hover);}
+/* AI推荐样式 */
+.ai-card{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));border:1px solid rgba(59,130,246,0.2);border-radius:12px;padding:16px;margin-bottom:12px;}
+/* 用户切换样式 */
+.user-switch{display:flex;align-items:center;cursor:pointer;padding:4px 12px;border-radius:20px;background:var(--elevated);transition:all 0.2s;}
+.user-switch:hover{background:var(--hover);}
+.user-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:12px;}
+.user-list-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;cursor:pointer;transition:all 0.2s;}
+.user-list-item:hover{background:var(--hover);}
+.user-list-item.active{background:var(--blue-g);border:1px solid var(--blue);}
+.user-list-item .user-avatar{width:36px;height:36px;font-size:14px;}
+/* 多语言翻译样式 */
+.translation-item{background:var(--elevated);border-radius:8px;padding:12px;margin-bottom:8px;}
+.translation-item .lang-label{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:8px;}
+.translation-item .lang-content{font-size:13px;color:var(--text-s);line-height:1.5;}
+.ai-suggestion{display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:8px;margin-bottom:8px;}
+.ai-score{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;}
+@media(max-width:1200px){.stats-grid{grid-template-columns:repeat(2,1fr);}.creator-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}.asset-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.sidebar{display:none;}.main{margin-left:0;}.stats-grid{grid-template-columns:1fr;}.grid-2,.grid-3{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.asset-grid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<nav class="sidebar">
+<div class="logo"><div class="logo-icon">🚗</div><div><div style="font-weight:700;font-size:14px">AutoParts</div><div style="font-size:10px;color:var(--text-m)">社媒营销系统 v2.0</div></div></div>
+<div class="nav-item active" onclick="showPage('dashboard',event)"><span style="font-size:18px;width:20px;text-align:center">📊</span><span>仪表盘</span></div>
+<div class="nav-item" onclick="showPage('accounts',event)"><span style="font-size:18px;width:20px;text-align:center">🔗</span><span>账号管理</span></div>
+<div class="nav-item" onclick="showPage('creator',event)"><span style="font-size:18px;width:20px;text-align:center">✍️</span><span>内容创作</span></div>
+<div class="nav-item" onclick="showPage('calendar',event)"><span style="font-size:18px;width:20px;text-align:center">📅</span><span>发布日历</span></div>
+<div class="nav-item" onclick="showPage('analytics',event)"><span style="font-size:18px;width:20px;text-align:center">📈</span><span>数据分析</span></div>
+<div class="nav-item" onclick="showPage('team',event)"><span style="font-size:18px;width:20px;text-align:center">👥</span><span>团队协作</span></div>
+<div class="nav-item" onclick="showPage('assets',event)"><span style="font-size:18px;width:20px;text-align:center">📁</span><span>素材库</span></div>
+<div class="nav-item" onclick="showPage('products',event)"><span style="font-size:18px;width:20px;text-align:center">🚗</span><span>产品管理</span></div>
+<div class="nav-item" onclick="showPage('api',event)"><span style="font-size:18px;width:20px;text-align:center">🔌</span><span>API管理</span></div>
+<div class="nav-item" onclick="showPage('inquiries',event)"><span style="font-size:18px;width:20px;text-align:center">📩</span><span>询盘管理</span></div>
+<div class="nav-item" onclick="showPage('messages',event)"><span style="font-size:18px;width:20px;text-align:center">💬</span><span>消息中心</span></div>
+<div class="nav-item" onclick="showPage('competitors',event)"><span style="font-size:18px;width:20px;text-align:center">🔍</span><span>竞品监控</span></div>
+<div class="nav-item" onclick="showPage('workflow',event)"><span style="font-size:18px;width:20px;text-align:center">⚙️</span><span>工作流</span></div>
+<div style="margin-top:24px;padding:12px;border-top:1px solid var(--border);">
+<div style="display:flex;align-items:center;gap:10px;">
+<div style="width:32px;height:32px;background:linear-gradient(135deg,var(--green),var(--blue));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;">管</div>
+<div><div style="font-size:13px;font-weight:600">管理员</div><div style="font-size:11px;color:var(--text-m)">主账号</div></div>
+</div>
+</div>
+</nav>
+<div class="main">
+<header class="header">
+<div id="headerTitle" style="font-size:18px;font-weight:700">仪表盘</div>
+<div style="display:flex;gap:12px;align-items:center">
+<div class="user-switch" onclick="showModal('userSwitch')">
+<div class="user-avatar" id="currentUserAvatar">张</div>
+<span id="currentUserName" style="font-size:13px;margin-left:8px">张经理</span>
+</div>
+<select class="form-input" style="width:110px;font-size:12px;padding:6px 10px" id="langSelect" onchange="changeLang(this.value)">
+<option value="zh">🇨🇳 中文</option>
+<option value="en">🇺🇸 English</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="es">🇪🇸 Español</option>
+<option value="pt">🇧🇷 Português</option>
+<option value="ru">🇷🇺 Русский</option>
+<option value="ar">🇸🇦 العربية</option>
+</select>
+<button class="btn btn-secondary" onclick="showModal('help')">❓ 帮助</button>
+<button class="btn btn-primary" onclick="showModal('newContent')">+ 新建内容</button>
+</div>
+</header>
+<div class="content">
+<!-- Dashboard -->
+<div class="page active" id="page-dashboard">
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon blue">📝</div><div class="stat-value">156</div><div class="stat-label">本月发布内容</div></div>
+<div class="stat-card"><div class="stat-icon green">👁️</div><div class="stat-value">28.5K</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon purple">💬</div><div class="stat-value">1,247</div><div class="stat-label">互动次数</div></div>
+<div class="stat-card"><div class="stat-icon orange">📈</div><div class="stat-value">+18%</div><div class="stat-label">转化增长</div></div>
+</div>
+<div class="grid-3">
+<div class="card"><div class="card-header">最近发布</div><div class="card-body">
+<div class="post-item"><div class="post-platform platform-icon facebook">f</div><div class="post-content"><div class="post-title">Engine Mount 客户成功案例</div><div class="post-meta">Facebook · 2小时前</div></div><span class="post-status published">已发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon instagram">📷</div><div class="post-content"><div class="post-title">Bushing 产品对比信息图</div><div class="post-meta">Instagram · 5小时前</div></div><span class="post-status published">已发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"><div class="post-title">汽配行业供应链趋势分析</div><div class="post-meta">LinkedIn · 明天 09:00</div></div><span class="post-status scheduled">待发布</span></div>
+<div class="post-item"><div class="post-platform platform-icon youtube">▶</div><div class="post-content"><div class="post-title">产品安装教程视频脚本</div><div class="post-meta">YouTube · 草稿</div></div><span class="post-status draft">草稿</span></div>
+</div></div>
+<div class="card"><div class="card-header">平台表现</div><div class="card-body">
+<div class="metric-row"><span class="metric-label">Facebook</span><span class="metric-value">12.3K 曝光<span class="metric-change up">↑12%</span></span></div>
+<div class="metric-row"><span class="metric-label">Instagram</span><span class="metric-value">8.7K 曝光<span class="metric-change up">↑8%</span></span></div>
+<div class="metric-row"><span class="metric-label">LinkedIn</span><span class="metric-value">5.2K 曝光<span class="metric-change up">↑15%</span></span></div>
+<div class="metric-row"><span class="metric-label">YouTube</span><span class="metric-value">2.3K 曝光<span class="metric-change down">↓3%</span></span></div>
+</div></div>
+</div>
+</div>
+
+<!-- Accounts Page -->
+<div class="page" id="page-accounts">
+<div class="grid-2">
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon facebook">f</div><div><div style="font-weight:600">Facebook</div><div style="font-size:12px;color:var(--text-m)">Business Page</div></div></div><span class="status-badge disconnected" id="fb-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Page ID</label><input class="form-input" id="fb-pageId" placeholder="例如: 123456789012345"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="fb-appId" placeholder="Facebook App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="fb-appSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="fb-token" type="password" placeholder="长期访问令牌"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('facebook',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('facebook')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon instagram">📷</div><div><div style="font-weight:600">Instagram</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="ig-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Instagram Account ID</label><input class="form-input" id="ig-accountId" placeholder="例如: 17841400000000000"></div>
+<div class="form-group"><label class="form-label">Facebook Page ID</label><input class="form-input" id="ig-fbPageId" placeholder="关联的 Facebook Page ID"></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="ig-token" type="password" placeholder="Instagram Graph API Token"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('instagram',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('instagram')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon linkedin">in</div><div><div style="font-weight:600">LinkedIn</div><div style="font-size:12px;color:var(--text-m)">Company Page</div></div></div><span class="status-badge disconnected" id="li-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Company Page ID</label><input class="form-input" id="li-companyId" placeholder="例如: urn:li:company:12345678"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="li-clientId" placeholder="LinkedIn App Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="li-clientSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="li-token" type="password" placeholder="OAuth 2.0 Access Token"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('linkedin',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('linkedin')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon youtube">▶</div><div><div style="font-weight:600">YouTube</div><div style="font-size:12px;color:var(--text-m)">Channel</div></div></div><span class="status-badge disconnected" id="yt-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Channel ID</label><input class="form-input" id="yt-channelId" placeholder="例如: UCxxxxxxxxxxxxxxxxx"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Client ID</label><input class="form-input" id="yt-clientId" placeholder="Google OAuth Client ID"></div><div class="form-group"><label class="form-label">Client Secret</label><input class="form-input" id="yt-clientSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Refresh Token</label><input class="form-input" id="yt-refreshToken" type="password" placeholder="OAuth Refresh Token"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('youtube',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('youtube')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon tiktok">♪</div><div><div style="font-weight:600">TikTok</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tt-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Advertiser ID</label><input class="form-input" id="tt-advertiserId" placeholder="TikTok Advertiser ID"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="tt-appId" placeholder="TikTok App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="tt-appSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="tt-token" type="password" placeholder="Access Token"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('tiktok',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('tiktok')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon twitter">𝕏</div><div><div style="font-weight:600">Twitter/X</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="tw-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Bearer Token</label><input class="form-input" id="tw-bearerToken" type="password" placeholder="API Bearer Token"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">API Key</label><input class="form-input" id="tw-apiKey" placeholder="Consumer Key"></div><div class="form-group"><label class="form-label">API Secret</label><input class="form-input" id="tw-apiSecret" type="password" placeholder="Consumer Secret"></div></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('twitter',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('twitter')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon pinterest">P</div><div><div style="font-weight:600">Pinterest</div><div style="font-size:12px;color:var(--text-m)">Business Account</div></div></div><span class="status-badge disconnected" id="pt-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Board ID</label><input class="form-input" id="pt-boardId" placeholder="Pinterest Board ID"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">App ID</label><input class="form-input" id="pt-appId" placeholder="Pinterest App ID"></div><div class="form-group"><label class="form-label">App Secret</label><input class="form-input" id="pt-appSecret" type="password" placeholder="••••••••"></div></div>
+<div class="form-group"><label class="form-label">Access Token</label><input class="form-input" id="pt-token" type="password" placeholder="OAuth Token"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('pinterest',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('pinterest')">测试连接</button></div>
+</div>
+<div class="account-card"><div class="account-header"><div class="account-info"><div class="platform-icon whatsapp">💬</div><div><div style="font-weight:600">WhatsApp Business</div><div style="font-size:12px;color:var(--text-m)">Business API</div></div></div><span class="status-badge disconnected" id="wa-status">未连接</span></div>
+<div class="form-group"><label class="form-label">Phone Number ID</label><input class="form-input" id="wa-phoneId" placeholder="Business Phone Number ID"></div>
+<div class="form-row"><div class="form-group"><label class="form-label">Business Account ID</label><input class="form-input" id="wa-businessId" placeholder="WABA ID"></div><div class="form-group"><label class="form-label">Permanent Token</label><input class="form-input" id="wa-token" type="password" placeholder="••••••••"></div></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="connectAccount('whatsapp',event)">连接账号</button><button class="btn btn-secondary" onclick="testAccount('whatsapp')">测试连接</button></div>
+</div>
+</div>
+</div>
+
+<!-- Creator Page -->
+<div class="page" id="page-creator">
+<div class="creator-grid">
+<div class="editor-area">
+<div class="editor-toolbar">
+<button class="tool-btn active" onclick="setContentType('post',event)">📝 帖子</button>
+<button class="tool-btn" onclick="setContentType('article',event)">📄 文章</button>
+<button class="tool-btn" onclick="setContentType('video',event)">🎬 视频脚本</button>
+<button class="tool-btn" onclick="setContentType('infographic',event)">📊 信息图</button>
+<button class="tool-btn" onclick="setContentType('story',event)">🩷 Story</button>
+<button class="tool-btn" onclick="setContentType('reel',event)">🎞️ Reels</button>
+<button class="tool-btn" onclick="showModal('templates')" style="background:var(--orange);color:#fff;border-color:var(--orange)">📋 模板</button>
+<button class="tool-btn" onclick="showModal('preview')" style="background:var(--green);color:#fff;border-color:var(--green)">👁️ 预览</button>
+<button class="tool-btn" onclick="aiGenerate()" style="background:var(--purple);color:#fff;border-color:var(--purple)">✨ AI生成</button>
+</div>
+<div class="editor-content">
+<input class="editor-title" id="contentTitle" placeholder="输入标题...">
+<textarea class="editor-body" id="contentBody" placeholder="输入内容或使用 AI 生成..."></textarea>
+<div id="aiOutput" class="ai-output" style="display:none"></div>
+</div>
+</div>
+<div>
+<div class="settings-card">
+<div class="settings-title">📍 发布平台 (8个)</div>
+<div class="chip-group">
+<span class="chip" onclick="toggleChip(this)" data-platform="facebook">📘 Facebook</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="instagram">📷 Instagram</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="linkedin">💼 LinkedIn</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="youtube">▶️ YouTube</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="tiktok">♪ TikTok</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="twitter">𝕏 Twitter/X</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="pinterest">📌 Pinterest</span>
+<span class="chip" onclick="toggleChip(this)" data-platform="whatsapp">💬 WhatsApp</span>
+</div>
+</div>
+<div class="settings-card">
+<div class="settings-title">🚗 产品选择 (12种)</div>
+<div class="chip-group">
+<span class="chip" onclick="toggleChip(this)" data-product="engine-mount">🔧 Engine Mount</span>
+<span class="chip" onclick="toggleChip(this)" data-product="strut-mount">🔩 Strut Mount</span>
+<span class="chip" onclick="toggleChip(this)" data-product="bushing">⭕ Bushing</span>
+<span class="chip" onclick="toggleChip(this)" data-product="control-arm">🦴 Control Arm</span>
+<span class="chip" onclick="toggleChip(this)" data-product="ball-joint">⚪ Ball Joint</span>
+<span class="chip" onclick="toggleChip(this)" data-product="shock-absorber">📊 Shock Absorber</span>
+<span class="chip" onclick="toggleChip(this)" data-product="tie-rod-end">🔗 Tie Rod End</span>
+<span class="chip" onclick="toggleChip(this)" data-product="stabilizer-link">⛓️ Stabilizer Link</span>
+<span class="chip" onclick="toggleChip(this)" data-product="center-bearing">⚙️ Center Bearing</span>
+<span class="chip" onclick="toggleChip(this)" data-product="coil-spring">🌀 Coil Spring</span>
+<span class="chip" onclick="toggleChip(this)" data-product="sway-bar">📏 Sway Bar</span>
+<span class="chip" onclick="toggleChip(this)" data-product="wheel-hub">⭕ Wheel Hub</span>
+</div>
+</div>
+<div class="settings-card">
+<div class="settings-title">🎯 内容类型</div>
+<div class="chip-group">
+<span class="chip" onclick="toggleChip(this)" data-type="product">产品展示</span>
+<span class="chip" onclick="toggleChip(this)" data-type="testimonial">客户见证</span>
+<span class="chip" onclick="toggleChip(this)" data-type="tech">技术贴士</span>
+<span class="chip" onclick="toggleChip(this)" data-type="industry">行业洞察</span>
+<span class="chip" onclick="toggleChip(this)" data-type="install">安装教程</span>
+<span class="chip" onclick="toggleChip(this)" data-type="compare">产品对比</span>
+</div>
+</div>
+<div class="settings-card">
+<div class="settings-title">🌍 目标市场</div>
+<div class="chip-group">
+<span class="chip" onclick="toggleChip(this)" data-market="europe">🇪🇺 欧洲</span>
+<span class="chip" onclick="toggleChip(this)" data-market="north-america">🇺🇸 北美</span>
+<span class="chip" onclick="toggleChip(this)" data-market="middle-east">🇸🇦 中东</span>
+<span class="chip" onclick="toggleChip(this)" data-market="asia-pacific">🌏 亚太</span>
+</div>
+</div>
+<div class="settings-card">
+<div class="settings-title">🌐 多语言发布 <button class="btn btn-secondary" style="padding:2px 6px;font-size:10px;float:right" onclick="showModal('translate')">✨ AI翻译</button></div>
+<div class="chip-group">
+<span class="chip selected" onclick="toggleChip(this)" data-lang="zh">🇨🇳 中文</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="en">🇬🇧 English</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="de">🇩🇪 Deutsch</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="es">🇪🇸 Español</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="pt">🇧🇷 Português</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="ru">🇷🇺 Русский</span>
+<span class="chip" onclick="toggleChip(this)" data-lang="ar">🇸🇦 العربية</span>
+</div>
+<div id="translatedContent" style="margin-top:12px;display:none">
+<div style="font-size:11px;color:var(--text-m);margin-bottom:8px">已翻译版本：</div>
+<div id="translationList" style="max-height:200px;overflow-y:auto"></div>
+</div>
+</div>
+<div class="settings-card">
+<div class="settings-title">📅 发布时间</div>
+<div class="form-group"><label class="form-label">日期</label><input class="form-input" type="date" id="scheduleDate"></div>
+<div class="form-group"><label class="form-label">时间</label><input class="form-input" type="time" id="scheduleTime" value="09:00"></div>
+</div>
+<div class="btn-group" style="flex-direction:column">
+<button class="btn btn-primary" onclick="saveContent()">💾 保存草稿</button>
+<button class="btn btn-secondary" onclick="scheduleContent()">📅 定时发布</button>
+<button class="btn btn-secondary" onclick="publishNow()">🚀 立即发布</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Calendar Page -->
+<div class="page" id="page-calendar">
+<div class="grid-3">
+<div class="card" style="grid-column:span 2">
+<div class="card-header">
+<span>发布日历 - 2026年4月</span>
+<div class="calendar-nav">
+<button onclick="changeMonth(-1)">◀</button>
+<span id="calendarMonth">2026年4月</span>
+<button onclick="changeMonth(1)">▶</button>
+</div>
+</div>
+<div class="card-body">
+<div class="calendar-grid">
+<div class="calendar-weekday">日</div><div class="calendar-weekday">一</div><div class="calendar-weekday">二</div><div class="calendar-weekday">三</div><div class="calendar-weekday">四</div><div class="calendar-weekday">五</div><div class="calendar-weekday">六</div>
+<div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day has-post">3</div><div class="calendar-day has-post">4</div><div class="calendar-day">5</div>
+<div class="calendar-day">6</div><div class="calendar-day has-post">7</div><div class="calendar-day today">8</div><div class="calendar-day has-post">9</div><div class="calendar-day">10</div><div class="calendar-day has-post">11</div><div class="calendar-day">12</div>
+<div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day has-post">15</div><div class="calendar-day">16</div><div class="calendar-day has-post">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div>
+<div class="calendar-day">20</div><div class="calendar-day has-post">21</div><div class="calendar-day">22</div><div class="calendar-day has-post">23</div><div class="calendar-day">24</div><div class="calendar-day has-post">25</div><div class="calendar-day">26</div>
+<div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day has-post">30</div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">今日待发布 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 新建任务</button></div>
+<div class="card-body">
+<div class="post-item"><div class="post-platform platform-icon facebook">f</div><div class="post-content"><div class="post-title">Engine Mount 客户见证</div><div class="post-meta">15:00 · 欧洲</div></div></div>
+<div class="post-item"><div class="post-platform platform-icon instagram">📷</div><div class="post-content"><div class="post-title">Bushing 对比信息图</div><div class="post-meta">21:00 · 北美</div></div></div>
+<div class="post-item"><div class="post-platform platform-icon linkedin">in</div><div class="post-content"><div class="post-title">供应链趋势分析</div><div class="post-meta">明天 09:00</div></div></div>
+</div>
+</div>
+</div>
+
+<div class="card" style="margin-top:24px">
+<div class="card-header">⏰ 定时任务管理 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('scheduleTask')">+ 新建</button> <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px;float:right;margin-right:8px" onclick="refreshTasks()">🔄 刷新</button></div>
+<div class="card-body">
+<div style="display:flex;gap:8px;margin-bottom:16px">
+<input class="form-input" style="flex:1;font-size:12px;padding:6px 10px" placeholder="搜索任务...">
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部状态</option><option>待执行</option><option>执行中</option><option>已完成</option><option>失败</option></select>
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部类型</option><option>一次性</option><option>每日</option><option>每周</option><option>每月</option></select>
+</div>
+<table class="task-table">
+<thead><tr><th>任务名称</th><th>类型</th><th>执行时间</th><th>目标平台</th><th>状态</th><th>操作</th></tr></thead>
+<tbody>
+<tr><td><div style="font-weight:600">Engine Mount 促销发布</div><div style="font-size:11px;color:var(--text-m)">产品推广内容</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-08</div><div style="font-size:11px;color:var(--text-m)">15:00 GMT+1</div></td><td><span class="chip">📘 FB</span> <span class="chip">💼 LI</span></td><td><span class="task-status pending">待执行</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(1)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="cancelTask(1)">取消</button></td></tr>
+<tr><td><div style="font-weight:600">每日产品动态</div><div style="font-size:11px;color:var(--text-m)">自动生成产品内容</div></td><td><span class="task-type daily">每日</span></td><td><div>每天 09:00</div><div style="font-size:11px;color:var(--text-m)">下次: 明天</div></td><td><span class="chip">📷 IG</span> <span class="chip">♪ TT</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(2)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(2)">暂停</button></td></tr>
+<tr><td><div style="font-weight:600">周报数据汇总</div><div style="font-size:11px;color:var(--text-m)">每周一发送报告</div></td><td><span class="task-type weekly">每周</span></td><td><div>每周一 08:00</div><div style="font-size:11px;color:var(--text-m)">下次: 4月14日</div></td><td><span class="chip">📧 邮件</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(3)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(3)">暂停</button></td></tr>
+<tr><td><div style="font-weight:600">Bushing 视频发布</div><div style="font-size:11px;color:var(--text-m)">产品演示视频</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-07</div><div style="font-size:11px;color:var(--text-m)">14:30 GMT+1</div></td><td><span class="chip">▶️ YT</span></td><td><span class="task-status completed">已完成</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="viewTaskLog(4)">日志</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="rerunTask(4)">重跑</button></td></tr>
+<tr><td><div style="font-weight:600">月度行业报告</div><div style="font-size:11px;color:var(--text-m)">行业趋势分析</div></td><td><span class="task-type monthly">每月</span></td><td><div>每月1日 10:00</div><div style="font-size:11px;color:var(--text-m)">下次: 5月1日</div></td><td><span class="chip">💼 LI</span> <span class="chip">📘 FB</span></td><td><span class="task-status active">执行中</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="editTask(5)">编辑</button> <button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="pauseTask(5)">暂停</button></td></tr>
+<tr><td><div style="font-weight:600">失败任务示例</div><div style="font-size:11px;color:var(--text-m)">API连接失败</div></td><td><span class="task-type once">一次性</span></td><td><div>2026-04-06</div><div style="font-size:11px;color:var(--text-m)">12:00 GMT+1</div></td><td><span class="chip">📷 IG</span></td><td><span class="task-status failed">失败</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px" onclick="viewTaskLog(6)">日志</button> <button class="btn btn-primary" style="padding:2px 8px;font-size:10px" onclick="retryTask(6)">重试</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Analytics Page -->
+<div class="page" id="page-analytics">
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon blue">📊</div><div class="stat-value">28.5K</div><div class="stat-label">总曝光量</div></div>
+<div class="stat-card"><div class="stat-icon green">💬</div><div class="stat-value">1,247</div><div class="stat-label">总互动量</div></div>
+<div class="stat-card"><div class="stat-icon purple">👆</div><div class="stat-value">4.3%</div><div class="stat-label">互动率</div></div>
+<div class="stat-card"><div class="stat-icon orange">🎯</div><div class="stat-value">186</div><div class="stat-label">询盘转化</div></div>
+</div>
+<!-- 数据导出和AI推荐 -->
+<div class="grid-2" style="margin-top:16px">
+<div class="card"><div class="card-header">📤 数据导出 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('exportData')">导出报表</button></div><div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div class="export-option" onclick="selectExport('csv')"><div class="export-icon">📊</div><div><div style="font-weight:600">CSV</div><div style="font-size:10px;color:var(--text-m)">Excel兼容</div></div></div>
+<div class="export-option" onclick="selectExport('excel')"><div class="export-icon">📗</div><div><div style="font-weight:600">Excel</div><div style="font-size:10px;color:var(--text-m)">完整格式</div></div></div>
+<div class="export-option" onclick="selectExport('pdf')"><div class="export-icon">📄</div><div><div style="font-weight:600">PDF</div><div style="font-size:10px;color:var(--text-m)">报告格式</div></div></div>
+</div>
+</div></div>
+<div class="card ai-card"><div class="card-header">🤖 AI智能推荐</div><div class="card-body">
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#10b981,#06b6d4)">92</div><div style="flex:1"><div style="font-size:13px;font-weight:600">最佳发布时间</div><div style="font-size:11px;color:var(--text-m)">周三/周五 10:00-12:00 欧洲时区</div></div></div>
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">87</div><div style="flex:1"><div style="font-size:13px;font-weight:600">推荐内容类型</div><div style="font-size:11px;color:var(--text-m)">客户见证视频转化率最高 (+32%)</div></div></div>
+<div class="ai-suggestion"><div class="ai-score" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">78</div><div style="flex:1"><div style="font-size:13px;font-weight:600">推荐平台</div><div style="font-size:11px;color:var(--text-m)">LinkedIn B2B询盘转化率领先</div></div></div>
+</div></div>
+</div>
+<div class="grid-2">
+<div class="card"><div class="card-header">📈 曝光趋势 (近7天)</div><div class="card-body"><canvas id="exposureChart" height="180"></canvas></div></div>
+<div class="card"><div class="card-header">🥧 平台分布</div><div class="card-body"><canvas id="platformChart" height="180"></canvas></div></div>
+</div>
+<div class="grid-2">
+<div class="card"><div class="card-header">📊 产品表现排名</div><div class="card-body">
+<canvas id="productChart" height="160"></canvas>
+</div></div>
+<div class="card"><div class="card-header">🎯 内容类型效果</div><div class="card-body">
+<canvas id="contentTypeChart" height="160"></canvas>
+</div></div>
+</div>
+<div class="grid-2">
+<div class="card"><div class="card-header">🌍 区域市场表现</div><div class="card-body">
+<div class="metric-row"><span class="metric-label">🇪🇺 欧洲</span><span class="metric-value">12.8K 曝光<span class="metric-change up">↑18%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇺🇸 北美</span><span class="metric-value">8.5K 曝光<span class="metric-change up">↑12%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇸🇦 中东</span><span class="metric-value">4.2K 曝光<span class="metric-change up">↑25%</span></span></div>
+<div class="metric-row"><span class="metric-label">🇦🇺 亚太</span><span class="metric-value">3.0K 曝光<span class="metric-change down">↓5%</span></span></div>
+</div></div>
+<div class="card"><div class="card-header">📅 发布时段分析</div><div class="card-body">
+<canvas id="timeChart" height="120"></canvas>
+</div></div>
+</div>
+</div>
+
+<!-- Team Page -->
+<div class="page" id="page-team">
+<div class="grid-2">
+<div class="card"><div class="card-header">👥 团队成员 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="showModal('addMember')">+ 添加成员</button></div><div class="card-body">
+<div class="team-list">
+<div class="team-item" onclick="showMemberDetail('zhang')">
+<div class="team-avatar-sm" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">张</div>
+<div style="flex:1"><div style="font-weight:600">张经理</div><div style="font-size:11px;color:var(--text-m)">zhang@autoparts.com</div></div>
+<span class="role-badge admin">管理员</span>
+<span style="font-size:11px;color:var(--green)">● 在线</span>
+</div>
+<div class="team-item" onclick="showMemberDetail('li')">
+<div class="team-avatar-sm" style="background:linear-gradient(135deg,#10b981,#06b6d4)">李</div>
+<div style="flex:1"><div style="font-weight:600">李编辑</div><div style="font-size:11px;color:var(--text-m)">li@autoparts.com</div></div>
+<span class="role-badge editor">编辑</span>
+<span style="font-size:11px;color:var(--green)">● 在线</span>
+</div>
+<div class="team-item" onclick="showMemberDetail('wang')">
+<div class="team-avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">王</div>
+<div style="flex:1"><div style="font-weight:600">王设计</div><div style="font-size:11px;color:var(--text-m)">wang@autoparts.com</div></div>
+<span class="role-badge designer">设计</span>
+<span style="font-size:11px;color:var(--text-m)">● 离线</span>
+</div>
+<div class="team-item" onclick="showMemberDetail('zhao')">
+<div class="team-avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">赵</div>
+<div style="flex:1"><div style="font-weight:600">赵审核</div><div style="font-size:11px;color:var(--text-m)">zhao@autoparts.com</div></div>
+<span class="role-badge reviewer">审核</span>
+<span style="font-size:11px;color:var(--text-m)">● 离线</span>
+</div>
+<div class="team-item" onclick="showMemberDetail('chen')">
+<div class="team-avatar-sm" style="background:linear-gradient(135deg,#64748b,#475569)">陈</div>
+<div style="flex:1"><div style="font-weight:600">陈实习生</div><div style="font-size:11px;color:var(--text-m)">chen@autoparts.com</div></div>
+<span class="role-badge viewer">查看</span>
+<span style="font-size:11px;color:var(--text-m)">● 离线</span>
+</div>
+</div>
+</div></div>
+
+<div class="card"><div class="card-header">🔐 角色权限矩阵 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showModal('editRole')">编辑角色</button></div><div class="card-body">
+<div style="overflow-x:auto">
+<table class="permission-table">
+<thead><tr><th>权限</th><th>管理员</th><th>编辑</th><th>审核</th><th>设计</th><th>查看</th></tr></thead>
+<tbody>
+<tr><td>查看内容</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>创建内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td></tr>
+<tr><td>编辑内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td></tr>
+<tr><td>删除内容</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>发布内容</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>审核通过</td><td class="check">✓</td><td class="no">×</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>管理账号</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>管理团队</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>导出数据</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td></tr>
+<tr><td>系统设置</td><td class="check">✓</td><td class="no">×</td><td class="no">×</td><td class="no">×</td><td class="no">×</td></tr>
+</tbody>
+</table>
+</div>
+</div></div>
+</div>
+
+<div class="card"><div class="card-header">📋 操作日志 <input class="form-input" style="width:150px;font-size:11px;padding:4px 8px" placeholder="搜索日志..."></div><div class="card-body">
+<div class="log-list">
+<div class="log-item"><span class="log-time">15:42:18</span><span class="log-user">张经理</span><span class="log-action create">创建</span><span class="log-desc">创建了新内容 "Engine Mount 促销活动"</span></div>
+<div class="log-item"><span class="log-time">15:38:05</span><span class="log-user">李编辑</span><span class="log-action edit">编辑</span><span class="log-desc">修改了 "Strut Mount 产品介绍" 的内容</span></div>
+<div class="log-item"><span class="log-time">15:32:41</span><span class="log-user">赵审核</span><span class="log-action approve">通过</span><span class="log-desc">审核通过了 "Bushing 对比图文"</span></div>
+<div class="log-item"><span class="log-time">15:28:19</span><span class="log-user">王设计</span><span class="log-action upload">上传</span><span class="log-desc">上传了 5 个产品图片素材</span></div>
+<div class="log-item"><span class="log-time">15:15:33</span><span class="log-user">张经理</span><span class="log-action publish">发布</span><span class="log-desc">发布内容到 Facebook 和 LinkedIn</span></div>
+<div class="log-item"><span class="log-time">14:58:22</span><span class="log-user">李编辑</span><span class="log-action delete">删除</span><span class="log-desc">删除了草稿 "测试内容"</span></div>
+<div class="log-item"><span class="log-time">14:45:10</span><span class="log-user">张经理</span><span class="log-action setting">设置</span><span class="log-desc">更新了团队权限配置</span></div>
+<div class="log-item"><span class="log-time">14:30:00</span><span class="log-user">系统</span><span class="log-action system">系统</span><span class="log-desc">自动同步云端素材库完成</span></div>
+</div>
+<div style="text-align:center;margin-top:12px"><button class="btn btn-secondary" style="font-size:11px" onclick="loadMoreLogs()">加载更多...</button></div>
+</div></div>
+</div>
+
+<!-- Products Page -->
+<div class="page" id="page-products">
+<div class="card" style="margin-bottom:24px"><div class="card-header">🚗 产品管理 <button class="btn btn-primary" style="padding:6px 12px;font-size:12px" onclick="showModal('addProduct')">+ 添加产品</button></div></div>
+<div class="grid-3">
+<div class="card" onclick="showProductDetail('engine-mount')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:24px">🔧</div>
+<div><div style="font-weight:600">Engine Mount</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 156 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">8.2K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">42</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$15-85</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">28篇</div></div>
+</div>
+</div></div>
+<div class="card" onclick="showProductDetail('strut-mount')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:24px">🔩</div>
+<div><div style="font-weight:600">Strut Mount</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 98 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">6.5K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">35</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$25-120</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">22篇</div></div>
+</div>
+</div></div>
+<div class="card" onclick="showProductDetail('bushing')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;font-size:24px">⭕</div>
+<div><div style="font-weight:600">Bushing</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 245 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">5.8K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">28</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$5-35</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">18篇</div></div>
+</div>
+</div></div>
+<div class="card" onclick="showProductDetail('control-arm')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#ec4899,#f43f5e);display:flex;align-items:center;justify-content:center;font-size:24px">🦴</div>
+<div><div style="font-weight:600">Control Arm</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 87 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">4.2K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">21</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$45-180</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">15篇</div></div>
+</div>
+</div></div>
+<div class="card" onclick="showProductDetail('ball-joint')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#8b5cf6,#a855f7);display:flex;align-items:center;justify-content:center;font-size:24px">⚪</div>
+<div><div style="font-weight:600">Ball Joint</div><div style="font-size:12px;color:var(--text-m)">悬挂系统 · 112 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">3.5K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">18</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$18-65</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">12篇</div></div>
+</div>
+</div></div>
+<div class="card" onclick="showProductDetail('center-bearing')"><div class="card-body" style="cursor:pointer">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:24px">⚙️</div>
+<div><div style="font-weight:600">Center Bearing</div><div style="font-size:12px;color:var(--text-m)">传动系统 · 45 SKUs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;font-size:12px">
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">曝光量</div><div style="font-weight:600;color:var(--blue)">2.8K</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">询盘</div><div style="font-weight:600;color:var(--green)">14</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">价格区间</div><div style="font-weight:600">$20-75</div></div>
+<div style="background:var(--elevated);padding:8px;border-radius:6px"><div style="color:var(--text-m)">发布数</div><div style="font-weight:600">10篇</div></div>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- Assets Page -->
+<div class="page" id="page-assets">
+<div class="grid-2">
+<div class="card"><div class="card-header">📁 素材路径配置 <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="showModal('addPath')">+ 添加路径</button></div><div class="card-body">
+<div class="path-config">
+<div class="path-item"><div class="path-icon">📂</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">本地素材根目录</div><input class="path-input" id="pathRoot" value="D:\AutoParts\assets\" placeholder="本地素材文件夹路径"></div><span class="path-status valid">有效</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('root')">浏览</button></div>
+<div class="path-item"><div class="path-icon">🖼️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">产品图片目录</div><input class="path-input" id="pathProducts" value="D:\AutoParts\assets\products\" placeholder="产品图片路径"></div><span class="path-status valid">156 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('products')">浏览</button></div>
+<div class="path-item"><div class="path-icon">🎬</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">视频素材目录</div><input class="path-input" id="pathVideos" value="D:\AutoParts\assets\videos\" placeholder="视频素材路径"></div><span class="path-status valid">24 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('videos')">浏览</button></div>
+<div class="path-item"><div class="path-icon">🏷️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">品牌素材目录</div><input class="path-input" id="pathBrand" value="D:\AutoParts\assets\brand\" placeholder="Logo、品牌色等"></div><span class="path-status valid">12 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('brand')">浏览</button></div>
+<div class="path-item"><div class="path-icon">💬</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">客户见证目录</div><input class="path-input" id="pathTestimonials" value="D:\AutoParts\assets\testimonials\" placeholder="客户评价、案例图片"></div><span class="path-status valid">38 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('testimonials')">浏览</button></div>
+<div class="path-item"><div class="path-icon">📄</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">技术文档目录</div><input class="path-input" id="pathDocs" value="D:\AutoParts\assets\docs\" placeholder="安装手册、规格表"></div><span class="path-status valid">45 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('docs')">浏览</button></div>
+<div class="path-item"><div class="path-icon">📐</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">社媒模板目录</div><input class="path-input" id="pathTemplates" value="D:\AutoParts\assets\templates\" placeholder="FB/IG/LI模板"></div><span class="path-status valid">18 文件</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="browsePath('templates')">浏览</button></div>
+<div class="path-item"><div class="path-icon">☁️</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:6px">云端素材库</div><input class="path-input" id="pathCloud" value="https://assets.autoparts.com/b2b/" placeholder="云端素材库URL"></div><span class="path-status valid">已连接</span><button class="btn btn-secondary" style="padding:6px 12px" onclick="syncCloud()">同步</button></div>
+</div>
+<div class="btn-group"><button class="btn btn-primary" onclick="refreshAssets()">🔄 扫描素材库</button><button class="btn btn-secondary" onclick="importAssets()">📥 批量导入</button><button class="btn btn-secondary" onclick="showModal('addAsset')">+ 添加素材</button></div>
+</div></div>
+
+<div class="card"><div class="card-header">📊 素材统计</div><div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--blue)">293</div><div style="font-size:11px;color:var(--text-m)">总素材数</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--green)">156</div><div style="font-size:11px;color:var(--text-m)">产品图片</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--purple)">24</div><div style="font-size:11px;color:var(--text-m)">视频素材</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px;text-align:center"><div style="font-size:24px;font-weight:700;color:var(--orange)">1.2 GB</div><div style="font-size:11px;color:var(--text-m)">总大小</div></div>
+</div>
+<div style="margin-top:16px">
+<div style="font-size:12px;font-weight:600;margin-bottom:8px">素材使用率</div>
+<div style="background:var(--elevated);border-radius:6px;padding:12px">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px">产品图</span><span style="font-size:11px;color:var(--green)">已用 89%</span></div>
+<div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden"><div style="width:89%;height:100%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:3px"></div></div>
+</div>
+<div style="background:var(--elevated);border-radius:6px;padding:12px;margin-top:8px">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px">视频素材</span><span style="font-size:11px;color:var(--blue)">已用 67%</span></div>
+<div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden"><div style="width:67%;height:100%;background:linear-gradient(90deg,#10b981,#06b6d4);border-radius:3px"></div></div>
+</div>
+</div>
+</div></div>
+</div>
+
+<div class="card"><div class="card-header"><span>素材库 (共 293 个素材)</span><input class="form-input" style="width:200px" placeholder="搜索素材..." id="assetSearch" oninput="searchAssets(this.value)"></div><div class="card-body">
+<div class="asset-toolbar">
+<button class="tool-btn active" onclick="filterAssets('all',event)">全部</button>
+<button class="tool-btn" onclick="filterAssets('product',event)">🔧 产品图</button>
+<button class="tool-btn" onclick="filterAssets('video',event)">🎬 视频</button>
+<button class="tool-btn" onclick="filterAssets('banner',event)">📊 Banner</button>
+<button class="tool-btn" onclick="filterAssets('testimonial',event)">💬 见证</button>
+<button class="tool-btn" onclick="filterAssets('doc',event)">📄 文档</button>
+<button class="tool-btn" onclick="filterAssets('template',event)">📐 模板</button>
+</div>
+<div class="asset-grid">
+<div class="asset-card" onclick="previewAsset('engine-mount-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">🔧</div><div class="asset-info"><div class="asset-name">Engine Mount 主图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>2.4 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('strut-mount-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#10b981,#06b6d4)">🔩</div><div class="asset-info"><div class="asset-name">Strut Mount 细节图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>1.8 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('bushing-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">⭕</div><div class="asset-info"><div class="asset-name">Bushing 对比图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>3.1 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('control-arm-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">🦴</div><div class="asset-info"><div class="asset-name">Control Arm 安装图.jpg</div><div class="asset-meta"><span class="asset-tag product">产品图</span><span>2.7 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('banner-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">📊</div><div class="asset-info"><div class="asset-name">B2B促销Banner.jpg</div><div class="asset-meta"><span class="asset-tag banner">Banner</span><span>4.2 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('video-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#06b6d4,#10b981)">🎬</div><div class="asset-info"><div class="asset-name">产品安装教程.mp4</div><div class="asset-meta"><span class="asset-tag video">视频</span><span>128 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('testimonial-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#f59e0b,#10b981)">💬</div><div class="asset-info"><div class="asset-name">德国客户评价.jpg</div><div class="asset-meta"><span class="asset-tag testimonial">见证</span><span>1.2 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('doc-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#64748b,#475569)">📄</div><div class="asset-info"><div class="asset-name">Engine Mount规格表.pdf</div><div class="asset-meta"><span class="asset-tag doc">文档</span><span>245 KB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('template-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#1877f2,#0d65d9)">📐</div><div class="asset-info"><div class="asset-name">FB产品模板.psd</div><div class="asset-meta"><span class="asset-tag template">模板</span><span>8.6 MB</span></div></div></div>
+<div class="asset-card" onclick="previewAsset('brand-1')"><div class="asset-preview" style="background:linear-gradient(135deg,#1e293b,#334155)">🏷️</div><div class="asset-info"><div class="asset-name">公司Logo.png</div><div class="asset-meta"><span class="asset-tag brand">品牌</span><span>156 KB</span></div></div></div>
+</div>
+<div style="text-align:center;margin-top:16px"><button class="btn btn-secondary" onclick="loadMoreAssets()">加载更多...</button></div>
+</div></div>
+</div>
+
+<!-- API Management Page -->
+<div class="page" id="page-api">
+<div class="grid-2">
+<div class="card"><div class="card-header">🔌 API 发布日志</div><div class="card-body">
+<div class="api-log">
+<div class="log-entry"><span class="log-time">15:34:12</span><span class="log-status success">成功</span><span class="log-text">Facebook: 发布成功 ID: FB_28471 | Engine Mount 客户案例</span></div>
+<div class="log-entry"><span class="log-time">15:32:08</span><span class="log-status success">成功</span><span class="log-text">Instagram: 发布成功 ID: IG_9823 | Strut Mount 产品展示</span></div>
+<div class="log-entry"><span class="log-time">15:28:45</span><span class="log-status success">成功</span><span class="log-text">LinkedIn: 发布成功 ID: LI_4521 | 行业趋势分析</span></div>
+<div class="log-entry"><span class="log-time">15:25:22</span><span class="log-status error">失败</span><span class="log-text">TikTok: API限流 (429) | 等待 180 秒后重试</span></div>
+<div class="log-entry"><span class="log-time">15:18:18</span><span class="log-status success">成功</span><span class="log-text">YouTube: 视频上传成功 ID: YT_1204 | 安装教程</span></div>
+<div class="log-entry"><span class="log-time">15:12:33</span><span class="log-status pending">处理中</span><span class="log-text">Pinterest: 图片上传中... (45%)</span></div>
+<div class="log-entry"><span class="log-time">15:08:55</span><span class="log-status success">成功</span><span class="log-text">Twitter: 发布成功 ID: TW_7821 | Bushing 对比信息图</span></div>
+<div class="log-entry"><span class="log-time">15:02:41</span><span class="log-status error">失败</span><span class="log-text">WhatsApp: 模板未审核 | 请先提交模板审核</span></div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="clearLogs()">清空日志</button><button class="btn btn-secondary" onclick="exportLogs()">导出日志</button></div>
+</div></div>
+
+<div class="card"><div class="card-header">⚡ API 速率限制</div><div class="card-body">
+<div class="rate-limit"><div class="platform-icon facebook" style="width:32px;height:32px;font-size:14px">f</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Facebook Graph API</div><div style="font-size:11px;color:var(--text-m)">180/200 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:90%;background:var(--orange)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon instagram" style="width:32px;height:32px;font-size:14px">📷</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Instagram Graph API</div><div style="font-size:11px;color:var(--text-m)">95/100 次/小时</div></div><div class="rate-bar"><div class="rate-fill" style="width:95%;background:var(--red)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon linkedin" style="width:32px;height:32px;font-size:14px">in</div><div style="flex:1"><div style="font-size:13px;font-weight:500">LinkedIn API</div><div style="font-size:11px;color:var(--text-m)">45/100 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:45%;background:var(--green)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon youtube" style="width:32px;height:32px;font-size:14px">▶</div><div style="flex:1"><div style="font-size:13px;font-weight:500">YouTube Data API</div><div style="font-size:11px;color:var(--text-m)">850/10000 次/天</div></div><div class="rate-bar"><div class="rate-fill" style="width:8.5%;background:var(--green)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon tiktok" style="width:32px;height:32px;font-size:14px">♪</div><div style="flex:1"><div style="font-size:13px;font-weight:500">TikTok Business API</div><div style="font-size:11px;color:var(--text-m)">0/100 次/天 (冷却中)</div></div><div class="rate-bar"><div class="rate-fill" style="width:0%;background:var(--text-m)"></div></div></div>
+<div class="rate-limit"><div class="platform-icon twitter" style="width:32px;height:32px;font-size:14px">𝕏</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Twitter API v2</div><div style="font-size:11px;color:var(--text-m)">25/450 次/15分钟</div></div><div class="rate-bar"><div class="rate-fill" style="width:5.5%;background:var(--green)"></div></div></div>
+</div></div>
+
+<div class="card"><div class="card-header">⚙️ API 配置</div><div class="card-body">
+<div class="form-group"><label class="form-label">默认发布模式</label><select class="form-input"><option>自动发布</option><option>审核后发布</option><option>仅保存草稿</option></select></div>
+<div class="form-group"><label class="form-label">失败重试次数</label><input class="form-input" type="number" value="3"></div>
+<div class="form-group"><label class="form-label">重试间隔 (秒)</label><input class="form-input" type="number" value="60"></div>
+<div class="form-group"><label class="form-label">Webhook 回调 URL</label><input class="form-input" placeholder="https://your-server.com/webhook"></div>
+<div class="btn-group"><button class="btn btn-primary" onclick="saveApiConfig()">保存配置</button></div>
+</div></div>
+</div>
+</div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="modal-help" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">使用帮助</span><button class="modal-close" onclick="hideModal('help')">×</button></div>
+<div style="line-height:1.8;color:var(--text-s)">
+<p style="margin-bottom:12px"><strong>账号管理：</strong>在账号管理页面填写各平台API凭证，点击连接账号保存。</p>
+<p style="margin-bottom:12px"><strong>内容创作：</strong>选择平台、产品和内容类型，点击AI生成自动生成内容。</p>
+<p style="margin-bottom:12px"><strong>发布日历：</strong>查看已排期内容，点击日期可快速添加新内容。</p>
+<p><strong>数据分析：</strong>查看各平台曝光、互动、转化数据。</p>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-newContent" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">新建内容</span><button class="modal-close" onclick="hideModal('newContent')">×</button></div>
+<div class="form-group"><label class="form-label">内容类型</label><select class="form-input"><option>产品展示</option><option>客户见证</option><option>技术贴士</option><option>行业洞察</option></select></div>
+<div class="form-group"><label class="form-label">发布平台</label><select class="form-input"><option>Facebook</option><option>Instagram</option><option>LinkedIn</option><option>YouTube</option></select></div>
+<div class="form-group"><label class="form-label">关联产品</label><select class="form-input"><option>Engine Mount</option><option>Strut Mount</option><option>Bushing</option><option>Control Arm</option><option>Ball Joint</option><option>Shock Absorber</option><option>Tie Rod End</option><option>Stabilizer Link</option><option>Center Bearing</option><option>Coil Spring</option><option>Sway Bar</option><option>Wheel Hub</option></select></div>
+<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('newContent');showPage('creator')">开始创作</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-addMember" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">添加团队成员</span><button class="modal-close" onclick="hideModal('addMember')">×</button></div>
+<div class="form-group"><label class="form-label">姓名</label><input class="form-input" placeholder="输入姓名"></div>
+<div class="form-group"><label class="form-label">邮箱</label><input class="form-input" type="email" placeholder="输入邮箱"></div>
+<div class="form-group"><label class="form-label">角色</label><select class="form-input"><option>内容编辑</option><option>视觉设计</option><option>数据分析师</option><option>管理员</option></select></div>
+<div class="form-group"><label class="form-label">管理平台</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span></div></div>
+<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addMember');showToast('成员已添加','success')">添加成员</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-addAsset" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">添加素材</span><button class="modal-close" onclick="hideModal('addAsset')">×</button></div>
+<div class="form-group"><label class="form-label">素材类型</label><select class="form-input"><option>🖼️ 产品图片</option><option>📊 Banner</option><option>🎬 视频</option><option>📄 文档</option></select></div>
+<div class="form-group"><label class="form-label">素材来源</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">本地文件</span><span class="chip" onclick="toggleChip(this)">云端URL</span><span class="chip" onclick="toggleChip(this)">素材库</span></div></div>
+<div class="form-group"><label class="form-label">选择文件</label><input class="form-input" type="file" accept="image/*,video/*,.pdf,.doc,.docx"></div>
+<div class="form-group"><label class="form-label">关联产品</label><select class="form-input"><option>全部产品</option><option>Engine Mount</option><option>Strut Mount</option><option>Bushing</option><option>Control Arm</option></select></div>
+<div class="form-group"><label class="form-label">标签</label><input class="form-input" placeholder="输入标签，逗号分隔"></div>
+<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addAsset');showToast('素材已添加','success')">上传素材</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-addPath" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">添加素材路径</span><button class="modal-close" onclick="hideModal('addPath')">×</button></div>
+<div class="form-group"><label class="form-label">路径名称</label><input class="form-input" placeholder="例如: 活动素材"></div>
+<div class="form-group"><label class="form-label">路径类型</label><select class="form-input" id="pathType"><option value="local">📂 本地目录</option><option value="cloud">☁️ 云端URL</option><option value="ftp">🔗 FTP/SFTP</option></select></div>
+<div class="form-group"><label class="form-label">路径地址</label><input class="form-input" id="pathAddress" placeholder="D:\AutoParts\assets\campaigns\ 或 https://..."></div>
+<div class="form-group"><label class="form-label">自动扫描</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">启用</span><span class="chip" onclick="toggleChip(this)">禁用</span></div></div>
+<div class="form-group"><label class="form-label">文件类型过滤</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">.jpg</span><span class="chip on" onclick="toggleChip(this)">.png</span><span class="chip" onclick="toggleChip(this)">.mp4</span><span class="chip" onclick="toggleChip(this)">.pdf</span><span class="chip" onclick="toggleChip(this)">.psd</span></div></div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="testPath()">测试连接</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('addPath');showToast('路径已添加','success')">添加路径</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-assetPreview" onclick="closeModal(event)">
+<div class="modal" style="max-width:800px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">素材预览</span><button class="modal-close" onclick="hideModal('assetPreview')">×</button></div>
+<div style="background:var(--elevated);border-radius:12px;padding:40px;text-align:center;margin-bottom:16px">
+<div style="font-size:80px;margin-bottom:12px">🔧</div>
+<div style="font-size:14px;color:var(--text-m)">Engine Mount 主图.jpg</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">文件大小</div><div style="font-weight:600">2.4 MB</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">尺寸</div><div style="font-weight:600">1920 × 1080</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">创建时间</div><div style="font-weight:600">2024-04-01</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">使用次数</div><div style="font-weight:600">12 次</div></div>
+</div>
+<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">关联产品</div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">Engine Mount</span><span class="chip">Strut Mount</span></div></div>
+<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">标签</div><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="chip">产品图</span><span class="chip">主图</span><span class="chip">高清</span></div></div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('assetPreview')">关闭</button><button class="btn btn-secondary">下载</button><button class="btn btn-primary" onclick="useAsset()">使用此素材</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-importAssets" onclick="closeModal(event)">
+<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">批量导入素材</span><button class="modal-close" onclick="hideModal('importAssets')">×</button></div>
+<div class="form-group"><label class="form-label">导入来源</label><select class="form-input"><option>📂 本地文件夹</option><option>☁️ 云端URL</option><option>📦 压缩包</option></select></div>
+<div class="form-group"><label class="form-label">选择文件夹</label><input class="form-input" placeholder="D:\AutoParts\assets\new-products\"></div>
+<div class="form-group"><label class="form-label">目标分类</label><select class="form-input"><option>🔧 产品图</option><option>💬 客户见证</option><option>📊 Banner</option><option>🎬 视频</option></select></div>
+<div class="form-group"><label class="form-label">自动重命名</label><div class="chip-group" style="margin-top:8px"><span class="chip on" onclick="toggleChip(this)">产品名_序号</span><span class="chip" onclick="toggleChip(this)">保持原名</span></div></div>
+<div style="background:var(--elevated);border-radius:8px;padding:16px;margin-bottom:16px">
+<div style="font-size:12px;font-weight:600;margin-bottom:8px">预览 (发现 24 个文件)</div>
+<div style="font-size:11px;color:var(--text-m);max-height:120px;overflow-y:auto">
+<div style="padding:4px 0">✓ Engine_Mount_001.jpg</div>
+<div style="padding:4px 0">✓ Engine_Mount_002.jpg</div>
+<div style="padding:4px 0">✓ Strut_Mount_001.jpg</div>
+<div style="padding:4px 0;color:var(--text-m)">... 还有 21 个文件</div>
+</div>
+</div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('importAssets')">取消</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('importAssets');showToast('已导入 24 个素材','success')">开始导入</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-addMember" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">添加团队成员</span><button class="modal-close" onclick="hideModal('addMember')">×</button></div>
+<div class="form-group"><label class="form-label">姓名</label><input class="form-input" placeholder="输入姓名"></div>
+<div class="form-group"><label class="form-label">邮箱</label><input class="form-input" type="email" placeholder="email@autoparts.com"></div>
+<div class="form-group"><label class="form-label">角色</label><select class="form-input"><option value="admin">管理员 - 全部权限</option><option value="editor">编辑 - 创建/编辑/发布</option><option value="reviewer">审核 - 查看/审核</option><option value="designer">设计 - 创建/编辑素材</option><option value="viewer">查看 - 仅查看</option></select></div>
+<div class="form-group"><label class="form-label">负责平台</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span><span class="chip" onclick="toggleChip(this)">TikTok</span></div></div>
+<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addMember');showToast('成员已添加','success')">发送邀请</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-memberDetail" onclick="closeModal(event)">
+<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">成员详情 - 张经理</span><button class="modal-close" onclick="hideModal('memberDetail')">×</button></div>
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+<div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff">张</div>
+<div><div style="font-size:18px;font-weight:600">张经理</div><div style="font-size:12px;color:var(--text-m)">zhang@autoparts.com</div><span class="role-badge admin">管理员</span></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px">
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">创建内容</div><div style="font-size:20px;font-weight:600">128</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">发布内容</div><div style="font-size:20px;font-weight:600">86</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">审核通过</div><div style="font-size:20px;font-weight:600">45</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">最后活跃</div><div style="font-size:14px;font-weight:600">今天 15:42</div></div>
+</div>
+<div style="margin-bottom:16px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">负责平台</div><div style="display:flex;gap:8px"><span class="chip">Facebook</span><span class="chip">LinkedIn</span></div></div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('memberDetail')">关闭</button><button class="btn btn-secondary">编辑权限</button><button class="btn btn-primary">发送消息</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-editRole" onclick="closeModal(event)">
+<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">编辑角色权限</span><button class="modal-close" onclick="hideModal('editRole')">×</button></div>
+<div class="form-group"><label class="form-label">选择角色</label><select class="form-input" id="roleSelect" onchange="loadRolePermissions(this.value)"><option value="admin">管理员</option><option value="editor">编辑</option><option value="reviewer">审核</option><option value="designer">设计</option><option value="viewer">查看</option></select></div>
+<div style="background:var(--elevated);border-radius:8px;padding:16px;margin-bottom:16px">
+<div style="font-size:12px;font-weight:600;margin-bottom:12px">权限设置</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 查看内容</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 创建内容</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 编辑内容</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 删除内容</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 发布内容</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 审核通过</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 管理账号</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 管理团队</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox" checked> 导出数据</label>
+<label style="display:flex;align-items:center;gap:8px;padding:8px;background:var(--surface);border-radius:6px;cursor:pointer"><input type="checkbox"> 系统设置</label>
+</div>
+</div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('editRole')">取消</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('editRole');showToast('权限已更新','success')">保存权限</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-templates" onclick="closeModal(event)">
+<div class="modal" style="max-width:900px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">📋 内容模板库</span><button class="modal-close" onclick="hideModal('templates')">×</button></div>
+<div style="display:flex;gap:12px;margin-bottom:16px">
+<input class="form-input" style="flex:1" placeholder="搜索模板...">
+<select class="form-input" style="width:150px"><option>全部类型</option><option>产品发布</option><option>促销活动</option><option>技术教程</option><option>客户见证</option></select>
+<button class="btn btn-secondary" onclick="showModal('createTemplate')">+ 新建模板</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-height:400px;overflow-y:auto">
+<div class="template-card" onclick="applyTemplate('product-launch')">
+<div class="template-preview" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">🚀</div>
+<div class="template-info"><div class="template-name">新品发布模板</div><div class="template-desc">适用于新产品上市宣传</div><div class="template-tags"><span class="chip">产品</span><span class="chip">发布</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('promotion')">
+<div class="template-preview" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">🎉</div>
+<div class="template-info"><div class="template-name">促销活动模板</div><div class="template-desc">限时优惠、节日促销</div><div class="template-tags"><span class="chip">促销</span><span class="chip">活动</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('tech-tutorial')">
+<div class="template-preview" style="background:linear-gradient(135deg,#10b981,#06b6d4)">📚</div>
+<div class="template-info"><div class="template-name">技术教程模板</div><div class="template-desc">安装指南、使用技巧</div><div class="template-tags"><span class="chip">教程</span><span class="chip">技术</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('testimonial')">
+<div class="template-preview" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">💬</div>
+<div class="template-info"><div class="template-name">客户见证模板</div><div class="template-desc">客户评价、成功案例</div><div class="template-tags"><span class="chip">见证</span><span class="chip">案例</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('comparison')">
+<div class="template-preview" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">⚖️</div>
+<div class="template-info"><div class="template-name">产品对比模板</div><div class="template-desc">竞品对比、优势展示</div><div class="template-tags"><span class="chip">对比</span><span class="chip">分析</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('industry-news')">
+<div class="template-preview" style="background:linear-gradient(135deg,#64748b,#475569)">📰</div>
+<div class="template-info"><div class="template-name">行业资讯模板</div><div class="template-desc">行业动态、趋势分析</div><div class="template-tags"><span class="chip">资讯</span><span class="chip">行业</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('behind-scenes')">
+<div class="template-preview" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">🎬</div>
+<div class="template-info"><div class="template-name">幕后花絮模板</div><div class="template-desc">工厂实拍、团队故事</div><div class="template-tags"><span class="chip">花絮</span><span class="chip">故事</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('faq')">
+<div class="template-preview" style="background:linear-gradient(135deg,#f59e0b,#10b981)">❓</div>
+<div class="template-info"><div class="template-name">FAQ问答模板</div><div class="template-desc">常见问题、专业解答</div><div class="template-tags"><span class="chip">FAQ</span><span class="chip">问答</span></div></div>
+</div>
+<div class="template-card" onclick="applyTemplate('seasonal')">
+<div class="template-preview" style="background:linear-gradient(135deg,#22c55e,#16a34a)">🎄</div>
+<div class="template-info"><div class="template-name">节日主题模板</div><div class="template-desc">节日祝福、主题营销</div><div class="template-tags"><span class="chip">节日</span><span class="chip">主题</span></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-preview" onclick="closeModal(event)">
+<div class="modal" style="max-width:1000px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">👁️ 发布预览</span><button class="modal-close" onclick="hideModal('preview')">×</button></div>
+<div style="display:flex;gap:12px;margin-bottom:16px">
+<div class="chip-group">
+<span class="chip on" onclick="setPreviewPlatform('facebook',this)">📘 Facebook</span>
+<span class="chip" onclick="setPreviewPlatform('instagram',this)">📷 Instagram</span>
+<span class="chip" onclick="setPreviewPlatform('linkedin',this)">💼 LinkedIn</span>
+<span class="chip" onclick="setPreviewPlatform('twitter',this)">𝕏 Twitter</span>
+</div>
+<div class="chip-group" style="margin-left:auto">
+<span class="chip on" onclick="setPreviewDevice('desktop',this)">🖥️ 桌面</span>
+<span class="chip" onclick="setPreviewDevice('mobile',this)">📱 移动</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div>
+<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--text-m)">Facebook 桌面预览</div>
+<div class="preview-container desktop" id="previewDesktop">
+<div class="preview-header"><div class="preview-avatar">🔧</div><div><div class="preview-name">AutoParts B2B</div><div class="preview-time">刚刚</div></div></div>
+<div class="preview-content">
+<div class="preview-title">Engine Mount - 高品质悬挂解决方案</div>
+<div class="preview-text">为您的车辆提供卓越的驾驶体验！我们的Engine Mount采用优质橡胶配方，有效减少震动和噪音...</div>
+<div class="preview-image" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">🔧</div>
+<div class="preview-stats"><span>👍 128</span><span>💬 24</span><span>🔄 12</span></div>
+</div>
+</div>
+</div>
+<div>
+<div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--text-m)">Instagram 移动预览</div>
+<div class="preview-container mobile" id="previewMobile">
+<div class="preview-header"><div class="preview-avatar">🔧</div><div><div class="preview-name">autoparts_b2b</div><div class="preview-location">📍 德国·慕尼黑</div></div><span style="margin-left:auto">•••</span></div>
+<div class="preview-image" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6);aspect-ratio:1">🔧</div>
+<div class="preview-actions"><span>♡</span><span>💬</span><span>↗</span><span style="margin-left:auto">🔖</span></div>
+<div class="preview-likes">128 次赞</div>
+<div class="preview-caption"><strong>autoparts_b2b</strong> Engine Mount - 高品质悬挂解决方案 #autoparts #enginemount #b2b</div>
+</div>
+</div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('preview')">关闭</button><button class="btn btn-secondary" onclick="capturePreview()">📸 截图</button><button class="btn btn-primary" onclick="publishContent()">🚀 发布</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-createTemplate" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">新建模板</span><button class="modal-close" onclick="hideModal('createTemplate')">×</button></div>
+<div class="form-group"><label class="form-label">模板名称</label><input class="form-input" placeholder="例如: 产品发布模板"></div>
+<div class="form-group"><label class="form-label">模板类型</label><select class="form-input"><option>产品发布</option><option>促销活动</option><option>技术教程</option><option>客户见证</option><option>行业资讯</option></select></div>
+<div class="form-group"><label class="form-label">标题模板</label><input class="form-input" placeholder="使用 {产品名} 作为变量"></div>
+<div class="form-group"><label class="form-label">内容模板</label><textarea class="form-input" style="min-height:120px" placeholder="输入模板内容，使用 {变量名} 插入动态内容..."></textarea></div>
+<div class="form-group"><label class="form-label">适用平台</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">Facebook</span><span class="chip" onclick="toggleChip(this)">Instagram</span><span class="chip" onclick="toggleChip(this)">LinkedIn</span><span class="chip" onclick="toggleChip(this)">YouTube</span></div></div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('createTemplate')">取消</button><button class="btn btn-primary" style="flex:1" onclick="hideModal('createTemplate');showToast('模板已创建','success')">保存模板</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-scheduleTask" onclick="closeModal(event)">
+<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">⏰ 创建定时任务</span><button class="modal-close" onclick="hideModal('scheduleTask')">×</button></div>
+<div class="form-group"><label class="form-label">任务名称</label><input class="form-input" id="taskName" placeholder="例如: Engine Mount 促销发布"></div>
+<div class="grid-2" style="gap:12px">
+<div class="form-group"><label class="form-label">任务类型</label><select class="form-input" id="taskType" onchange="updateCronPreview()">
+<option value="once">一次性执行</option>
+<option value="daily">每日重复</option>
+<option value="weekly">每周重复</option>
+<option value="monthly">每月重复</option>
+<option value="custom">自定义Cron</option>
+</select></div>
+<div class="form-group"><label class="form-label">时区</label><select class="form-input"><option>GMT+1 欧洲</option><option>GMT-5 北美东部</option><option>GMT-8 北美西部</option><option>GMT+3 中东</option><option>GMT+8 中国</option></select></div>
+</div>
+<div id="onceConfig">
+<div class="grid-2" style="gap:12px">
+<div class="form-group"><label class="form-label">执行日期</label><input class="form-input" type="date" value="2026-04-08"></div>
+<div class="form-group"><label class="form-label">执行时间</label><input class="form-input" type="time" value="15:00"></div>
+</div>
+</div>
+<div id="repeatConfig" style="display:none">
+<div class="grid-2" style="gap:12px">
+<div class="form-group"><label class="form-label">执行时间</label><input class="form-input" type="time" value="09:00"></div>
+<div class="form-group"><label class="form-label" id="repeatDayLabel">执行日期</label><select class="form-input" id="repeatDay">
+<option value="1">周一</option><option value="2">周二</option><option value="3">周三</option><option value="4">周四</option><option value="5">周五</option><option value="6">周六</option><option value="0">周日</option>
+</select></div>
+</div>
+</div>
+<div id="cronConfig" style="display:none">
+<div class="form-group"><label class="form-label">Cron表达式</label><input class="form-input" placeholder="0 9 * * * (每天9:00)"></div>
+<div class="cron-preview">示例: 0 9 * * 1-5 = 工作日9:00</div>
+</div>
+<div class="form-group"><label class="form-label">目标平台</label><div class="chip-group" style="margin-top:8px"><span class="chip" onclick="toggleChip(this)">📘 Facebook</span><span class="chip" onclick="toggleChip(this)">📷 Instagram</span><span class="chip" onclick="toggleChip(this)">💼 LinkedIn</span><span class="chip" onclick="toggleChip(this)">▶️ YouTube</span><span class="chip" onclick="toggleChip(this)">♪ TikTok</span><span class="chip" onclick="toggleChip(this)">𝕏 Twitter</span></div></div>
+<div class="form-group"><label class="form-label">关联内容</label><select class="form-input"><option>选择已保存的内容...</option><option>Engine Mount 客户见证</option><option>Bushing 对比信息图</option><option>Strut Mount 产品介绍</option><option>供应链趋势分析</option></select></div>
+<div class="form-group"><label class="form-label">失败通知</label><div style="display:flex;gap:16px;margin-top:8px"><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" checked> 邮件通知</label><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox"> 企业微信</label><label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox"> 钉钉</label></div></div>
+<div class="btn-group"><button class="btn btn-secondary" onclick="hideModal('scheduleTask')">取消</button><button class="btn btn-primary" style="flex:1" onclick="saveTask()">保存任务</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-taskLog" onclick="closeModal(event)">
+<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">📋 任务执行日志</span><button class="modal-close" onclick="hideModal('taskLog')">×</button></div>
+<div style="background:var(--elevated);border-radius:8px;padding:16px;max-height:400px;overflow-y:auto;font-family:monospace;font-size:12px;line-height:1.8">
+<div style="color:var(--text-m)">[2026-04-07 14:30:00] 任务开始执行</div>
+<div style="color:var(--green)">[2026-04-07 14:30:01] ✓ 连接YouTube API成功</div>
+<div style="color:var(--green)">[2026-04-07 14:30:02] ✓ 视频上传开始: bushing_demo.mp4 (15.2MB)</div>
+<div style="color:var(--text-m)">[2026-04-07 14:30:15] 上传进度: 25%</div>
+<div style="color:var(--text-m)">[2026-04-07 14:30:30] 上传进度: 50%</div>
+<div style="color:var(--text-m)">[2026-04-07 14:30:45] 上传进度: 75%</div>
+<div style="color:var(--text-m)">[2026-04-07 14:31:00] 上传进度: 100%</div>
+<div style="color:var(--green)">[2026-04-07 14:31:02] ✓ 视频上传完成</div>
+<div style="color:var(--green)">[2026-04-07 14:31:03] ✓ 设置视频标题和描述</div>
+<div style="color:var(--green)">[2026-04-07 14:31:04] ✓ 添加标签: #autoparts, #bushing, #b2b</div>
+<div style="color:var(--green)">[2026-04-07 14:31:05] ✓ 任务执行成功</div>
+<div style="color:var(--blue)">[2026-04-07 14:31:06] 视频ID: yt_bushing_demo_20260407</div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('taskLog')">关闭</button><button class="btn btn-secondary">导出日志</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-addProduct" onclick="closeModal(event)">
+<div class="modal" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">添加产品</span><button class="modal-close" onclick="hideModal('addProduct')">×</button></div>
+<div class="form-group"><label class="form-label">产品名称</label><input class="form-input" placeholder="例如: Engine Mount"></div>
+<div class="form-group"><label class="form-label">产品分类</label><select class="form-input"><option>悬挂系统</option><option>转向系统</option><option>传动系统</option></select></div>
+<div class="form-row"><div class="form-group"><label class="form-label">SKU数量</label><input class="form-input" type="number" placeholder="0"></div><div class="form-group"><label class="form-label">价格区间</label><input class="form-input" placeholder="$0 - $0"></div></div>
+<div class="form-group"><label class="form-label">产品描述</label><textarea class="form-input" style="min-height:80px" placeholder="输入产品描述..."></textarea></div>
+<div class="form-group"><label class="form-label">适配车型</label><input class="form-input" placeholder="丰田、本田、大众、宝马等"></div>
+<div class="btn-group"><button class="btn btn-primary" style="flex:1" onclick="hideModal('addProduct');showToast('产品已添加','success')">添加产品</button></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="modal-productDetail" onclick="closeModal(event)">
+<div class="modal" style="max-width:700px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">产品详情 - Engine Mount</span><button class="modal-close" onclick="hideModal('productDetail')">×</button></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div>
+<div style="font-weight:600;margin-bottom:12px">📊 表现数据</div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">总曝光量</div><div style="font-size:20px;font-weight:600;color:var(--blue)">8,234</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">互动量</div><div style="font-size:20px;font-weight:600;color:var(--green)">412</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">询盘转化</div><div style="font-size:20px;font-weight:600;color:var(--purple)">42</div></div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px"><div style="font-size:11px;color:var(--text-m)">发布内容</div><div style="font-size:20px;font-weight:600">28篇</div></div>
+</div>
+</div>
+<div>
+<div style="font-weight:600;margin-bottom:12px">💰 价格信息</div>
+<div style="background:var(--elevated);padding:12px;border-radius:8px;margin-bottom:8px">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:var(--text-m)">最低价</span><span style="font-weight:600">$15.00</span></div>
+<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:var(--text-m)">最高价</span><span style="font-weight:600">$85.00</span></div>
+<div style="display:flex;justify-content:space-between"><span style="color:var(--text-m)">平均价</span><span style="font-weight:600">$42.50</span></div>
+</div>
+</div>
+</div>
+<div style="margin-top:16px">
+<div style="font-weight:600;margin-bottom:12px">📦 SKU 列表 (共156个)</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+<span class="chip">EM-TOY-001</span><span class="chip">EM-TOY-002</span><span class="chip">EM-HON-001</span><span class="chip">EM-VW-001</span><span class="chip">EM-BMW-001</span><span class="chip">EM-FORD-001</span>
+</div>
+<div style="font-size:12px;color:var(--text-m)">适配车型：丰田、本田、大众、宝马、福特、奔驰、奥迪、日产等</div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('productDetail')">关闭</button><button class="btn btn-primary" onclick="showPage('creator');hideModal('productDetail')">创建内容</button></div>
+</div>
+</div>
+
+<!-- 用户切换模态框 -->
+<div class="modal-overlay" id="modal-userSwitch" onclick="closeModal(event)">
+<div class="modal" style="max-width:400px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">👤 用户切换</span><button class="modal-close" onclick="hideModal('userSwitch')">×</button></div>
+<div style="padding:8px">
+<div class="user-list-item active" onclick="switchUser('zhang',event)">
+<div class="user-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">张</div>
+<div style="flex:1"><div style="font-weight:600">张经理</div><div style="font-size:11px;color:var(--text-m)">zhang@autoparts.com</div></div>
+<span class="chip">当前</span>
+</div>
+<div class="user-list-item" onclick="switchUser('li',event)">
+<div class="user-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">李</div>
+<div style="flex:1"><div style="font-weight:600">李编辑</div><div style="font-size:11px;color:var(--text-m)">li@autoparts.com</div></div>
+</div>
+<div class="user-list-item" onclick="switchUser('wang',event)">
+<div class="user-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">王</div>
+<div style="flex:1"><div style="font-weight:600">王设计</div><div style="font-size:11px;color:var(--text-m)">wang@autoparts.com</div></div>
+</div>
+<div class="user-list-item" onclick="switchUser('chen',event)">
+<div class="user-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">陈</div>
+<div style="flex:1"><div style="font-weight:600">陈审核</div><div style="font-size:11px;color:var(--text-m)">chen@autoparts.com</div></div>
+</div>
+</div>
+<div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px">
+<button class="btn btn-secondary" style="flex:1" onclick="showModal('addUser')">+ 添加用户</button>
+<button class="btn btn-secondary" style="flex:1" onclick="showModal('userSettings')">⚙️ 用户设置</button>
+</div>
+</div>
+</div>
+
+<!-- AI翻译模态框 -->
+<div class="modal-overlay" id="modal-translate" onclick="closeModal(event)">
+<div class="modal" style="max-width:600px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">🌐 AI多语言翻译</span><button class="modal-close" onclick="hideModal('translate')">×</button></div>
+<div class="form-group"><label class="form-label">原文内容</label>
+<textarea class="form-input" id="translateSource" style="height:100px" placeholder="输入需要翻译的内容..."></textarea>
+</div>
+<div class="form-group"><label class="form-label">目标语言</label>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox" checked> 🇬🇧 English
+</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox" checked> 🇩🇪 Deutsch
+</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox" checked> 🇪🇸 Español
+</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox" checked> 🇧🇷 Português
+</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox" checked> 🇷🇺 Русский
+</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px;background:var(--elevated);padding:6px 12px;border-radius:6px;cursor:pointer">
+<input type="checkbox"> 🇸🇦 العربية
+</label>
+</div>
+</div>
+<div id="translateResult" style="margin-top:16px">
+<div class="translation-item">
+<div class="lang-label">🇬🇧 English</div>
+<div class="lang-content">Our Engine Mount products feature premium rubber compounds for superior vibration dampening and extended service life. ISO/TS 16949 certified.</div>
+</div>
+<div class="translation-item">
+<div class="lang-label">🇪🇸 Español</div>
+<div class="lang-content">Nuestros productos de soporte de motor cuentan con compuestos de caucho premium para una amortiguación de vibraciones superior y vida útil extendida.</div>
+</div>
+<div class="translation-item">
+<div class="lang-label">🇧🇷 Português</div>
+<div class="lang-content">Nossos produtos de suporte de motor apresentam compostos de borracha premium para amortecimento superior de vibrações e vida útil estendida.</div>
+</div>
+<div class="translation-item">
+<div class="lang-label">🇷🇺 Русский</div>
+<div class="lang-content">Наши опоры двигателя изготовлены из премиальных резиновых компаундов для превосходного гашения вибраций и длительного срока службы.</div>
+</div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('translate')">取消</button><button class="btn btn-primary" onclick="applyTranslations()">应用翻译</button></div>
+</div>
+</div>
+
+<!-- 导出数据模态框 -->
+<div class="modal-overlay" id="modal-exportData" onclick="closeModal(event)">
+<div class="modal" style="max-width:500px" onclick="event.stopPropagation()">
+<div class="modal-header"><span class="modal-title">📤 导出数据报表</span><button class="modal-close" onclick="hideModal('exportData')">×</button></div>
+<div class="form-group"><label class="form-label">导出格式</label>
+<div style="display:flex;gap:8px">
+<button class="btn btn-primary" onclick="setExportFormat('csv')">CSV</button>
+<button class="btn btn-secondary" onclick="setExportFormat('excel')">Excel</button>
+<button class="btn btn-secondary" onclick="setExportFormat('pdf')">PDF</button>
+</div>
+</div>
+<div class="form-group"><label class="form-label">数据范围</label>
+<select class="form-input"><option>最近7天</option><option>最近30天</option><option>本月</option><option>本季度</option><option>自定义范围</option></select>
+</div>
+<div class="form-group"><label class="form-label">包含内容</label>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 曝光数据</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 互动数据</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox" checked> 转化数据</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox"> 内容详情</label>
+<label style="display:flex;align-items:center;gap:4px;font-size:12px"><input type="checkbox"> 账号表现</label>
+</div>
+</div>
+<div class="btn-group" style="margin-top:16px"><button class="btn btn-secondary" onclick="hideModal('exportData')">取消</button><button class="btn btn-primary" onclick="exportData()">导出</button></div>
+</div>
+</div>
+
+<!-- 询盘管理页面 -->
+<div class="page" id="page-inquiries">
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon blue">📩</div><div class="stat-value">47</div><div class="stat-label">本月询盘</div></div>
+<div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-value">28</div><div class="stat-label">已跟进</div></div>
+<div class="stat-card"><div class="stat-icon orange">⏳</div><div class="stat-value">12</div><div class="stat-label">待处理</div></div>
+<div class="stat-card"><div class="stat-icon purple">💰</div><div class="stat-value">$86K</div><div class="stat-label">预估金额</div></div>
+</div>
+<div class="card" style="margin-top:24px">
+<div class="card-header">📩 询盘列表 <button class="btn btn-primary" style="padding:4px 10px;font-size:11px;float:right" onclick="showModal('addInquiry')">+ 新建询盘</button></div>
+<div class="card-body">
+<div style="display:flex;gap:8px;margin-bottom:16px">
+<input class="form-input" style="flex:1;font-size:12px;padding:6px 10px" placeholder="搜索客户/产品...">
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部状态</option><option>待处理</option><option>跟进中</option><option>已报价</option><option>已成交</option><option>已关闭</option></select>
+<select class="form-input" style="width:120px;font-size:12px;padding:6px 10px"><option>全部来源</option><option>Facebook</option><option>LinkedIn</option><option>官网</option><option>邮件</option></select>
+</div>
+<table class="task-table">
+<thead><tr><th>客户信息</th><th>产品需求</th><th>来源</th><th>金额</th><th>状态</th><th>操作</th></tr></thead>
+<tbody>
+<tr><td><div style="font-weight:600">AutoParts GmbH</div><div style="font-size:11px;color:var(--text-m)">德国·慕尼黑</div></td><td>Engine Mount × 500</td><td><span class="chip">LinkedIn</span></td><td style="font-weight:600">$12,500</td><td><span class="task-status pending">待处理</span></td><td><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">跟进</button></td></tr>
+<tr><td><div style="font-weight:600">UK Suspension Ltd</div><div style="font-size:11px;color:var(--text-m)">英国·伦敦</div></td><td>Strut Mount × 1000</td><td><span class="chip">Facebook</span></td><td style="font-weight:600">$28,000</td><td><span class="task-status active">跟进中</span></td><td><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">跟进</button></td></tr>
+<tr><td><div style="font-weight:600">Middle East Trading</div><div style="font-size:11px;color:var(--text-m)">阿联酋·迪拜</div></td><td>Center Bearing × 300</td><td><span class="chip">邮件</span></td><td style="font-weight:600">$8,200</td><td><span class="task-status completed">已报价</span></td><td><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">查看</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- 消息中心页面 -->
+<div class="page" id="page-messages">
+<div class="grid-2" style="gap:16px;height:calc(100vh - 180px)">
+<div class="card" style="display:flex;flex-direction:column">
+<div class="card-header">💬 消息列表 <span style="font-size:11px;color:var(--text-m);margin-left:8px">128 未读</span></div>
+<div class="card-body" style="flex:1;overflow-y:auto;padding:8px">
+<div class="message-item unread" onclick="selectMessage(1)">
+<div class="msg-avatar" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">M</div>
+<div class="msg-content"><div class="msg-header"><span class="msg-name">Michael (AutoParts)</span><span class="msg-time">10:32</span></div><div class="msg-preview">询盘报价收到，请问交期多久？</div></div>
+</div>
+<div class="message-item unread" onclick="selectMessage(2)">
+<div class="msg-avatar" style="background:linear-gradient(135deg,#10b981,#06b6d4)">S</div>
+<div class="msg-content"><div class="msg-header"><span class="msg-name">Sarah (UK Suspension)</span><span class="msg-time">09:15</span></div><div class="msg-preview">感谢提供样品，质量很好！</div></div>
+</div>
+<div class="message-item" onclick="selectMessage(3)">
+<div class="msg-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">A</div>
+<div class="msg-content"><div class="msg-header"><span class="msg-name">Ahmed (ME Trading)</span><span class="msg-time">昨天</span></div><div class="msg-preview">请确认最新报价单...</div></div>
+</div>
+</div>
+</div>
+<div class="card" style="display:flex;flex-direction:column">
+<div class="card-header">对话详情 - Michael</div>
+<div class="card-body" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px">
+<div class="chat-msg received"><div class="chat-bubble">您好，我们对Engine Mount产品很感兴趣，请提供报价。</div><div class="chat-time">10:15</div></div>
+<div class="chat-msg sent"><div class="chat-bubble">感谢您的询盘！批量采购价格：100-500件 $25/件，500-1000件 $22/件</div><div class="chat-time">10:18</div></div>
+<div class="chat-msg received"><div class="chat-bubble">我们计划采购500件，请问交期多久？</div><div class="chat-time">10:32</div></div>
+</div>
+<div style="padding:12px;border-top:1px solid var(--border);display:flex;gap:8px">
+<input class="form-input" style="flex:1" placeholder="输入回复...">
+<button class="btn btn-primary" onclick="sendMessage()">发送</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- 竞品监控页面 -->
+<div class="page" id="page-competitors">
+<div class="grid-2">
+<div class="card"><div class="card-header">🔍 监控竞品</div><div class="card-body">
+<div class="competitor-item" onclick="selectCompetitor(1)">
+<div class="comp-logo" style="background:linear-gradient(135deg,#ef4444,#f97316)">B</div>
+<div style="flex:1"><div style="font-weight:600">Bosch Automotive</div><div style="font-size:11px;color:var(--text-m)">4平台 · 更新于 2小时前</div></div>
+<span class="chip">重点</span>
+</div>
+<div class="competitor-item" onclick="selectCompetitor(2)">
+<div class="comp-logo" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">T</div>
+<div style="flex:1"><div style="font-weight:600">TRW Aftermarket</div><div style="font-size:11px;color:var(--text-m)">3平台 · 更新于 5小时前</div></div>
+</div>
+<div class="competitor-item" onclick="selectCompetitor(3)">
+<div class="comp-logo" style="background:linear-gradient(135deg,#10b981,#06b6d4)">M</div>
+<div style="flex:1"><div style="font-weight:600">Moog Parts</div><div style="font-size:11px;color:var(--text-m)">2平台 · 更新于 1天前</div></div>
+</div>
+</div></div>
+<div class="card"><div class="card-header">📊 竞品动态 - Bosch</div><div class="card-body">
+<div class="activity-item"><span class="act-icon">📘</span><div style="flex:1"><div style="font-size:13px">发布新产品宣传视频</div><div style="font-size:11px;color:var(--text-m)">Facebook · 2小时前 · 1.2K播放</div></div></div>
+<div class="activity-item"><span class="act-icon">📷</span><div style="flex:1"><div style="font-size:13px">促销活动：悬挂系统8折</div><div style="font-size:11px;color:var(--text-m)">Instagram · 5小时前 · 328互动</div></div></div>
+<div class="activity-item"><span class="act-icon">💼</span><div style="flex:1"><div style="font-size:13px">发布行业白皮书</div><div style="font-size:11px;color:var(--text-m)">LinkedIn · 1天前</div></div></div>
+<div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+<div style="font-size:12px;font-weight:600;margin-bottom:8px">📈 竞品对比</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
+<div><div style="font-size:18px;font-weight:600">45.2K</div><div style="font-size:10px;color:var(--text-m)">粉丝数</div></div>
+<div><div style="font-size:18px;font-weight:600">3.8%</div><div style="font-size:10px;color:var(--text-m)">互动率</div></div>
+<div><div style="font-size:18px;font-weight:600">12/周</div><div style="font-size:10px;color:var(--text-m)">发布频率</div></div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+
+<!-- 工作流页面 -->
+<div class="page" id="page-workflow">
+<div class="card" style="margin-bottom:24px">
+<div class="card-header">⚙️ 工作流配置</div>
+<div class="card-body">
+<div class="workflow-item">
+<div class="wf-icon" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">📝</div>
+<div style="flex:1"><div style="font-weight:600">内容发布审批流程</div><div style="font-size:11px;color:var(--text-m)">创建 → 审核 → 发布</div></div>
+<span class="task-status active">启用中</span>
+</div>
+<div class="workflow-item">
+<div class="wf-icon" style="background:linear-gradient(135deg,#10b981,#06b6d4)">📩</div>
+<div style="flex:1"><div style="font-weight:600">询盘跟进流程</div><div style="font-size:11px;color:var(--text-m)">接收 → 分配 → 跟进 → 报价 → 成交</div></div>
+<span class="task-status active">启用中</span>
+</div>
+<div class="workflow-item">
+<div class="wf-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">🔔</div>
+<div style="flex:1"><div style="font-weight:600">异常告警流程</div><div style="font-size:11px;color:var(--text-m)">API失败 → 通知 → 处理</div></div>
+<span class="task-status active">启用中</span>
+</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="card"><div class="card-header">📋 审批队列</div><div class="card-body">
+<div class="approval-item"><div style="flex:1"><div style="font-weight:600">Engine Mount 促销内容</div><div style="font-size:11px;color:var(--text-m)">李编辑 · 10分钟前</div></div><div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">通过</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">驳回</button></div></div>
+<div class="approval-item"><div style="flex:1"><div style="font-weight:600">客户见证视频</div><div style="font-size:11px;color:var(--text-m)">张设计 · 1小时前</div></div><div style="display:flex;gap:4px"><button class="btn btn-primary" style="padding:2px 8px;font-size:10px">通过</button><button class="btn btn-secondary" style="padding:2px 8px;font-size:10px">驳回</button></div></div>
+</div></div>
+<div class="card"><div class="card-header">📊 工作流统计</div><div class="card-body">
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+<div><div style="font-size:24px;font-weight:600">156</div><div style="font-size:11px;color:var(--text-m)">本月处理</div></div>
+<div><div style="font-size:24px;font-weight:600">2.3h</div><div style="font-size:11px;color:var(--text-m)">平均耗时</div></div>
+<div><div style="font-size:24px;font-weight:600">98%</div><div style="font-size:11px;color:var(--text-m)">按时完成</div></div>
+<div><div style="font-size:24px;font-weight:600">12</div><div style="font-size:11px;color:var(--text-m)">待处理</div></div>
+</div>
+</div></div>
+</div>
+</div>
+
+</div> <!-- 关闭 content -->
+</div> <!-- 关闭 main -->
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+function showPage(pageId, e) {
+document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+document.getElementById('page-' + pageId).classList.add('active');
+var evt = e || window.event;
+if(evt && evt.target) {
+var navItem = evt.target.closest('.nav-item');
+if(navItem) navItem.classList.add('active');
+}
+const titles = {dashboard:'仪表盘',accounts:'账号管理',creator:'内容创作',calendar:'发布日历',analytics:'数据分析',team:'团队协作',assets:'素材库',products:'产品管理',api:'API管理',inquiries:'询盘管理',messages:'消息中心',competitors:'竞品监控',workflow:'工作流'};
+document.getElementById('headerTitle').textContent = titles[pageId];
+}
+function showModal(id) { document.getElementById('modal-' + id).classList.add('active'); }
+function hideModal(id) { document.getElementById('modal-' + id).classList.remove('active'); }
+function closeModal(e) { if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('active'); }
+function showToast(msg, type) {
+const t = document.createElement('div');
+t.className = 'toast ' + type;
+t.innerHTML = '<span>' + (type==='success'?'✓':'✕') + '</span><span>' + msg + '</span>';
+document.getElementById('toastContainer').appendChild(t);
+setTimeout(() => t.remove(), 4000);
+}
+function toggleChip(el) { el.classList.toggle('selected'); }
+function setContentType(type, e) {
+document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+var evt = e || window.event;
+if(evt && evt.target) evt.target.classList.add('active');
+}
+function aiGenerate() {
+const output = document.getElementById('aiOutput');
+const body = document.getElementById('contentBody');
+output.style.display = 'block';
+output.innerHTML = '<div class="loading"><div class="spinner"></div><span>AI 正在生成内容...</span></div>';
+setTimeout(() => {
+const content = '客户见证\n\n"过去6个月，我们因 Engine Mount 质量问题收到了超过20起客户投诉。自从更换供应商后，投诉归零，复购率提升了35%！"\n\n—— 德国某大型汽配分销商采购经理 Michael\n\n为什么选择我们的 Engine Mount？\n• 采用优质天然橡胶，耐油耐老化\n• 精密金属骨架，承载力提升40%\n• 通过ISO/TS16949认证，OE品质保证\n• 适配主流车型：丰田、本田、大众、宝马等\n\n#EngineMount #AutoParts #B2B #Automotive';
+output.innerHTML = content;
+body.value = content;
+document.getElementById('contentTitle').value = 'Engine Mount 客户成功案例';
+showToast('内容生成成功！', 'success');
+}, 2000);
+}
+function connectAccount(platform, e) {
+var evt = e || window.event;
+var btn = evt ? evt.target : null;
+if(btn) {
+btn.innerHTML = '连接中...';
+btn.disabled = true;
+setTimeout(() => {
+btn.innerHTML = '连接账号';
+btn.disabled = false;
+showToast(platform + ' 账号连接成功！', 'success');
+}, 1500);
+}
+}
+function testAccount(platform) { showToast(platform + ' 连接测试成功！', 'success'); }
+function saveContent() { showToast('草稿已保存', 'success'); }
+function scheduleContent() { showToast('已添加到发布队列', 'success'); }
+function publishNow() { showToast('内容发布成功！', 'success'); }
+function changeMonth(dir) { showToast(dir > 0 ? '下个月' : '上个月', 'success'); }
+// 素材库功能
+function browsePath(type) { showToast('请选择' + type + '目录', 'success'); }
+function syncCloud() { showToast('云端素材同步中...', 'success'); }
+function refreshAssets() { showToast('素材库已刷新', 'success'); }
+function filterAssets(type, e) {
+document.querySelectorAll('.asset-toolbar .tool-btn').forEach(b => b.classList.remove('active'));
+var evt = e || window.event;
+if(evt && evt.target) evt.target.classList.add('active');
+showToast('筛选: ' + type, 'success');
+}
+function previewAsset(id) { showToast('预览素材: ' + id, 'success'); }
+// API管理功能
+function clearLogs() { showToast('日志已清空', 'success'); }
+function exportLogs() { showToast('日志导出成功', 'success'); }
+function saveApiConfig() { showToast('API配置已保存', 'success'); }
+// 产品管理功能
+function showProductDetail(id) { showModal('productDetail'); }
+function addProduct() { showModal('addProduct'); }
+
+// 素材管理功能
+function browsePath(type) {
+const paths = {
+root: 'D:\\AutoParts\\assets\\',
+products: 'D:\\AutoParts\\assets\\products\\',
+videos: 'D:\\AutoParts\\assets\\videos\\',
+brand: 'D:\\AutoParts\\assets\\brand\\',
+testimonials: 'D:\\AutoParts\\assets\\testimonials\\',
+docs: 'D:\\AutoParts\\assets\\docs\\',
+templates: 'D:\\AutoParts\\assets\\templates\\'
+};
+showToast('浏览: ' + (paths[type] || type), 'info');
+}
+function syncCloud() { showToast('正在同步云端素材库...', 'info'); setTimeout(() => showToast('同步完成，新增 12 个素材', 'success'), 2000); }
+function refreshAssets() { showToast('正在扫描素材库...', 'info'); setTimeout(() => showToast('扫描完成，共 293 个素材', 'success'), 1500); }
+function importAssets() { showModal('importAssets'); }
+function previewAsset(id) { showModal('assetPreview'); }
+function searchAssets(query) { if(query.length > 2) showToast('搜索: ' + query, 'info'); }
+function loadMoreAssets() { showToast('加载更多素材...', 'info'); }
+function testPath() { showToast('连接测试成功', 'success'); }
+function useAsset() { hideModal('assetPreview'); showToast('素材已添加到编辑器', 'success'); }
+
+// 团队权限功能
+function showMemberDetail(id) { showModal('memberDetail'); }
+function loadRolePermissions(role) { showToast('已加载 ' + role + ' 角色权限', 'info'); }
+function loadMoreLogs() { showToast('加载更多日志...', 'info'); }
+
+// 内容模板功能
+function applyTemplate(id) {
+const templates = {
+'product-launch': {title: '🚀 {产品名} 正式上市！', body: '我们很高兴地宣布 {产品名} 现已上市！\n\n✨ 核心特点：\n• 特点1\n• 特点2\n• 特点3\n\n📦 适配车型：{车型列表}\n💰 批发价格：联系我们获取最优报价\n\n#AutoParts #B2B #{产品名}'},
+'promotion': {title: '🎉 限时优惠活动', body: '🔥 {活动名称} 开始啦！\n\n⏰ 活动时间：{开始日期} - {结束日期}\n💰 优惠力度：{折扣信息}\n\n适用产品：\n• {产品1}\n• {产品2}\n\n立即询价获取专属优惠！\n#促销 #优惠 #AutoParts'},
+'tech-tutorial': {title: '📚 {产品名} 安装指南', body: '今天为大家带来 {产品名} 的专业安装教程：\n\n🔧 所需工具：\n• 工具1\n• 工具2\n\n📋 安装步骤：\n1. 步骤一\n2. 步骤二\n3. 步骤三\n\n⚠️ 注意事项：\n• 注意点1\n• 注意点2\n\n#安装教程 #技术分享 #{产品名}'},
+'testimonial': {title: '💬 客户好评分享', body: '感谢来自 {客户地区} 的 {客户名称} 分享：\n\n"{评价内容}"\n\n📊 采购信息：\n• 产品：{产品名}\n• 数量：{采购数量}\n• 合作时长：{合作时长}\n\n期待与更多客户建立长期合作！\n#客户见证 #B2B合作'}
+};
+const t = templates[id];
+if(t) {
+document.getElementById('contentTitle').value = t.title;
+document.getElementById('contentBody').value = t.body;
+hideModal('templates');
+showToast('模板已应用', 'success');
+}
+}
+function setPreviewPlatform(platform, el) {
+document.querySelectorAll('.chip-group:first-child .chip').forEach(c => c.classList.remove('on'));
+el.classList.add('on');
+showToast('切换到 ' + platform + ' 预览', 'info');
+}
+function setPreviewDevice(device, el) {
+document.querySelectorAll('.chip-group:last-child .chip').forEach(c => c.classList.remove('on'));
+el.classList.add('on');
+showToast('切换到' + (device === 'mobile' ? '移动端' : '桌面端') + '预览', 'info');
+}
+function capturePreview() { showToast('预览截图已保存', 'success'); }
+function publishContent() { hideModal('preview'); showToast('内容已发布到选定平台', 'success'); }
+
+// 定时任务管理
+function updateCronPreview() {
+const type = document.getElementById('taskType').value;
+document.getElementById('onceConfig').style.display = type === 'once' ? 'block' : 'none';
+document.getElementById('repeatConfig').style.display = ['daily','weekly','monthly'].includes(type) ? 'block' : 'none';
+document.getElementById('cronConfig').style.display = type === 'custom' ? 'block' : 'none';
+if(type === 'weekly') document.getElementById('repeatDayLabel').textContent = '执行日期(周)';
+else if(type === 'monthly') document.getElementById('repeatDayLabel').textContent = '执行日期(月)';
+}
+function saveTask() {
+hideModal('scheduleTask');
+showToast('定时任务已创建', 'success');
+}
+function editTask(id) { showModal('scheduleTask'); }
+function cancelTask(id) { showToast('任务 #' + id + ' 已取消', 'info'); }
+function pauseTask(id) { showToast('任务 #' + id + ' 已暂停', 'info'); }
+function viewTaskLog(id) { showModal('taskLog'); }
+function retryTask(id) { showToast('任务 #' + id + ' 重新执行中...', 'info'); }
+function rerunTask(id) { showToast('任务 #' + id + ' 重新执行中...', 'info'); }
+function refreshTasks() { showToast('任务列表已刷新', 'success'); }
+
+// 多语言支持
+const translations = {
+zh: {dashboard:'仪表盘',accounts:'账号管理',creator:'内容创作',calendar:'发布日历',analytics:'数据分析',team:'团队协作',assets:'素材库',products:'产品管理',api:'API管理',newContent:'新建内容',help:'帮助',exposure:'总曝光量',interaction:'总互动量',rate:'互动率',inquiry:'询盘转化'},
+en: {dashboard:'Dashboard',accounts:'Accounts',creator:'Creator',calendar:'Calendar',analytics:'Analytics',team:'Team',assets:'Assets',products:'Products',api:'API',newContent:'New Content',help:'Help',exposure:'Total Exposure',interaction:'Interactions',rate:'Engagement Rate',inquiry:'Inquiries'},
+de: {dashboard:'Dashboard',accounts:'Konten',creator:'Ersteller',calendar:'Kalender',analytics:'Analytik',team:'Team',assets:'Materialien',products:'Produkte',api:'API',newContent:'Neuer Inhalt',help:'Hilfe',exposure:'Gesamtansichten',interaction:'Interaktionen',rate:'Engagement',inquiry:'Anfragen'},
+ar: {dashboard:'لوحة القيادة',accounts:'الحسابات',creator:'المنشئ',calendar:'التقويم',analytics:'التحليلات',team:'الفريق',assets:'المواد',products:'المنتجات',api:'API',newContent:'محتوى جديد',help:'مساعدة',exposure:'إجمالي المشاهدات',interaction:'تفاعلات',rate:'معدل التفاعل',inquiry:'الاستفسارات'}
+};
+let currentLang = 'zh';
+function changeLang(lang) {
+currentLang = lang;
+const t = translations[lang];
+document.getElementById('headerTitle').textContent = t.dashboard;
+document.querySelectorAll('.nav-item span:last-child').forEach((el,i) => {
+const keys = ['dashboard','accounts','creator','calendar','analytics','team','assets','products','api'];
+if(keys[i]) el.textContent = t[keys[i]];
+});
+document.querySelectorAll('.stat-label').forEach((el,i) => {
+const keys = ['exposure','interaction','rate','inquiry'];
+if(keys[i]) el.textContent = t[keys[i]];
+});
+document.querySelector('.btn.btn-primary').textContent = '+ ' + t.newContent;
+showToast('语言已切换', 'success');
+}
+
+// Canvas 图表绘制
+function drawLineChart(canvasId, labels, data, color) {
+const canvas = document.getElementById(canvasId);
+if (!canvas) return;
+const ctx = canvas.getContext('2d');
+const w = canvas.width = canvas.offsetWidth;
+const h = canvas.height = canvas.offsetHeight;
+const pad = 40;
+const maxVal = Math.max(...data) * 1.2;
+ctx.clearRect(0,0,w,h);
+ctx.strokeStyle = '#334155';
+ctx.lineWidth = 1;
+ctx.beginPath();
+for(let i=0;i<=4;i++){const y=pad+(h-2*pad)*i/4;ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);}
+ctx.stroke();
+ctx.strokeStyle = color;
+ctx.lineWidth = 2;
+ctx.beginPath();
+data.forEach((v,i) => {
+const x = pad + (w-2*pad) * i / (data.length-1);
+const y = h - pad - (h-2*pad) * v / maxVal;
+i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+});
+ctx.stroke();
+ctx.fillStyle = color;
+data.forEach((v,i) => {
+const x = pad + (w-2*pad) * i / (data.length-1);
+const y = h - pad - (h-2*pad) * v / maxVal;
+ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill();
+});
+ctx.fillStyle = '#94a3b8';
+ctx.font = '11px sans-serif';
+ctx.textAlign = 'center';
+labels.forEach((l,i) => {
+const x = pad + (w-2*pad) * i / (labels.length-1);
+ctx.fillText(l, x, h-12);
+});
+}
+
+function drawPieChart(canvasId, data, labels, colors) {
+const canvas = document.getElementById(canvasId);
+if (!canvas) return;
+const ctx = canvas.getContext('2d');
+const w = canvas.width = canvas.offsetWidth;
+const h = canvas.height = canvas.offsetHeight;
+const cx = w/2, cy = h/2, r = Math.min(w,h)/2 - 40;
+const total = data.reduce((a,b) => a+b, 0);
+let startAngle = -Math.PI/2;
+data.forEach((v,i) => {
+const angle = v/total * Math.PI*2;
+ctx.beginPath();
+ctx.moveTo(cx,cy);
+ctx.arc(cx,cy,r,startAngle,startAngle+angle);
+ctx.closePath();
+ctx.fillStyle = colors[i];
+ctx.fill();
+startAngle += angle;
+});
+ctx.fillStyle = '#e2e8f0';
+ctx.font = '11px sans-serif';
+ctx.textAlign = 'left';
+let legendY = 20;
+data.forEach((v,i) => {
+ctx.fillStyle = colors[i];
+ctx.fillRect(10, legendY-8, 12, 12);
+ctx.fillStyle = '#e2e8f0';
+ctx.fillText(labels[i] + ' ' + Math.round(v/total*100) + '%', 28, legendY);
+legendY += 18;
+});
+}
+
+function drawBarChart(canvasId, labels, data, colors) {
+const canvas = document.getElementById(canvasId);
+if (!canvas) return;
+const ctx = canvas.getContext('2d');
+const w = canvas.width = canvas.offsetWidth;
+const h = canvas.height = canvas.offsetHeight;
+const pad = 40;
+const maxVal = Math.max(...data) * 1.2;
+const barW = (w-2*pad) / data.length - 10;
+ctx.clearRect(0,0,w,h);
+data.forEach((v,i) => {
+const x = pad + i * ((w-2*pad)/data.length) + 5;
+const barH = (h-2*pad) * v / maxVal;
+const y = h - pad - barH;
+ctx.fillStyle = colors[i % colors.length];
+ctx.beginPath();
+ctx.roundRect(x, y, barW, barH, 4);
+ctx.fill();
+ctx.fillStyle = '#94a3b8';
+ctx.font = '10px sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText(labels[i], x + barW/2, h-12);
+});
+}
+
+function drawHorizontalBarChart(canvasId, labels, data, color) {
+const canvas = document.getElementById(canvasId);
+if (!canvas) return;
+const ctx = canvas.getContext('2d');
+const w = canvas.width = canvas.offsetWidth;
+const h = canvas.height = canvas.offsetHeight;
+const pad = 60;
+const maxVal = Math.max(...data) * 1.2;
+const barH = (h-pad) / data.length - 8;
+ctx.clearRect(0,0,w,h);
+data.forEach((v,i) => {
+const y = 10 + i * ((h-pad)/data.length);
+const barW = (w-pad-20) * v / maxVal;
+ctx.fillStyle = '#475569';
+ctx.font = '11px sans-serif';
+ctx.textAlign = 'right';
+ctx.fillText(labels[i], pad-5, y + barH/2 + 4);
+ctx.fillStyle = color;
+ctx.beginPath();
+ctx.roundRect(pad, y, barW, barH, 3);
+ctx.fill();
+ctx.fillStyle = '#e2e8f0';
+ctx.textAlign = 'left';
+ctx.fillText(v + 'K', pad + barW + 5, y + barH/2 + 4);
+});
+}
+
+// 用户数据隔离系统
+const currentUser = {id:'zhang',name:'张经理',avatar:'张'};
+function switchUser(userId, e) {
+const users = {
+zhang:{id:'zhang',name:'张经理',avatar:'张',color:'#3b82f6'},
+li:{id:'li',name:'李编辑',avatar:'李',color:'#10b981'},
+wang:{id:'wang',name:'王设计',avatar:'王',color:'#f59e0b'},
+chen:{id:'chen',name:'陈审核',avatar:'陈',color:'#8b5cf6'}
+};
+currentUser.id = users[userId].id;
+currentUser.name = users[userId].name;
+currentUser.avatar = users[userId].avatar;
+document.getElementById('currentUserName').textContent = currentUser.name;
+document.getElementById('currentUserAvatar').textContent = currentUser.avatar;
+document.querySelectorAll('.user-list-item').forEach(el => el.classList.remove('active'));
+var evt = e || window.event;
+if(evt && evt.target) {
+var listItem = evt.target.closest('.user-list-item');
+if(listItem) listItem.classList.add('active');
+}
+loadUserData();
+hideModal('userSwitch');
+showToast('已切换用户: ' + currentUser.name, 'success');
+}
+// 数据存储使用用户前缀隔离
+function saveData(key, value) {
+const storageKey = 'autoparts_' + currentUser.id + '_' + key;
+localStorage.setItem(storageKey, JSON.stringify(value));
+}
+function loadData(key) {
+const storageKey = 'autoparts_' + currentUser.id + '_' + key;
+const data = localStorage.getItem(storageKey);
+return data ? JSON.parse(data) : null;
+}
+function loadUserData() {
+console.log('加载用户数据:', currentUser.name);
+// 可以在这里加载用户特定的数据
+}
+// 多语言翻译系统
+const userTranslations = {};
+function applyTranslations() {
+const source = document.getElementById('translateSource').value;
+const targetLangs = ['en','de','es','pt','ru','ar'];
+userTranslations[currentUser.id] = {
+source: source,
+en: 'Our Engine Mount products feature premium rubber compounds for superior vibration dampening.',
+de: 'Unsere Motorlager zeichnen sich durch hochwertige Gummimischungen aus.',
+es: 'Nuestros soportes de motor cuentan con compuestos de caucho premium.',
+pt: 'Nossos suportes de motor apresentam compostos de borracha premium.',
+ru: 'Наши опоры двигателя изготовлены из премиальных резиновых компаундов.',
+ar: 'منتجات حامل المحرك الخاصة بنا مصنوعة من مركبات المطاط الفاخرة.'
+};
+showTranslationList();
+hideModal('translate');
+showToast('翻译已应用到内容', 'success');
+}
+function showTranslationList() {
+const list = document.getElementById('translationList');
+if(!list) return;
+const langs = {'en':'🇬🇧 English','de':'🇩🇪 Deutsch','es':'🇪🇸 Español','pt':'🇧🇷 Português','ru':'🇷🇺 Русский','ar':'🇸🇦 العربية'};
+let html = '';
+for(const [code, label] of Object.entries(langs)) {
+if(userTranslations[currentUser.id] && userTranslations[currentUser.id][code]) {
+html += '<div class=\"translation-item\"><div class=\"lang-label\">'+label+'</div><div class=\"lang-content\">'+userTranslations[currentUser.id][code]+'</div></div>';
+}
+}
+if(html) {
+document.getElementById('translatedContent').style.display = 'block';
+list.innerHTML = html;
+}
+}
+
+// 初始化图表
+function initCharts() {
+drawLineChart('exposureChart', ['周一','周二','周三','周四','周五','周六','周日'], [3.2,4.1,3.8,5.2,4.8,6.1,5.5], '#3b82f6');
+drawPieChart('platformChart', [12300,8700,5200,2300], ['Facebook','Instagram','LinkedIn','YouTube'], ['#1877f2','#e4405f','#0a66c2','#ff0000']);
+drawBarChart('productChart', ['Engine','Strut','Bushing','Control','Ball'], [8.2,6.5,5.8,4.2,3.5], ['#3b82f6','#10b981','#f59e0b','#8b5cf6','#ef4444']);
+drawHorizontalBarChart('contentTypeChart', ['产品展示','客户见证','技术贴士','行业洞察'], [8.2,6.5,5.1,4.7], '#8b5cf6');
+drawBarChart('timeChart', ['6-9','9-12','12-15','15-18','18-21','21-24'], [1.2,3.5,4.8,6.2,5.1,2.8], ['#10b981','#3b82f6','#f59e0b','#ef4444','#8b5cf6','#06b6d4']);
+}
+// 新功能函数
+function selectMessage(id) { console.log('选择消息:', id); }
+function sendMessage() { showToast('消息已发送', 'success'); }
+function selectCompetitor(id) { console.log('选择竞品:', id); }
+function editWorkflow(id) { showModal('editWorkflow'); showToast('编辑工作流 #' + id, 'success'); }
+function approve(id) { showToast('审批通过', 'success'); }
+function reject(id) { showToast('已驳回', 'error'); }
+function selectExport(format) { showToast('选择导出格式: ' + format.toUpperCase(), 'success'); }
+function setExportFormat(format) { showToast('设置导出格式: ' + format.toUpperCase(), 'success'); }
+function exportData() { hideModal('exportData'); showToast('数据导出成功！', 'success'); }
+function followUp(id) { showModal('followUp'); showToast('跟进询盘 #' + id, 'success'); }
+function viewQuote(id) { showModal('viewQuote'); }
+function viewOrder(id) { showModal('viewOrder'); }
+window.addEventListener('load', initCharts);
+window.addEventListener('resize', initCharts);
+</script>
+</body>
+</html>
